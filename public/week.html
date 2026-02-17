@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana {{WEEK_NUM}} — TutorIA 🎓</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Memory Game Custom Styles for Toggl Landing Page */
+        .memory-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            perspective: 1000px;
+        }
+
+        .memory-card {
+            aspect-ratio: 4/5;
+            /* Taller cards to fit more text */
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .memory-card-front,
+        .memory-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            /* Minimal padding to maximize space */
+            border-radius: 12px;
+            font-size: 0.75rem;
+            /* Even smaller to fit long definitions */
+            line-height: 1.1;
+            text-align: center;
+            border: 2px solid var(--toggl-purple);
+            font-weight: 700;
+            overflow: hidden;
+            word-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .memory-card-front {
+            background: var(--toggl-pink);
+            color: white;
+            font-size: 1.5rem;
+            border: none;
+        }
+
+        .memory-card-back {
+            background: #ffffff;
+            color: var(--toggl-purple);
+            transform: rotateY(180deg);
+            border: 3px solid var(--toggl-purple);
+            /* Thicker border */
+        }
+
+        .memory-card.matched {
+            opacity: 1;
+            /* Keep full opacity for readability */
+            cursor: default;
+            transform: rotateY(180deg) !important;
+            /* Force stay flipped */
+        }
+
+        .memory-card.matched .memory-card-back {
+            background: var(--toggl-yellow) !important;
+            border-color: var(--toggl-purple) !important;
+            color: var(--toggl-purple) !important;
+            box-shadow: 0 0 15px rgba(255, 243, 173, 0.5);
+        }
+
+        #victory-message {
+            display: none;
+            background: var(--toggl-yellow);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-top: 2rem;
+            text-align: center;
+            border: 2px solid var(--toggl-purple);
+            animation: bounceIn 0.5s ease;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+
+            70% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Adjust theory text for readability */
+        #theory-content h3 {
+            color: var(--toggl-pink);
+            margin-top: 2rem;
+        }
+
+        #theory-content p {
+            margin-bottom: 1rem;
+            color: rgba(44, 19, 56, 0.9);
+            font-size: 1.1rem;
+        }
+
+        #theory-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #theory-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Week Pagination -->
+    <div class="week-pagination" id="top-week-nav"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">TutorIA 🎓</a>
+            <ul class="navbar-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="syllabus.html">Jornada</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="leaderboard.html">Ranking</a></li>
+            </ul>
+            <div class="navbar-auth">
+                <button class="btn btn-primary" style="padding: 0.5rem 1rem;">Entrar</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1 id="week-title">Semana <span id="hero-week-num">-</span>: <span id="hero-title">Carregando...</span>
+            </h1>
+            <p id="week-subtitle">Domine os conceitos fundamentais de Banco de Dados com TutorIA.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+                <a href="#theory" class="btn btn-secondary">Estudar Teoria</a>
+                <a href="#quiz" class="btn btn-primary">Testar Conhecimentos</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Theory Section -->
+    <section class="section" id="theory">
+        <div class="container">
+            <h2 class="section-title">A Base Teórica</h2>
+            <div id="theory-content">
+                <!-- Content will be injected here with Toggl-style alternating layout -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Memory Game Section -->
+    <section class="section section-dark" id="game">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Desafio de Memória</h2>
+            <div class="landing-grid">
+                <div id="memory-board-container"
+                    style="min-height: 400px; display: flex; flex-direction: column; justify-content: center;">
+                    <div class="memory-board" id="memory-board"></div>
+                    <div id="victory-message">
+                        <h2 style="color: var(--toggl-purple);">🏆 Parabéns!</h2>
+                        <p style="margin-bottom: 1.5rem;">Você dominou os conceitos desta semana!</p>
+                        <button class="btn btn-secondary" onclick="initMemoryGame()">Jogar Novamente</button>
+                    </div>
+                </div>
+                <div style="padding-left: 2rem;">
+                    <h3 style="color: var(--toggl-pink); font-size: 2rem;">Aprenda brincando.</h3>
+                    <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(255,255,255,0.8);">
+                        Combine os <strong>Termos</strong> com suas <strong>Definições</strong>.
+                        A repetição lúdica é uma das melhores formas de fixar conceitos técnicos complexos.
+                    </p>
+                    <button class="btn btn-primary" onclick="initMemoryGame()">Reiniciar Jogo</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Quiz Section -->
+    <section class="section" id="quiz">
+        <div class="container" style="max-width: 1200px;">
+            <h2 class="section-title">Valide seu Conhecimento</h2>
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h3 style="color: var(--toggl-purple); font-size: 2rem;">Questões de Prova.</h3>
+                <p style="font-size: 1.25rem; color: rgba(44, 19, 56, 0.7); max-width: 600px; margin: 0 auto;">
+                    Responda às questões selecionadas das provas oficiais da UNIVESP.
+                    O feedback imediato ajuda você a entender onde precisa focar seus estudos.
+                </p>
+            </div>
+            <div id="quiz-area" class="quiz-card">
+                <p style="text-align: center; padding: 2rem; color: #999;">Carregando questões...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Week Pagination -->
+    <div class="week-pagination" id="bottom-week-nav" style="margin-top: 4rem;"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Projeto Integrador Univesp — Grupo TutorIA</p>
+        </div>
+    </footer>
+
+    <script src="js/quiz-engine.js"></script>
+    <script src="js/quiz-ui.js"></script>
+    <script>
+        const weekMeta = {
+            1: { title: 'Modelagem Conceitual', subtitle: 'MER, Entidades, Atributos, Relacionamentos', image: 'assets/images/dados_vs_informacao.svg' },
+            2: { title: 'Modelo Relacional', subtitle: 'Tabelas, Chaves, Tuplas, Cardinalidade', image: 'assets/images/tabelas_relacionais.svg' },
+            3: { title: 'Normalização', subtitle: '1FN, 2FN, 3FN, Dependências Funcionais', image: 'assets/images/operacao_selecao.svg' },
+            4: { title: 'SQL — DDL & DML', subtitle: 'CREATE, ALTER, DROP, INSERT, UPDATE', image: 'assets/images/create_table_visual.svg' },
+            5: { title: 'Consultas SQL', subtitle: 'WHERE, GROUP BY, HAVING, Subconsultas', image: 'assets/images/sql_joins.svg' },
+            6: { title: 'JOINs & BI', subtitle: 'INNER/LEFT JOIN, Data Warehouse, Data Lake', image: 'assets/images/normalizacao.svg' },
+            7: { title: 'Transações', subtitle: 'ACID, COMMIT, ROLLBACK, Isolamento', image: 'assets/images/acid_properties.svg' }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        let currentWeek = parseInt(params.get('week') || '1');
+
+        function renderPagination() {
+            const topNav = document.getElementById('top-week-nav');
+            const bottomNav = document.getElementById('bottom-week-nav');
+            let html = '';
+            for (let i = 1; i <= 7; i++) {
+                html += `<a href="week.html?week=${i}" class="week-pagination-link ${i === currentWeek ? 'active' : ''}">${i}</a>`;
+            }
+            topNav.innerHTML = html;
+            bottomNav.innerHTML = html;
+        }
+
+        async function init() {
+            renderPagination();
+            const meta = weekMeta[currentWeek];
+            document.title = `Semana ${currentWeek}: ${meta.title} — TutorIA 🎓`;
+            document.getElementById('hero-week-num').textContent = currentWeek;
+            document.getElementById('hero-title').textContent = meta.title;
+            document.getElementById('week-subtitle').textContent = meta.subtitle;
+
+            // Image fallback logic is now handled inside the theory-content loop
+
+            try {
+                const [examRes, studyRes, enrichedRes] = await Promise.all([
+                    fetch('data/exam_questions.json'),
+                    fetch('data/week_data.json'),
+                    fetch('data/week_content.json')
+                ]);
+                const examQs = await examRes.json();
+                const studyData = await studyRes.json();
+                const enrichedData = await enrichedRes.json();
+
+                // --- Theory Content ---
+                const currentWeekData = enrichedData[currentWeek.toString()];
+                if (currentWeekData && currentWeekData.theory) {
+                    // Toggl-style alternating layout: Image | Text or Text | Image
+                    const theoryHTML = currentWeekData.theory;
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(theoryHTML, 'text/html');
+                    const elements = Array.from(doc.body.children);
+
+                    let containerHTML = '';
+                    let tempDiv = document.createElement('div');
+
+                    // Group elements by topic (h3 + until next h3)
+                    let groups = [];
+                    let currentGroup = null;
+
+                    elements.forEach(el => {
+                        if (el.tagName === 'H3') {
+                            if (currentGroup) groups.push(currentGroup);
+                            currentGroup = { title: el.outerHTML, content: [] };
+                        } else if (currentGroup) {
+                            currentGroup.content.push(el.outerHTML);
+                        }
+                    });
+                    if (currentGroup) groups.push(currentGroup);
+
+                    groups.forEach((group, index) => {
+                        const isEven = index % 2 === 0;
+                        const imageHTML = `<div class="landing-image-placeholder"><img src="assets/images/semana${currentWeek}/week_${currentWeek}_img_${index + 1}.png" onerror="this.src='${meta.image}'"></div>`;
+                        const textHTML = `<div class="theory-text">${group.title}${group.content.join('')}</div>`;
+
+                        containerHTML += `
+                            <div class="landing-grid" style="margin-bottom: var(--space-xl);">
+                                ${isEven ? textHTML + imageHTML : imageHTML + textHTML}
+                            </div>
+                        `;
+                    });
+
+                    document.getElementById('theory-content').innerHTML = containerHTML || theoryHTML;
+                }
+
+                // --- Quiz Content ---
+                let questions = (examQs[`semana_${currentWeek}`] || []);
+                const weekStudy = studyData[currentWeek.toString()];
+                if (weekStudy && weekStudy.quiz) {
+                    const letters = ['a', 'b', 'c', 'd', 'e'];
+                    weekStudy.quiz.forEach(q => {
+                        const options = {};
+                        q.options.forEach((opt, i) => { options[letters[i]] = opt; });
+                        questions.push({
+                            question: q.question,
+                            options: options,
+                            correct_answer: letters[q.correct] || 'a'
+                        });
+                    });
+                }
+
+                if (questions.length > 0) {
+                    const engine = new QuizEngine({ shuffle: true, timer: true });
+                    engine.loadQuestions(questions);
+                    quizUI = new QuizUI('#quiz-area', engine, { showTimer: true });
+                    quizUI.render();
+                } else {
+                    document.getElementById('quiz-area').innerHTML = '<p style="text-align: center; padding: 2rem; color: #999;">Nenhuma questão disponível.</p>';
+                }
+
+                // --- Memory Game Content ---
+                window.initMemoryGame = function () {
+                    const board = document.getElementById('memory-board');
+                    const victory = document.getElementById('victory-message');
+                    if (!board || !weekStudy || !weekStudy.flashcards) return;
+
+                    board.innerHTML = '';
+                    board.style.display = 'grid';
+                    victory.style.display = 'none';
+
+                    let gameState = { locked: false, flipped: null, matches: 0 };
+                    let deck = [];
+                    weekStudy.flashcards.forEach((fc, i) => {
+                        deck.push({ id: i, text: fc.front, type: 't' });
+                        deck.push({ id: i, text: fc.back, type: 'd' });
+                    });
+                    deck.sort(() => Math.random() - 0.5);
+
+                    deck.forEach(data => {
+                        const card = document.createElement('div');
+                        card.className = 'memory-card';
+                        card.dataset.id = data.id;
+                        card.innerHTML = `<div class="memory-card-front">?</div><div class="memory-card-back">${data.text}</div>`;
+                        card.onclick = function () {
+                            if (gameState.locked || this.classList.contains('flipped') || this === gameState.flipped) return;
+                            this.classList.add('flipped');
+                            if (!gameState.flipped) { gameState.flipped = this; return; }
+                            gameState.locked = true;
+                            if (gameState.flipped.dataset.id === this.dataset.id) {
+                                this.classList.add('matched'); gameState.flipped.classList.add('matched');
+                                gameState.matches++; gameState.flipped = null; gameState.locked = false;
+                                if (gameState.matches === weekStudy.flashcards.length) {
+                                    setTimeout(() => { board.style.display = 'none'; victory.style.display = 'block'; }, 600);
+                                }
+                            } else {
+                                setTimeout(() => { this.classList.remove('flipped'); gameState.flipped.classList.remove('flipped'); gameState.flipped = null; gameState.locked = false; }, 2500);
+                            }
+                        };
+                        board.appendChild(card);
+                    });
+                };
+                if (weekStudy && weekStudy.flashcards) initMemoryGame();
+
+
+            } catch (e) { console.error(e); }
+        }
+        init();
+    </script>
+</body>
+
+</html>

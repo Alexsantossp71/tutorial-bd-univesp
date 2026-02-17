@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+    <rect width="800" height="400" fill="#fffbe6" />
+
+    <!-- Title -->
+    <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" fill="#b45309" text-anchor="middle">SQL JOINs VISUALIZADOS</text>
+
+    <!-- INNER JOIN -->
+    <g transform="translate(50, 80)">
+        <text x="100" y="20" font-family="Arial" font-size="16" font-weight="bold" fill="#b45309" text-anchor="middle">INNER JOIN</text>
+        <circle cx="70" cy="80" r="50" fill="#fcd34d" stroke="#b45309" stroke-width="2" opacity="0.5" />
+        <circle cx="130" cy="80" r="50" fill="#fcd34d" stroke="#b45309" stroke-width="2" opacity="0.5" />
+        
+        <!-- Intersection -->
+        <path d="M100,40 A50,50 0 0,1 100,120 A50,50 0 0,1 100,40" fill="#b45309" />
+        <text x="100" y="160" font-family="Arial" font-size="12" fill="#78350f" text-anchor="middle">Apenas a Interseção</text>
+    </g>
+
+    <!-- LEFT JOIN -->
+    <g transform="translate(300, 80)">
+        <text x="100" y="20" font-family="Arial" font-size="16" font-weight="bold" fill="#15803d" text-anchor="middle">LEFT JOIN</text>
+        <!-- Right Circle (under) -->
+        <circle cx="130" cy="80" r="50" fill="white" stroke="#15803d" stroke-width="2" opacity="0.5" />
+         <!-- Left Circle (full) -->
+        <circle cx="70" cy="80" r="50" fill="#86efac" stroke="#15803d" stroke-width="2" />
+        <text x="100" y="160" font-family="Arial" font-size="12" fill="#14532d" text-anchor="middle">Tudo da Esquerda + Match</text>
+    </g>
+
+    <!-- RIGHT JOIN -->
+    <g transform="translate(550, 80)">
+        <text x="100" y="20" font-family="Arial" font-size="16" font-weight="bold" fill="#1d4ed8" text-anchor="middle">RIGHT JOIN</text>
+        <!-- Left Circle (under) -->
+        <circle cx="70" cy="80" r="50" fill="white" stroke="#1d4ed8" stroke-width="2" opacity="0.5" />
+        <!-- Right Circle (full) -->
+        <circle cx="130" cy="80" r="50" fill="#93c5fd" stroke="#1d4ed8" stroke-width="2" />
+        <text x="100" y="160" font-family="Arial" font-size="12" fill="#1e3a8a" text-anchor="middle">Tudo da Direita + Match</text>
+    </g>
+
+    <!-- FULL JOIN -->
+    <g transform="translate(300, 220)">
+        <text x="100" y="20" font-family="Arial" font-size="16" font-weight="bold" fill="#7e22ce" text-anchor="middle">FULL JOIN</text>
+        <circle cx="70" cy="80" r="50" fill="#d8b4fe" stroke="#7e22ce" stroke-width="2" />
+        <circle cx="130" cy="80" r="50" fill="#d8b4fe" stroke="#7e22ce" stroke-width="2" />
+        <text x="100" y="160" font-family="Arial" font-size="12" fill="#581c87" text-anchor="middle">Tudo de Ambos</text>
+    </g>
+
+</svg>

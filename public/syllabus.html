@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornada — TutorIA 🎓</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .syllabus-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .week-item {
+            background: white;
+            border: 2px solid var(--toggl-purple);
+            border-radius: 1rem;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .week-item:hover {
+            background: var(--toggl-yellow);
+            transform: translateX(10px);
+        }
+
+        .week-item-num {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--toggl-pink);
+            min-width: 60px;
+        }
+
+        .week-item-content h3 {
+            margin-bottom: 0.2rem;
+            font-size: 1.5rem;
+        }
+
+        .week-item-content p {
+            color: rgba(44, 19, 56, 0.7);
+            font-size: 1rem;
+        }
+
+        .progress-compact {
+            height: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 1rem;
+            width: 200px;
+        }
+
+        .progress-compact-fill {
+            height: 100%;
+            background: var(--toggl-pink);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">TutorIA 🎓</a>
+            <ul class="navbar-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="syllabus.html" class="active">Jornada</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="leaderboard.html">Ranking</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="section">
+        <div class="container">
+            <h1 style="font-size: 4rem; text-align: center; margin-bottom: 1rem;">Sua Jornada.</h1>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 4rem;">Percorra as 7 semanas de conteúdo e
+                conquiste seu 10 em Banco de Dados.</p>
+
+            <div class="syllabus-grid" id="weeks-container">
+                <!-- Weeks will be injected here -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Projeto Integrador Univesp — Grupo TutorIA</p>
+        </div>
+    </footer>
+
+    <script>
+        const weekTopics = {
+            1: { title: 'Modelagem Conceitual', subtitle: 'MER, Entidades, Atributos, Relacionamentos' },
+            2: { title: 'Modelo Relacional', subtitle: 'Tabelas, Chaves, Tuplas, Cardinalidade' },
+            3: { title: 'Normalização', subtitle: '1FN, 2FN, 3FN, Dependências Funcionais' },
+            4: { title: 'SQL — DDL & DML', subtitle: 'CREATE, ALTER, DROP, INSERT, UPDATE' },
+            5: { title: 'Consultas SQL', subtitle: 'WHERE, GROUP BY, HAVING, Subconsultas' },
+            6: { title: 'JOINs & BI', subtitle: 'INNER/LEFT JOIN, Data Warehouse, Data Lake' },
+            7: { title: 'Transações', subtitle: 'ACID, COMMIT, ROLLBACK, Isolamento' }
+        };
+
+        function init() {
+            const container = document.getElementById('weeks-container');
+            let html = '';
+            for (let i = 1; i <= 7; i++) {
+                const topic = weekTopics[i];
+                html += `
+                    <div class="week-item" onclick="location.href='week.html?week=${i}'">
+                        <div class="week-item-num">${i}</div>
+                        <div class="week-item-content">
+                            <h3>${topic.title}</h3>
+                            <p>${topic.subtitle}</p>
+                            <div class="progress-compact">
+                                <div class="progress-compact-fill" style="width: ${Math.random() * 100}%"></div>
+                            </div>
+                        </div>
+                        <div style="margin-left: auto;">
+                            <span style="font-size: 1.5rem;">→</span>
+                        </div>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+        }
+        init();
+    </script>
+</body>
+
+</html>

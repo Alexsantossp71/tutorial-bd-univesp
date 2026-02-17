@@ -1,0 +1,605 @@
+{
+  "1": {
+    "image": "dados_vs_informacao.svg",
+    "quiz": [
+      {
+        "question": "Acerca dos Bancos de Dados e, em específico, do Modelo de Entidade-Relacionamento (MER), amplamente utilizado para a modelagem desses ambientes, tem-se alguns elementos que compõem o seu diagrama, são eles: entidades; atributos; chaves; relacionamentos; cardinalidades. Sendo assim, a cardinalidade, por exemplo, corresponde ao número máximo de instâncias de relacionamento que uma entidade pode participar. Diante disso, no que tange aos relacionamentos recursivos, analise as asserções a seguir e a relação proposta entre elas. I. Ocorre quando um mesmo tipo de entidade participa mais de uma vez do tipo de relacionamento, assumindo papéis diferentes. II. Especifica se uma entidade individual precisa, necessariamente, estar associada a outra entidade individual via um tipo de relacionamento. A respeito dessas asserções, assinale a alternativa correta.",
+        "options": [
+          "A primeira asserção é falsa, e a segunda é verdadeira.",
+          "A primeira asserção é verdadeira, e a segunda é falsa.",
+          "As duas asserções são verdadeiras, e a segunda justifica a primeira.",
+          "As duas asserções são verdadeiras, e a segunda não justifica a primeira.",
+          "As duas asserções são falsas."
+        ],
+        "correct": 3
+      },
+      {
+        "question": "Leia o trecho a seguir: Ambientes organizacionais que dependem intensamente de informações requerem profissionais com funções especializadas, voltadas tanto à estruturação quanto à manutenção eficiente dos sistemas de dados que apoiam processos corporativos e operacionais. No contexto da atuação profissional em banco de dados, o responsável por projetar a estrutura lógica do banco é o [preencher 1], enquanto o encarregado de manter e controlar seu funcionamento adequado é o [preencher 2]. Neste contexto, reconheça os termos de [preencher 1] e [preencher 2] que são substituídos por:",
+        "options": [
+          "1 - projetista ; 2 - administrador",
+          "1 - usuário ; 2 - programador",
+          "1 - desenvolvedor ; 2 - analista",
+          "1 - gerente ; 2 - auditor",
+          "1 - operador ; 2 - executante"
+        ],
+        "correct": 0
+      },
+      {
+        "question": "No desenvolvimento de sistemas computacionais e, principalmente, no que tange Banco de Dados, há um consenso de que existe uma independência entre dados e programas. Dessa maneira, pode-se ter aplicações que não fazem o uso de um Sistema Gerenciado de Banco de Dados (SGBD), tal como àquelas que fazem e, para essas que o adotam, contam com recursos presentes nessas ferramentas que asseguram funcionalidades de backup, controle de acesso e segurança de dados, por exemplo. Assinale a alternativa que corresponde a uma vantagem de uso de um SGBD.",
+        "options": [
+          "Permite que operações sobre os dados sejam definidas de maneira independente da aplicação.",
+          "Aumenta o nível de esforço humano dedicado para a manutenção do banco de dados.",
+          "Possibilita a redundância de dados no armazenamento.",
+          "Permite o desenvolvimento de um nível de customização baixo.",
+          "Restringe o compartilhamento de dados com diferentes aplicações."
+        ],
+        "correct": 0
+      },
+      {
+        "question": "O Modelo de Entidade-Relacionamento (MER) pode ser explicado através de situações do cotidiano das pessoas dentro de suas organizações. Por exemplo, cada departamento de uma empresa possui um número e um nome exclusivo que o identifica, tal como um funcionário que o gerencia e as datas de registros de atividades. Pode, ainda, um mesmo departamento estar alocado em prédios diferentes e ter uma série de funcionários a ele vinculados. Assinale a alternativa que explica o tipo de relacionamento que o departamento assumiria na situação supracitada dentro de um Modelo de Entidade-Relacionamento.",
+        "options": [
+          "Chave, porque identifica uma única entidade por meio de um atributo principal.",
+          "Entidade, pois visa representar algo físico ou conceitual do mundo real.",
+          "Entidade, por representar algo pertencente restrito à esfera conceitual.",
+          "Atributo recursivo, por contemplar a esfera de representação de uma entidade.",
+          "Atributo, visto que ele descreve uma entidade por meio de instâncias."
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Com base no contexto, associe os elementos do MER e exemplos de modelagem conceitual:\n\nElementos:\nI. Entidade\nII. Atributo\nIII. Chave\nIV. Relacionamento\n\nExemplos:\nA. Conexão entre Tabelas\nB. Propriedade 'Data de Nascimento'\nC. Registro Único de Aluno\nD. Objeto 'Professor'\n\nAssinale a alternativa que apresenta a associação correta:",
+        "options": [
+          "a. I-D; II-B; III-C; IV-A.",
+          "b. I-C; II-A; III-D; IV-B.",
+          "c. I-B; II-D; III-A; IV-C.",
+          "d. I-A; II-C; III-B; IV-D.",
+          "e. I-B; II-A; III-D; IV-C."
+        ],
+        "correct": 0
+      },
+      {
+        "question": "Avaliar as asserções a seguir e a relação proposta entre elas:\n\nI. O Sistema Gerenciador de Banco de Dados (SGBD) é fundamental para garantir a integridade e a segurança dos dados em ambientes corporativos.\nPORQUE\nII. Ele fornece mecanismos automatizados para controle de redundância, backup e restrições de acesso que seriam inviáveis em sistemas de arquivos manuais.\n\nA respeito dessas asserções, assinale a alternativa correta:",
+        "options": [
+          "a. A asserção I é uma proposição verdadeira, e a II é uma proposição falsa.",
+          "b. A asserção I é uma proposição falsa, e a II é uma proposição verdadeira.",
+          "c. As asserções I e II são falsas.",
+          "d. As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa da I.",
+          "e. As asserções I e II são proposições verdadeiras, e a II é uma justificativa da I."
+        ],
+        "correct": 4
+      },
+      {
+        "question": "Assinale a alternativa que corresponde a um atributo composto.",
+        "options": [
+          "a. E-mails são dados compostos, visto que indicam possibilidades de contato.",
+          "b. Telefones são dados compostos, pois podem ter mais de um.",
+          "c. CPF, CNPJ, ID de fornecedor, entre outros dados determinantes são atributos compostos.",
+          "d. Nome, sexo e data de nascimento podem ser considerados atributos compostos.",
+          "e. Rua, número, complemento, bairro, CEP e cidade podem ser considerados atributos compostos."
+        ],
+        "correct": 4
+      },
+      {
+        "question": "Assinale a alternativa correta com relação a definição técnica de um banco de dados.",
+        "options": [
+          "a. Um banco de dados é uma planilha com dados salvos digitalmente, desde que seja utilizada para armazenar informações em formato tabular.",
+          "b. Um banco de dados é o sistema que executa comandos para armazenar dados, ignorando o conteúdo ou a organização dos dados em si.",
+          "c. Um banco de dados é formado por dados armazenados de forma aleatória, desorganizados, bastando estarem disponíveis em um servidor na rede.",
+          "d. Um banco de dados é qualquer conjunto de arquivos digitais utilizados para arquivamento, mitigando a necessidade de estrutura ou relacionamento entre os dados.",
+          "e. Um banco de dados é uma coleção estruturada e relacionada de dados, projetada para suportar múltiplas aplicações e garantir integridade e acesso eficiente."
+        ],
+        "correct": 4
+      },
+      {
+        "question": "Algumas metodologias de __________, tal como a _____________________, estão cada vez mais presentes em projetos de _______________, pois estão além do projeto de Banco de Dados (BD) em si, porque visam detalhar os módulos de aplicações e as suas interações sob a apresentação de diferentes tipos de diagramas.",
+        "options": [
+          "modelagem de objetos; Modelagem Entidade-Relacionamento (MER); software e banco de dados.",
+          "modelagem de dados; Modelagem Entidade-Relacionamento (MER); software e banco de dados.",
+          "modelagem de objetos; Unified Modeling Language (UML - Linguagem de Modelagem Unificada); software e banco de dados.",
+          "modelagem de dados; Modelagem Entidade-Relacionamento (MER); aplicação e software.",
+          "modelagem de dados; Unified Modeling Language (UML - Linguagem de Modelagem Unificada); software e mobile."
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Diante do tema, assinale a alternativa que avalia o tipo de atributo foi atribuído a vigência.",
+        "options": [
+          "Multivalorado: atributo que pode assumir múltiplos valores distintos para uma mesma instância da entidade, como e-mails ou telefones de uma pessoa.",
+          "Transitivo: expressa um tipo de dependência entre atributos em normalização, mas desassociado à classificação de atributos no modelo conceitual.",
+          "Identificador: atributo utilizado para garantir a unicidade das instâncias da entidade, servindo como chave primária no modelo relacional derivado do MER.",
+          "Composto: atributo formado por subpartes semanticamente distintas, geralmente usado para descrever estruturas complexas como endereços ou nomes completos.",
+          "Derivado: atributo cujo valor é obtido por meio de cálculo sobre atributos armazenados, sendo desnecessário persistir fisicamente seu valor no banco de dados."
+        ],
+        "correct": 4
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Modelo de Entidade-Relacionamento (MER)",
+        "back": "Modelo para representar dados"
+      },
+      {
+        "front": "Entidade",
+        "back": "Representa algo físico ou conceitual"
+      },
+      {
+        "front": "Atributo",
+        "back": "Descreve uma entidade"
+      },
+      {
+        "front": "Chave",
+        "back": "Identifica uma entidade"
+      },
+      {
+        "front": "Relacionamento",
+        "back": "Conexão entre entidades"
+      },
+      {
+        "front": "Sistema Gerenciado de Banco de Dados (SGBD)",
+        "back": "Ferramenta para gerenciar bancos de dados"
+      }
+    ]
+  },
+  "2": {
+    "image": "tabelas_relacionais.svg",
+    "flashcards": [
+      {
+        "front": "TABELA",
+        "back": "Estrutura básica do modelo relacional (conjunto de linhas e colunas)."
+      },
+      {
+        "front": "CHAVE PRIMÁRIA",
+        "back": "Identificador único de um registro. Não pode repetir nem ser nulo."
+      },
+      {
+        "front": "CHAVE ESTRANGEIRA",
+        "back": "Coluna que cria o relacionamento, apontando para a PK de outra tabela."
+      },
+      {
+        "front": "INTEGRIDADE REFERENCIAL",
+        "back": "Garante que uma FK só aponte para um valor existente na outra tabela."
+      },
+      {
+        "front": "TABELA ASSOCIATIVA",
+        "back": "Tabela criada para resolver relacionamentos N:M (Muitos para Muitos)."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "O que acontece com um relacionamento N:M na conversão para o modelo relacional?",
+        "options": [
+          "Vira uma coluna extra",
+          "É ignorado",
+          "Vira uma nova tabela (associativa)",
+          "A chave vai para ambos os lados"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Uma Chave Primária pode ser NULA?",
+        "options": [
+          "Sim, sempre",
+          "Não, nunca",
+          "Apenas em bancos NoSQL",
+          "Depende do SGBD"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Qual a função da Chave Estrangeira?",
+        "options": [
+          "Proteger o banco de hackers",
+          "Criar relacionamentos entre tabelas",
+          "Definir o tipo de dado",
+          "Gerar backup"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Se um Cliente tem vários Pedidos (1:N), onde fica a Chave Estrangeira?",
+        "options": [
+          "Na tabela Cliente",
+          "Na tabela Pedido",
+          "Em uma nova tabela",
+          "Não precisa de chave"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "O que é uma Tupla?",
+        "options": [
+          "Uma coluna",
+          "Uma tabela inteira",
+          "Uma linha (registro) da tabela",
+          "Um erro de banco de dados"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  "3": {
+    "image": "operacao_selecao.svg",
+    "flashcards": [
+      {
+        "front": "SELEÇÃO (σ)",
+        "back": "Filtra LINHAS de uma tabela com base em uma condição (Horizontal). EQ: WHERE."
+      },
+      {
+        "front": "PROJEÇÃO (π)",
+        "back": "Filtra COLUNAS de uma tabela, descartando as outras (Vertical). EQ: SELECT."
+      },
+      {
+        "front": "PRODUTO CARTESIANO (X)",
+        "back": "Combina cada linha de uma tabela com todas as linhas de outra. Gera Tabela A x Tabela B linhas."
+      },
+      {
+        "front": "JUNÇÃO (⨝)",
+        "back": "Operação que combina tuplas relacionadas de duas tabelas (geralmente via Chave Estrangeira)."
+      },
+      {
+        "front": "PROCEDURAL",
+        "back": "Linguagem que especifica COMO obter os dados (Álgebra) vs O QUE obter (Cálculo/SQL)."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Qual operação da álgebra relacional corresponde à cláusula WHERE do SQL?",
+        "options": [
+          "Projeção (π)",
+          "Seleção (σ)",
+          "Junção (⨝)",
+          "União (U)"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Se a Tabela A tem 10 linhas e a Tabela B tem 5 linhas, quantas linhas terá o Produto Cartesiano (A X B)?",
+        "options": [
+          "15",
+          "50",
+          "5",
+          "100"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "A operação de Projeção (π) atua sobre:",
+        "options": [
+          "Linhas (reduzindo quantidade de registros)",
+          "Colunas (reduzindo atributos)",
+          "Tabelas (unindo dados)",
+          "Chaves (criando PKs)"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Qual o símbolo da Junção Natural?",
+        "options": [
+          "σ (sigma)",
+          "π (pi)",
+          "⨝ (borboleta)",
+          "U (união)"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "A Álgebra Relacional é considerada uma linguagem:",
+        "options": [
+          "Declarativa (O Que)",
+          "Procedural (Como)",
+          "Orientada a Objetos",
+          "Funcional"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  "4": {
+    "image": "create_table_visual.svg",
+    "flashcards": [
+      {
+        "front": "DDL",
+        "back": "Data Definition Language. Define a ESTRUTURA. Ex: CREATE, ALTER, DROP."
+      },
+      {
+        "front": "DML",
+        "back": "Data Manipulation Language. Manipula os DADOS. Ex: INSERT, UPDATE, DELETE."
+      },
+      {
+        "front": "VARCHAR",
+        "back": "Tipo de dado para texto de tamanho variável."
+      },
+      {
+        "front": "DROP TABLE",
+        "back": "Comando DDL que APAGA a tabela inteira e seus dados. Irreversível."
+      },
+      {
+        "front": "TRUNCATE",
+        "back": "Esvazia a tabela rapidamente, resetando a estrutura, mas não a apaga."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Qual comando apaga a estrutura de uma tabela inteira?",
+        "options": [
+          "DELETE",
+          "REMOVE",
+          "DROP",
+          "ERASE"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "O comando UPDATE deve ser quase sempre acompanhado de qual cláusula para evitar desastres?",
+        "options": [
+          "SELECT",
+          "WHERE",
+          "FROM",
+          "HAVING"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "O comando TRUNCATE pertence a qual categoria?",
+        "options": [
+          "DDL",
+          "DML",
+          "DQL",
+          "TCL"
+        ],
+        "correct": 0
+      },
+      {
+        "question": "Qual comando usamos para adicionar uma nova coluna em uma tabela existente?",
+        "options": [
+          "ADD COLUMN",
+          "ALTER TABLE",
+          "UPDATE TABLE",
+          "INSERT COLUMN"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Qual a diferença entre CHAR e VARCHAR?",
+        "options": [
+          "Não há diferença",
+          "CHAR é tamanho fixo, VARCHAR é variável",
+          "CHAR suporta números apenas",
+          "VARCHAR é mais lento"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  "5": {
+    "image": "sql_joins.svg",
+    "flashcards": [
+      {
+        "front": "INNER JOIN",
+        "back": "Retorna REIGSTROS que possuem correspondência em AMBAS as tabelas."
+      },
+      {
+        "front": "LEFT JOIN",
+        "back": "Retorna TODOS os registros da tabela da ESQUERDA, e os correspondentes da direita (ou NULL)."
+      },
+      {
+        "front": "GROUP BY",
+        "back": "Cláusula usada para agrupar linhas que têm os mesmos valores em linhas de resumo (soma, contagem)."
+      },
+      {
+        "front": "HAVING",
+        "back": "Filtra grupos DEPOIS do GROUP BY. O WHERE filtra linhas ANTES do agrupamento."
+      },
+      {
+        "front": "ORDER BY",
+        "back": "Cláusula usada para ordenar o resultado (ASC ou DESC)."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Para filtrar o resultado de um GROUP BY, qual cláusula devemos usar?",
+        "options": [
+          "WHERE",
+          "FILTER",
+          "HAVING",
+          "LIMIT"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Qual comando SQL usamos para contar o número de registros?",
+        "options": [
+          "SUM()",
+          "COUNT()",
+          "TOTAL()",
+          "ADD()"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "O que acontece em um LEFT JOIN se não houver correspondência na tabela da direita?",
+        "options": [
+          "Linha é ignorada",
+          "Dá erro de execução",
+          "Retorna NULL nos campos da direita",
+          "Duplica a linha"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Qual a ordem correta de execução lógica?",
+        "options": [
+          "SELECT -> FROM -> WHERE",
+          "FROM -> WHERE -> SELECT",
+          "WHERE -> FROM -> SELECT",
+          "SELECT -> WHERE -> FROM"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Para ordenar de forma decrescente, usamos:",
+        "options": [
+          "UP",
+          "DOWN",
+          "DESC",
+          "ASC"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  "6": {
+    "image": "normalizacao.svg",
+    "flashcards": [
+      {
+        "front": "NORMALIZAÇÃO",
+        "back": "Processo de organização de dados para reduzir redundância e melhorar integridade."
+      },
+      {
+        "front": "1FN",
+        "back": "Primeira Forma Normal. Exige atomicidade (um valor por célula, sem listas)."
+      },
+      {
+        "front": "2FN",
+        "back": "Segunda Forma Normal. Elimina dependência PARCIAL da chave primária (apenas para chaves compostas)."
+      },
+      {
+        "front": "3FN",
+        "back": "Terceira Forma Normal. Elimina dependência TRANSITIVA (atributo dependendo de atributo não-chave)."
+      },
+      {
+        "front": "ANOMALIA",
+        "back": "Problema causado por má estruturação (ex: alterar endereço de um cliente e ter que mudar em 50 pedidos)."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Para uma tabela estar na 2FN, ela primeiramente precisa atender a qual requisito?",
+        "options": [
+          "Ter Chave Estrangeira",
+          "Estar na 1FN",
+          "Estar na 3FN",
+          "Ter poucos dados"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "O que caracteriza a 1ª Forma Normal (1FN)?",
+        "options": [
+          "Tabelas separadas",
+          "Valores atômicos e indivisíveis",
+          "Chaves primárias compostas",
+          "Uso de JSON"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Uma 'Dependência Transitiva' viola qual forma normal?",
+        "options": [
+          "1FN",
+          "2FN",
+          "3FN",
+          "4FN"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Qual o principal objetivo da normalização?",
+        "options": [
+          "Aumentar o espaço em disco",
+          "Reduzir redundâncias e evitar inconsistências",
+          "Deixar o banco mais lento",
+          "Criptografar dados"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Se um atributo depende apenas de PARTE da chave primária composta, ele viola a:",
+        "options": [
+          "1FN",
+          "2FN",
+          "3FN",
+          "BCNF"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  "7": {
+    "image": "acid_properties.svg",
+    "flashcards": [
+      {
+        "front": "TRANSACAO",
+        "back": "Unidade lógica de processamento de banco de dados que inclui uma ou mais operações de acesso (leitura/escrita)."
+      },
+      {
+        "front": "ATOMICIDADE",
+        "back": "A transação é uma unidade 'tudo ou nada'. Se falhar, o banco sofre rollback."
+      },
+      {
+        "front": "CONSISTÊNCIA",
+        "back": "A transação leva o banco de um estado válido a outro estado válido."
+      },
+      {
+        "front": "ISOLAMENTO",
+        "back": "Transações executadas simultaneamente não devem interferir umas nas outras."
+      },
+      {
+        "front": "DURABILIDADE",
+        "back": "Uma vez confirmada (commit), a alteração é permanente, mesmo em falhas de energia."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Em transações, o que significa a propriedade Atomicidade?",
+        "options": [
+          "A transação é radioativa",
+          "Tudo ou nada (executa completa ou desfaz tudo)",
+          "Apenas usuários autorizados acessam",
+          "Os dados são salvos em átomos"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Qual comando confirma permanentemente as alterações de uma transação?",
+        "options": [
+          "CONFIRM",
+          "SAVE",
+          "COMMIT",
+          "DONE"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Se a energia cair após um COMMIT, o que acontece com os dados?",
+        "options": [
+          "São perdidos",
+          "Estão salvos (Durabilidade)",
+          "Ficam corrompidos",
+          "Depende da sorte"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Qual propriedade garante que transações simultâneas não gerem conflitos?",
+        "options": [
+          "Atomicidade",
+          "Consistência",
+          "Isolamento",
+          "Durabilidade"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "O comando ROLLBACK serve para:",
+        "options": [
+          "Apagar o banco",
+          "Desfazer a transação",
+          "Criar um backup",
+          "Reiniciar o servidor"
+        ],
+        "correct": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz — TutorIA 🎓</title>
+    <meta name="description"
+        content="Quiz interativo de Banco de Dados - Teste seus conhecimentos com questões por semana">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">TutorIA 🎓</a>
+            <ul class="navbar-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="syllabus.html">Jornada</a></li>
+                <li><a href="quiz.html" class="active">Quiz</a></li>
+                <li><a href="leaderboard.html">Ranking</a></li>
+            </ul>
+            <div class="navbar-auth" id="auth-section">
+                <button class="btn btn-sm btn-secondary" onclick="alert('Login em breve!')"
+                    id="login-btn">Entrar</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="page">
+        <div class="container">
+
+            <!-- Quiz Setup (shown before starting) -->
+            <div id="quiz-setup" class="animate-fade-in-up">
+                <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                    <h1 style="font-family: var(--font-serif); font-size: 3.5rem; letter-spacing: -1px;">Hub de <span
+                            class="text-gradient">Conhecimento</span></h1>
+                    <p
+                        style="color: var(--gray-400); margin-top: var(--space-md); max-width: 600px; margin-left: auto; margin-right: auto; font-size: 1.1rem; border-left: 4px solid var(--toggl-pink); padding-left: 1rem; background: rgba(229, 124, 216, 0.05);">
+                        Selecione o conteúdo e valide seu aprendizado com simulados baseados no banco de dados da
+                        UNIVESP.
+                    </p>
+                </div>
+
+                <!-- Source Selection Cards -->
+                <div style="margin-bottom: var(--space-xl);">
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                        <div class="quiz-mode-card" data-mode="all" onclick="selectWeek('all')">
+                            <div class="mode-icon">🎓</div>
+                            <h3>Todo o Curso</h3>
+                            <p>Mix completo de questões teóricas e de provas.</p>
+                        </div>
+                        <div class="quiz-mode-card" data-mode="exam" onclick="selectWeek('exam')">
+                            <div class="mode-icon">📊</div>
+                            <h3>Simulado de Provas</h3>
+                            <p>Apenas questões que já caíram em exames reais.</p>
+                        </div>
+                        <div class="quiz-mode-card" data-mode="study" onclick="selectWeek('study')">
+                            <div class="mode-icon">📚</div>
+                            <h3>Material de Estudo</h3>
+                            <p>Questões de fixação das atividades avaliativas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hidden inputs for logic -->
+                <div class="quiz-filters hidden" id="week-filters">
+                    <button class="filter-chip active" data-week="all">all</button>
+                    <button class="filter-chip" data-week="exam">exam</button>
+                    <button class="filter-chip" data-week="study">study</button>
+                </div>
+
+                <!-- Week Selector (WIDER) -->
+                <div style="margin-bottom: var(--space-2xl);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-sm);">
+                        <h3
+                            style="font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; color: var(--toggl-purple);">
+                            Filtro por Semana</h3>
+                        <span id="selected-week-label" style="font-weight: 800; color: var(--toggl-pink);">Todas as
+                            Semanas</span>
+                    </div>
+                    <div class="week-grid-wide" id="semester-filters">
+                        <button class="week-btn active" data-sem="all"
+                            onclick="selectSemester('all')">Universal</button>
+                        <button class="week-btn" data-sem="1" onclick="selectSemester('1')">Semana 1</button>
+                        <button class="week-btn" data-sem="2" onclick="selectSemester('2')">Semana 2</button>
+                        <button class="week-btn" data-sem="3" onclick="selectSemester('3')">Semana 3</button>
+                        <button class="week-btn" data-sem="4" onclick="selectSemester('4')">Semana 4</button>
+                        <button class="week-btn" data-sem="5" onclick="selectSemester('5')">Semana 5</button>
+                        <button class="week-btn" data-sem="6" onclick="selectSemester('6')">Semana 6</button>
+                        <button class="week-btn" data-sem="7" onclick="selectSemester('7')">Semana 7</button>
+                    </div>
+                </div>
+
+                <!-- Stats Dashboard -->
+                <div
+                    style="background: white; border: 3px solid var(--toggl-purple); border-radius: 1.5rem; padding: 2rem; box-shadow: 10px 10px 0px var(--toggl-purple); margin-bottom: var(--space-xl);">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
+                        <div style="border-right: 1px solid rgba(0,0,0,0.1);">
+                            <div style="font-size: 2.5rem; font-weight: 900; color: var(--toggl-pink);"
+                                id="stat-questions">0</div>
+                            <div
+                                style="text-transform: uppercase; font-size: 0.7rem; font-weight: 800; letter-spacing: 1px;">
+                                Questões Disponíveis</div>
+                        </div>
+                        <div style="border-right: 1px solid rgba(0,0,0,0.1);">
+                            <div style="font-size: 2.5rem; font-weight: 900; color: var(--toggl-purple);"
+                                id="stat-weeks">0</div>
+                            <div
+                                style="text-transform: uppercase; font-size: 0.7rem; font-weight: 800; letter-spacing: 1px;">
+                                Semanas Ativas</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.5rem; font-weight: 900; color: #10b981;" id="stat-best">—</div>
+                            <div
+                                style="text-transform: uppercase; font-size: 0.7rem; font-weight: 800; letter-spacing: 1px;">
+                                Seu Melhor Score</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Start Button Container -->
+                <div style="text-align: center;">
+                    <button class="btn btn-primary btn-lg" onclick="startQuiz()" id="start-btn"
+                        style="padding: 1.5rem 4rem; font-size: 1.3rem;">
+                        🚀 Iniciar Simulado
+                    </button>
+                    <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">Dica: Você pode pausar o simulado a
+                        qualquer momento.</p>
+                </div>
+            </div>
+
+            <!-- Quiz Area (hidden until start) -->
+            <div id="quiz-area" class="hidden"></div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Projeto Integrador Univesp — Grupo TutorIA</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/quiz-engine.js"></script>
+    <script src="js/quiz-ui.js"></script>
+    <script>
+        // ---- Data ----
+        let examQuestions = {};
+        let studyQuestions = {};
+        let allDataLoaded = false;
+
+        // ---- State ----
+        let selectedWeek = 'all';
+        let selectedSource = 'all'; // 'all', 'exam', 'study'
+
+        // ---- Load Data ----
+        async function loadData() {
+            try {
+                const [examRes, studyRes] = await Promise.all([
+                    fetch('data/exam_questions.json'),
+                    fetch('data/week_data.json')
+                ]);
+
+                examQuestions = await examRes.json();
+                const studyData = await studyRes.json();
+
+                // Convert study questions to same format as exam questions
+                studyQuestions = {};
+                for (const [weekNum, weekData] of Object.entries(studyData)) {
+                    if (weekData.quiz && weekData.quiz.length > 0) {
+                        studyQuestions[`semana_${weekNum}`] = weekData.quiz.map(q => {
+                            // Convert index-based correct to letter-based
+                            const letters = ['a', 'b', 'c', 'd', 'e'];
+                            const options = {};
+                            q.options.forEach((opt, i) => {
+                                options[letters[i]] = opt;
+                            });
+                            return {
+                                question: q.question,
+                                options: options,
+                                correct_answer: letters[q.correct] || 'a'
+                            };
+                        });
+                    }
+                }
+
+                allDataLoaded = true;
+                updateStats();
+            } catch (err) {
+                console.error('Error loading data:', err);
+                document.getElementById('start-btn').textContent = '❌ Erro ao carregar dados';
+                document.getElementById('start-btn').disabled = true;
+            }
+        }
+
+        // ---- Filters ----
+        function selectWeek(source) {
+            selectedSource = source;
+
+            // Update mode cards
+            document.querySelectorAll('.quiz-mode-card').forEach(c => {
+                c.classList.toggle('active', c.dataset.mode === source);
+            });
+
+            // Sync with hidden buttons (for legacy logic compat)
+            document.querySelectorAll('#week-filters .filter-chip').forEach(c => {
+                c.classList.toggle('active', c.dataset.week === source);
+            });
+            updateStats();
+        }
+
+        function selectSemester(week) {
+            selectedWeek = week;
+
+            // Update wider week buttons
+            document.querySelectorAll('#semester-filters .week-btn').forEach(c => {
+                c.classList.toggle('active', c.dataset.sem === week);
+            });
+
+            // Update label
+            const labels = {
+                'all': 'Todas as Semanas',
+                '1': 'Semana 1: Modelagem e MER',
+                '2': 'Semana 2: Modelo Relacional',
+                '3': 'Semana 3: Normalização',
+                '4': 'Semana 4: SQL DDL e DML',
+                '5': 'Semana 5: Consultas Avançadas',
+                '6': 'Semana 6: BI e Multidimensional',
+                '7': 'Semana 7: Transações e ACID'
+            };
+            document.getElementById('selected-week-label').textContent = labels[week] || `Semana ${week}`;
+
+            // Sync with legacy (if any)
+            document.querySelectorAll('#semester-filters .filter-chip').forEach(c => {
+                c.classList.toggle('active', c.dataset.sem === week);
+            });
+            updateStats();
+        }
+
+        // ---- Get filtered questions ----
+        function getFilteredQuestions() {
+            let questions = [];
+
+            const addFromSource = (source) => {
+                if (selectedWeek === 'all') {
+                    for (const weekQs of Object.values(source)) {
+                        questions = questions.concat(weekQs);
+                    }
+                } else {
+                    const key = `semana_${selectedWeek}`;
+                    if (source[key]) {
+                        questions = questions.concat(source[key]);
+                    }
+                }
+            };
+
+            if (selectedSource === 'all' || selectedSource === 'exam') {
+                addFromSource(examQuestions);
+            }
+            if (selectedSource === 'all' || selectedSource === 'study') {
+                addFromSource(studyQuestions);
+            }
+
+            return questions;
+        }
+
+        // ---- Update stats display ----
+        function updateStats() {
+            const questions = getFilteredQuestions();
+            document.getElementById('stat-questions').textContent = questions.length;
+
+            // Count weeks
+            const weekSet = new Set();
+            if (selectedWeek === 'all') {
+                if (selectedSource !== 'study') {
+                    Object.keys(examQuestions).forEach(k => weekSet.add(k));
+                }
+                if (selectedSource !== 'exam') {
+                    Object.keys(studyQuestions).forEach(k => weekSet.add(k));
+                }
+            } else {
+                weekSet.add(`semana_${selectedWeek}`);
+            }
+            document.getElementById('stat-weeks').textContent = weekSet.size;
+
+            // Best score from localStorage
+            const key = `tutoria_quiz_${selectedWeek}`;
+            try {
+                const saved = JSON.parse(localStorage.getItem(key) || '[]');
+                if (saved.length > 0) {
+                    const best = Math.max(...saved.map(s => s.percentage));
+                    document.getElementById('stat-best').textContent = `${best}%`;
+                } else {
+                    document.getElementById('stat-best').textContent = '—';
+                }
+            } catch {
+                document.getElementById('stat-best').textContent = '—';
+            }
+
+            // Enable/disable start button
+            const startBtn = document.getElementById('start-btn');
+            if (questions.length === 0) {
+                startBtn.textContent = 'Nenhuma questão disponível';
+                startBtn.disabled = true;
+            } else {
+                startBtn.textContent = `🚀 Iniciar Quiz (${questions.length} questões)`;
+                startBtn.disabled = false;
+            }
+        }
+
+        // ---- Start Quiz ----
+        function startQuiz() {
+            const questions = getFilteredQuestions();
+            if (questions.length === 0) return;
+
+            // Hide setup, show quiz area
+            document.getElementById('quiz-setup').classList.add('hidden');
+            const quizArea = document.getElementById('quiz-area');
+            quizArea.classList.remove('hidden');
+
+            // Create engine and UI
+            const engine = new QuizEngine({ shuffle: true, timer: true });
+            engine.loadQuestions(questions);
+
+            quizUI = new QuizUI(quizArea, engine, {
+                showTimer: true,
+                onFinish: (results) => {
+                    console.log('Quiz finished:', results);
+                }
+            });
+
+            quizUI.render();
+        }
+
+        // ---- Handle URL params ----
+        function handleParams() {
+            const params = new URLSearchParams(window.location.search);
+            const week = params.get('week');
+            if (week) {
+                selectSemester(week);
+            }
+            const autostart = params.get('start');
+            if (autostart === 'true' && allDataLoaded) {
+                startQuiz();
+            }
+        }
+
+        // ---- Init ----
+        loadData().then(() => {
+            handleParams();
+            // Ensure default visual states
+            selectWeek(selectedSource);
+            selectSemester(selectedWeek);
+        });
+    </script>
+
+</body>
+
+</html>

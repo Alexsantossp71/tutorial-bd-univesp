@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+    <rect width="800" height="400" fill="#fff1f2" />
+
+    <!-- Title -->
+    <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" fill="#be123c" text-anchor="middle">NORMALIZAÇÃO (1FN, 2FN, 3FN)</text>
+
+    <!-- Before: Unnormalized -->
+    <g transform="translate(50, 80)">
+        <text x="125" y="20" font-family="Arial" font-size="16" font-weight="bold" fill="#9f1239" text-anchor="middle">NÃO NORMALIZADO</text>
+        <rect width="250" height="180" rx="10" fill="white" stroke="#be123c" stroke-width="2" />
+        
+        <!-- Headers -->
+        <rect x="0" y="30" width="250" height="30" fill="#ffe4e6" stroke="#fda4af" />
+        <text x="10" y="50" font-family="monospace" font-size="12" fill="#881337">ALUNO | CURSOS | TEL</text>
+        
+        <!-- Row 1 -->
+        <g transform="translate(0, 60)">
+            <text x="10" y="20" font-family="monospace" font-size="12" fill="#374151">Ana</text>
+            <text x="60" y="20" font-family="monospace" font-size="11" fill="#be123c">SQL, Python</text> <!-- Multivalued -->
+            <text x="170" y="20" font-family="monospace" font-size="11" fill="#be123c">999, 888</text> <!-- Multivalues -->
+            <path d="M0,35 L250,35" stroke="#ffe4e6" />
+        </g>
+        
+        <!-- Chaos indicator -->
+        <text x="125" y="150" font-family="Arial" font-size="14" fill="#ef4444" text-anchor="middle" font-style="italic">Redundância & Anomalias</text>
+    </g>
+
+    <!-- Arrow -->
+    <g transform="translate(320, 160)">
+        <path d="M0,10 L40,10" stroke="#be123c" stroke-width="4" marker-end="url(#arrow_red)" />
+        <text x="20" y="-10" font-family="Arial" font-size="12" fill="#be123c" text-anchor="middle">Processo</text>
+    </g>
+
+    <!-- After: Normalized -->
+    <g transform="translate(390, 80)">
+        <text x="180" y="20" font-family="Arial" font-size="16" font-weight="bold" fill="#047857" text-anchor="middle">NORMALIZADO (3FN)</text>
+        
+        <!-- Table 1 -->
+        <g transform="translate(0, 40)">
+             <rect width="100" height="80" rx="5" fill="white" stroke="#047857" />
+             <rect width="100" height="20" rx="5" fill="#d1fae5" />
+             <text x="50" y="14" font-family="Arial" font-size="10" fill="#065f46" text-anchor="middle">TB_ALUNO</text>
+             <text x="50" y="50" font-family="monospace" font-size="10" fill="#374151">ID, Nome</text>
+        </g>
+
+        <!-- Table 2 -->
+        <g transform="translate(120, 40)">
+             <rect width="100" height="80" rx="5" fill="white" stroke="#047857" />
+             <rect width="100" height="20" rx="5" fill="#d1fae5" />
+             <text x="50" y="14" font-family="Arial" font-size="10" fill="#065f46" text-anchor="middle">TB_TELEFONE</text>
+             <text x="50" y="50" font-family="monospace" font-size="10" fill="#374151">ID, AlunoID, Tel</text>
+             
+             <!-- Connection line -->
+             <path d="M-20,40 L0,40" stroke="#047857" stroke-dasharray="2,2" />
+        </g>
+
+        <!-- Table 3 -->
+        <g transform="translate(60, 140)">
+             <rect width="100" height="80" rx="5" fill="white" stroke="#047857" />
+             <rect width="100" height="20" rx="5" fill="#d1fae5" />
+             <text x="50" y="14" font-family="Arial" font-size="10" fill="#065f46" text-anchor="middle">TB_CURSO</text>
+             <path d="M50,-20 L50,0" stroke="#047857" stroke-dasharray="2,2" />
+        </g>
+
+        <text x="180" y="250" font-family="Arial" font-size="14" fill="#047857" text-anchor="middle">Sem Repetições de Grupos</text>
+    </g>
+
+    <defs>
+        <marker id="arrow_red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#be123c" />
+        </marker>
+    </defs>
+</svg>

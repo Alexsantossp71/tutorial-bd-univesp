@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+    <rect width="800" height="400" fill="#f0f9ff" />
+
+    <!-- Table 1: Alunos -->
+    <g transform="translate(50, 50)">
+        <rect width="250" height="300" rx="10" fill="white" stroke="#2563eb" stroke-width="2" />
+        
+        <!-- Header -->
+        <rect width="250" height="50" rx="10" fill="#2563eb" />
+        <text x="125" y="32" font-family="Arial" font-size="20" font-weight="bold" fill="white" text-anchor="middle">TB_ALUNOS</text>
+        
+        <!-- Headers -->
+        <rect x="0" y="50" width="250" height="30" fill="#dbeafe" stroke="#93c5fd" />
+        <text x="10" y="70" font-family="monospace" font-size="14" fill="#1e3a8a">ID (PK)</text>
+        <text x="100" y="70" font-family="monospace" font-size="14" fill="#1e3a8a">NOME</text>
+        
+        <!-- Rows -->
+        <g transform="translate(0, 80)">
+            <text x="10" y="25" font-family="monospace" font-size="14" fill="#374151">1</text>
+            <text x="100" y="25" font-family="monospace" font-size="14" fill="#374151">João</text>
+            <path d="M0,40 L250,40" stroke="#e5e7eb" />
+            
+            <text x="10" y="65" font-family="monospace" font-size="14" fill="#374151">2</text>
+            <text x="100" y="65" font-family="monospace" font-size="14" fill="#374151">Maria</text>
+            <path d="M0,80 L250,80" stroke="#e5e7eb" />
+            
+            <text x="10" y="105" font-family="monospace" font-size="14" fill="#374151">3</text>
+            <text x="100" y="105" font-family="monospace" font-size="14" fill="#374151">Ana</text>
+        </g>
+    </g>
+
+    <!-- Connection Line -->
+    <path d="M250,145 L450,145" stroke="#93c5fd" stroke-width="4" stroke-dasharray="10,5" fill="none" marker-end="url(#arrow)" />
+    <text x="350" y="135" font-family="Arial" font-size="12" fill="#2563eb" text-anchor="middle">1:N</text>
+
+    <!-- Table 2: Matriculas -->
+    <g transform="translate(450, 50)">
+        <rect width="300" height="300" rx="10" fill="white" stroke="#16a34a" stroke-width="2" />
+        
+        <!-- Header -->
+        <rect width="300" height="50" rx="10" fill="#16a34a" />
+        <text x="150" y="32" font-family="Arial" font-size="20" font-weight="bold" fill="white" text-anchor="middle">TB_MATRICULAS</text>
+        
+        <!-- Headers -->
+        <rect x="0" y="50" width="300" height="30" fill="#dcfce7" stroke="#86efac" />
+        <text x="10" y="70" font-family="monospace" font-size="14" fill="#14532d">ID</text>
+        <text x="80" y="70" font-family="monospace" font-size="14" fill="#14532d">ALUNO_ID (FK)</text>
+        <text x="200" y="70" font-family="monospace" font-size="14" fill="#14532d">DATA</text>
+
+        <!-- Rows -->
+        <g transform="translate(0, 80)">
+            <rect x="0" y="4" width="300" height="32" fill="#f0fdf4" /> <!-- Highlight Row -->
+            <text x="10" y="25" font-family="monospace" font-size="14" fill="#374151">101</text>
+            <text x="80" y="25" font-family="monospace" font-size="14" fill="#d97706" font-weight="bold">2</text> <!-- Linking to Maria -->
+            <text x="200" y="25" font-family="monospace" font-size="14" fill="#374151">2024-02-01</text>
+            <path d="M0,40 L300,40" stroke="#e5e7eb" />
+
+            <text x="10" y="65" font-family="monospace" font-size="14" fill="#374151">102</text>
+            <text x="80" y="65" font-family="monospace" font-size="14" fill="#d97706" font-weight="bold">1</text>
+            <text x="200" y="65" font-family="monospace" font-size="14" fill="#374151">2024-02-02</text>
+        </g>
+    </g>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#93c5fd" />
+        </marker>
+    </defs>
+</svg>

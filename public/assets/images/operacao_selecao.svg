@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+    <rect width="800" height="400" fill="#f0f9ff" />
+
+    <!-- Algebra Relacional Title -->
+    <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" fill="#1e3a8a" text-anchor="middle">ÁLGEBRA RELACIONAL: SELEÇÃO & PROJEÇÃO</text>
+
+    <!-- Source Table -->
+    <g transform="translate(50, 80)">
+        <rect width="200" height="250" rx="10" fill="white" stroke="#64748b" stroke-width="2" />
+        <rect width="200" height="40" rx="10" fill="#64748b" />
+        <text x="100" y="25" font-family="Arial" font-size="16" fill="white" text-anchor="middle">TABELA ORIGINAL</text>
+        
+        <!-- Grid -->
+        <g transform="translate(0, 40)">
+            <rect width="200" height="30" fill="#f1f5f9" stroke="#cbd5e1" />
+            <text x="10" y="20" font-family="monospace" font-size="12">ID | NOME | UF</text>
+            
+            <text x="10" y="50" font-family="monospace" font-size="12">1 | ANA | SP</text>
+            <text x="10" y="80" font-family="monospace" font-size="12">2 | BIA | RJ</text>
+            <text x="10" y="110" font-family="monospace" font-size="12">3 | TOM | SP</text>
+            <text x="10" y="140" font-family="monospace" font-size="12">4 | LEO | MG</text>
+        </g>
+    </g>
+
+    <!-- Operation 1: Selection (Sigma) -->
+    <g transform="translate(280, 100)">
+        <path d="M0,50 L80,50" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow_blue)" />
+        <circle cx="40" cy="50" r="25" fill="#dbeafe" stroke="#2563eb" stroke-width="2" />
+        <text x="40" y="55" font-family="Times New Roman" font-size="24" font-weight="bold" fill="#1e40af" text-anchor="middle">σ</text>
+        <text x="40" y="90" font-family="Arial" font-size="12" fill="#1e40af" text-anchor="middle">UF='SP'</text>
+    </g>
+
+    <!-- Result 1 -->
+    <g transform="translate(390, 80)">
+        <rect width="180" height="120" rx="5" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+        <text x="90" y="20" font-family="Arial" font-size="14" fill="#1e40af" text-anchor="middle">SELEÇÃO (Linhas)</text>
+        <g transform="translate(10, 40)">
+             <text x="10" y="20" font-family="monospace" font-size="12" fill="#1e3a8a">1 | ANA | SP</text>
+             <text x="10" y="50" font-family="monospace" font-size="12" fill="#1e3a8a">3 | TOM | SP</text>
+        </g>
+    </g>
+
+    <!-- Operation 2: Projection (Pi) -->
+    <g transform="translate(280, 250)">
+        <path d="M0,50 L80,50" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow_green)" />
+        <circle cx="40" cy="50" r="25" fill="#dcfce7" stroke="#16a34a" stroke-width="2" />
+        <text x="40" y="55" font-family="Times New Roman" font-size="24" font-weight="bold" fill="#15803d" text-anchor="middle">π</text>
+        <text x="40" y="90" font-family="Arial" font-size="12" fill="#15803d" text-anchor="middle">NOME</text>
+    </g>
+    
+    <!-- Connector from Source to Op 2 -->
+    <path d="M150,330 L250,330 L280,300" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5" fill="none" />
+
+    <!-- Result 2 -->
+    <g transform="translate(390, 230)">
+        <rect width="120" height="150" rx="5" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" />
+        <text x="60" y="20" font-family="Arial" font-size="14" fill="#15803d" text-anchor="middle">PROJEÇÃO</text>
+        <text x="60" y="35" font-family="Arial" font-size="12" fill="#15803d" text-anchor="middle">(Colunas)</text>
+        <g transform="translate(10, 50)">
+             <text x="20" y="20" font-family="monospace" font-size="12" fill="#14532d">ANA</text>
+             <text x="20" y="40" font-family="monospace" font-size="12" fill="#14532d">BIA</text>
+             <text x="20" y="60" font-family="monospace" font-size="12" fill="#14532d">TOM</text>
+             <text x="20" y="80" font-family="monospace" font-size="12" fill="#14532d">LEO</text>
+        </g>
+    </g>
+
+    <defs>
+        <marker id="arrow_blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#2563eb" />
+        </marker>
+        <marker id="arrow_green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#16a34a" />
+        </marker>
+    </defs>
+</svg>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking — TutorIA 🎓</title>
+    <meta name="description" content="Ranking dos melhores alunos do quiz de Banco de Dados">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .leaderboard-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .leaderboard-header h1 {
+            margin-bottom: var(--space-md);
+        }
+
+        .leaderboard-header p {
+            color: var(--gray-400);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .leaderboard-table {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .lb-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-sm);
+            transition: background var(--transition-fast);
+        }
+
+        .lb-row:hover {
+            background: var(--bg-glass);
+        }
+
+        .lb-row.current-user {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary-400);
+        }
+
+        .lb-rank {
+            font-size: 1.2rem;
+            font-weight: 800;
+            width: 40px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .lb-rank.gold {
+            color: #fbbf24;
+        }
+
+        .lb-rank.silver {
+            color: #d1d5db;
+        }
+
+        .lb-rank.bronze {
+            color: #d97706;
+        }
+
+        .lb-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: linear-gradient(135deg, var(--primary-500), var(--accent-500));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .lb-info {
+            flex: 1;
+        }
+
+        .lb-name {
+            font-weight: 600;
+            color: var(--gray-100);
+        }
+
+        .lb-detail {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+
+        .lb-score {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--accent-400);
+        }
+
+        .lb-empty {
+            text-align: center;
+            padding: var(--space-3xl);
+            color: var(--gray-500);
+        }
+
+        .lb-empty-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .personal-stats {
+            max-width: 700px;
+            margin: var(--space-2xl) auto 0;
+        }
+
+        .personal-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .ps-item {
+            text-align: center;
+            padding: var(--space-md);
+            background: var(--bg-glass);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-glass);
+        }
+
+        .ps-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .ps-label {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            margin-top: var(--space-xs);
+        }
+
+        @media (max-width: 768px) {
+            .personal-stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">TutorIA 🎓</a>
+            <ul class="navbar-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="syllabus.html">Jornada</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="leaderboard.html" class="active">Ranking</a></li>
+            </ul>
+            <div class="navbar-auth">
+                <button class="btn btn-sm btn-secondary" onclick="alert('Login em breve!')">Entrar</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="page">
+        <div class="container">
+
+            <div class="leaderboard-header animate-fade-in-up">
+                <h1>🏆 <span class="text-gradient">Ranking</span></h1>
+                <p>Os melhores alunos do quiz. Faça login para salvar seu progresso e aparecer aqui!</p>
+            </div>
+
+            <!-- Leaderboard -->
+            <div class="leaderboard-table card" id="leaderboard">
+                <div class="lb-empty">
+                    <div class="lb-empty-icon">🔒</div>
+                    <h3>Em breve!</h3>
+                    <p style="margin-top: var(--space-sm);">O ranking online estará disponível quando o login for
+                        ativado.<br>
+                        Por enquanto, confira suas estatísticas pessoais abaixo.</p>
+                </div>
+            </div>
+
+            <!-- Personal Stats from localStorage -->
+            <div class="personal-stats">
+                <h2 style="text-align: center;">📊 Suas Estatísticas</h2>
+                <div class="personal-stats-grid" id="personal-stats">
+                    <!-- Filled by JS -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Projeto Integrador Univesp — Grupo TutorIA</p>
+    </footer>
+
+    <script>
+        function loadPersonalStats() {
+            const grid = document.getElementById('personal-stats');
+            let totalAttempts = 0;
+            let totalScore = 0;
+            let bestOverall = 0;
+
+            for (let w = 1; w <= 7; w++) {
+                try {
+                    const saved = JSON.parse(localStorage.getItem(`tutoria_quiz_${w}`) || '[]');
+                    totalAttempts += saved.length;
+                    saved.forEach(s => {
+                        totalScore += s.percentage;
+                        if (s.percentage > bestOverall) bestOverall = s.percentage;
+                    });
+                } catch { }
+            }
+
+            // Also check "all" key
+            try {
+                const savedAll = JSON.parse(localStorage.getItem('tutoria_quiz_all') || '[]');
+                totalAttempts += savedAll.length;
+                savedAll.forEach(s => {
+                    totalScore += s.percentage;
+                    if (s.percentage > bestOverall) bestOverall = s.percentage;
+                });
+            } catch { }
+
+            const avgScore = totalAttempts > 0 ? Math.round(totalScore / totalAttempts) : 0;
+
+            grid.innerHTML = `
+        <div class="ps-item">
+          <div class="ps-value" style="color: var(--primary-400);">${totalAttempts}</div>
+          <div class="ps-label">Tentativas</div>
+        </div>
+        <div class="ps-item">
+          <div class="ps-value" style="color: var(--accent-400);">${bestOverall > 0 ? bestOverall + '%' : '—'}</div>
+          <div class="ps-label">Melhor Score</div>
+        </div>
+        <div class="ps-item">
+          <div class="ps-value" style="color: var(--warning-500);">${avgScore > 0 ? avgScore + '%' : '—'}</div>
+          <div class="ps-label">Média Geral</div>
+        </div>
+      `;
+        }
+
+        loadPersonalStats();
+    </script>
+
+</body>
+
+</html>

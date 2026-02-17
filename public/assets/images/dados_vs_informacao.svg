@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+    <rect width="800" height="400" fill="#f0f9ff" />
+    
+    <!-- Left Side: Data -->
+    <g transform="translate(50, 50)">
+        <rect width="300" height="300" rx="15" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
+        <text x="150" y="40" font-family="Arial" font-size="24" font-weight="bold" fill="#3730a3" text-anchor="middle">PRIORITY DATA</text>
+        
+        <!-- Chaotic elements -->
+        <text x="50" y="100" font-family="monospace" font-size="16" fill="#6b7280">25</text>
+        <text x="200" y="120" font-family="monospace" font-size="16" fill="#6b7280">"Maria"</text>
+        <text x="80" y="200" font-family="monospace" font-size="16" fill="#6b7280">TRUE</text>
+        <text x="220" y="250" font-family="monospace" font-size="16" fill="#6b7280">01/01/2024</text>
+        <text x="120" y="150" font-family="monospace" font-size="16" fill="#6b7280">null</text>
+        
+        <text x="150" y="280" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle">(Fatos Brutos)</text>
+    </g>
+
+    <!-- Arrow -->
+    <g transform="translate(380, 180)">
+        <path d="M0,20 L40,20 M30,10 L40,20 L30,30" stroke="#3730a3" stroke-width="4" fill="none" />
+        <text x="20" y="-5" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle">Processamento</text>
+    </g>
+
+    <!-- Right Side: Information -->
+    <g transform="translate(450, 50)">
+        <rect width="300" height="300" rx="15" fill="#dcfce7" stroke="#16a34a" stroke-width="2" />
+        <text x="150" y="40" font-family="Arial" font-size="24" font-weight="bold" fill="#166534" text-anchor="middle">INFORMAÇÃO</text>
+        
+        <!-- Ordered elements -->
+        <foreignObject x="30" y="80" width="240" height="200">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial; color: #14532d; font-size: 16px;">
+                <p><strong>Relatório:</strong></p>
+                <ul style="list-style-type: disc; padding-left: 20px;">
+                    <li>Maria tem 25 anos.</li>
+                    <li>Status: Ativo.</li>
+                    <li>Data: 01 de Jan.</li>
+                </ul>
+            </div>
+        </foreignObject>
+
+        <text x="150" y="280" font-family="Arial" font-size="14" fill="#166534" text-anchor="middle">(Contexto + Significado)</text>
+    </g>
+</svg>

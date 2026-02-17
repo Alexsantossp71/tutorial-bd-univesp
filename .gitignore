@@ -1,0 +1,18 @@
+# Excluir pastas de desenvolvimento/backup
+scripts/
+skills/
+sources/
+.agent/
+.gemini/
+.idea/
+.vscode/
+node_modules/
+
+# Logs e arquivos temporários
+*.log
+tmp/
+temp/
+
+# Sistema
+.DS_Store
+Thumbs.db

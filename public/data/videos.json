@@ -1,0 +1,195 @@
+{
+  "source": "UNIVESP - Canal YouTube (@univesp)",
+  "course": "Banco de Dados - COM300",
+  "professor": "Prof. José Eduardo Santarem Segundo",
+  "search_query": "UNIVESP \"Banco de Dados\" COM300",
+  "weeks": {
+    "1": {
+      "title": "Introdução a Banco de Dados e MER",
+      "videos": [
+        {
+          "number": 1,
+          "title": "Visão geral sobre banco de dados",
+          "ava_id": 54831,
+          "youtube_search": "UNIVESP Banco de Dados visão geral COM300",
+          "youtube_url": null,
+          "summary": null
+        },
+        {
+          "number": 2,
+          "title": "Modelo Entidade-Relacionamento (MER) — entidades, atributos e chaves",
+          "ava_id": 54832,
+          "youtube_search": "UNIVESP MER entidades atributos chaves COM300",
+          "youtube_url": null,
+          "summary": null
+        },
+        {
+          "number": 3,
+          "title": "Modelo Entidade-Relacionamento (MER) — relacionamentos e cardinalidade",
+          "ava_id": 54833,
+          "youtube_search": "UNIVESP MER relacionamentos cardinalidade COM300",
+          "youtube_url": null,
+          "summary": null
+        }
+      ]
+    },
+    "2": {
+      "title": "Modelo Relacional e Mapeamento MER",
+      "videos": [
+        {
+          "number": 4,
+          "title": "Modelo Relacional — caracterização, formalização e restrições",
+          "ava_id": 69979,
+          "youtube_search": "UNIVESP Modelo Relacional caracterização formalização restrições",
+          "youtube_url": null,
+          "summary": "Explora as características e formalizações do modelo relacional, incluindo suas restrições principais."
+        },
+        {
+          "number": 5,
+          "title": "Mapeamento MER → Relacional — Parte I: entidades, atributos, chaves",
+          "ava_id": 69980,
+          "youtube_search": "UNIVESP Mapeamento MER Relacional Parte I",
+          "youtube_url": null,
+          "summary": "Discute o mapeamento de entidades, atributos e chaves do modelo MER para o modelo relacional."
+        },
+        {
+          "number": 6,
+          "title": "Mapeamento MER → Relacional — Parte II: relacionamentos, cardinalidades",
+          "ava_id": 69981,
+          "youtube_search": "UNIVESP Mapeamento MER Relacional Parte II",
+          "youtube_url": null,
+          "summary": "Foca no mapeamento de relacionamentos e cardinalidades do MER para o modelo relacional."
+        }
+      ]
+    },
+    "3": {
+      "title": "SGBDs de Mercado e Normalização",
+      "videos": [
+        {
+          "number": 7,
+          "title": "Sistemas Gerenciadores de Bancos de Dados no Mercado",
+          "ava_id": 69992,
+          "youtube_search": "UNIVESP Sistemas Gerenciadores Bancos Dados Mercado COM300",
+          "youtube_url": null,
+          "summary": "Explora os principais SGBDs disponíveis no mercado, destacando suas características e casos de uso."
+        },
+        {
+          "number": 8,
+          "title": "Normalização — Parte 1",
+          "ava_id": 69993,
+          "youtube_search": "UNIVESP Normalização Parte 1 COM300",
+          "youtube_url": null,
+          "summary": "Introduz o conceito de normalização e explica as primeiras formas normais, 1NF e 2NF."
+        },
+        {
+          "number": 9,
+          "title": "Normalização — Parte 2",
+          "ava_id": 69994,
+          "youtube_search": "UNIVESP Normalização Parte 2 COM300",
+          "youtube_url": null,
+          "summary": "Aprofunda o estudo da normalização, abordando a 3NF e a BCNF, com exemplos práticos."
+        }
+      ]
+    },
+    "4": {
+      "title": "SQL — DDL, Ferramentas e Indexação",
+      "videos": [
+        {
+          "number": 10,
+          "title": "Ferramenta CASE MySQLWorkbench",
+          "ava_id": null,
+          "youtube_search": "UNIVESP Ferramenta CASE MySQLWorkbench COM300",
+          "youtube_url": null,
+          "summary": "A videoaula 10 apresenta o MySQL Workbench, uma ferramenta CASE que facilita o design e administração de bancos de dados MySQL."
+        },
+        {
+          "number": 11,
+          "title": "Introdução à linguagem SQL — SQL DDL",
+          "ava_id": null,
+          "youtube_search": "UNIVESP Introdução linguagem SQL DDL COM300",
+          "youtube_url": null,
+          "summary": "A videoaula 11 introduz a linguagem SQL, focando nas instruções DDL para definição e modificação de estruturas de banco de dados."
+        },
+        {
+          "number": 12,
+          "title": "Indexação em Banco de Dados",
+          "ava_id": null,
+          "youtube_search": "UNIVESP Indexação Banco de Dados COM300",
+          "youtube_url": null,
+          "summary": "A videoaula 12 discute a importância da indexação em bancos de dados e como ela pode melhorar o desempenho das consultas."
+        }
+      ]
+    },
+    "5": {
+      "title": "Consultas SQL",
+      "videos": [
+        {
+          "number": 13,
+          "title": "Consultas SQL variadas",
+          "ava_id": null,
+          "youtube_search": "UNIVESP Consultas SQL variadas COM300",
+          "youtube_url": null,
+          "summary": "Explora consultas SQL variadas, incluindo o uso de cláusulas como WHERE, ORDER BY e LIMIT para filtrar e ordenar dados."
+        },
+        {
+          "number": 14,
+          "title": "Consultas SQL com funções",
+          "ava_id": null,
+          "youtube_search": "UNIVESP Consultas SQL funções COM300",
+          "youtube_url": null,
+          "summary": "Foca no uso de funções SQL para realizar cálculos e manipulações de dados, como COUNT, SUM, AVG, MAX e MIN."
+        }
+      ]
+    },
+    "6": {
+      "title": "JOINs, Views e Data Lake",
+      "videos": [
+        {
+          "number": 15,
+          "title": "Consultas combinadas com SQL (JOINs)",
+          "ava_id": null,
+          "youtube_search": "UNIVESP Consultas combinadas SQL JOINs COM300",
+          "youtube_url": null,
+          "summary": "Explora os diferentes tipos de JOINs em SQL, mostrando como combinar dados de múltiplas tabelas de forma eficiente."
+        },
+        {
+          "number": 16,
+          "title": "View e Data Lake",
+          "ava_id": null,
+          "youtube_search": "UNIVESP View Data Lake COM300",
+          "youtube_url": null,
+          "summary": "Discute a criação e uso de Views em SQL e introduz o conceito de Data Lake para armazenamento de dados em larga escala."
+        }
+      ]
+    },
+    "7": {
+      "title": "Transações e NoSQL",
+      "videos": [
+        {
+          "number": 17,
+          "title": "Transações em Banco de Dados",
+          "ava_id": null,
+          "youtube_search": "UNIVESP Transações Banco de Dados COM300",
+          "youtube_url": null,
+          "summary": "Explora as propriedades ACID e a importância das transações para a integridade dos dados."
+        },
+        {
+          "number": 18,
+          "title": "Introdução a Bancos de Dados Não-Relacionais — NoSQL",
+          "ava_id": null,
+          "youtube_search": "UNIVESP NoSQL Bancos Dados Não Relacionais COM300",
+          "youtube_url": null,
+          "summary": "Introduz os conceitos de bancos de dados NoSQL e suas principais categorias."
+        },
+        {
+          "number": 19,
+          "title": "NoSQL — MongoDB",
+          "ava_id": null,
+          "youtube_search": "UNIVESP NoSQL MongoDB COM300",
+          "youtube_url": null,
+          "summary": "Foca no MongoDB, explicando suas características e operações básicas."
+        }
+      ]
+    }
+  }
+}

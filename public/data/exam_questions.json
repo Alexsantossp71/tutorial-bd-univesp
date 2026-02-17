@@ -1,0 +1,696 @@
+{
+  "semana_1": [
+    {
+      "question": "Leia o trecho a seguir.\n\"A modelagem conceitual é uma etapa fundamental no desenvolvimento de sistemas de informação, pois permite representar de forma abstrata os elementos do mundo real que serão armazenados em um banco de dados.\"\nCom base no trecho e nos conceitos de modelagem conceitual de banco de dados, assinale a alternativa correta:",
+      "options": {
+        "a": "A modelagem conceitual utiliza diretamente comandos SQL para definir a estrutura do banco de dados.",
+        "b": "O modelo conceitual é dependente do Sistema Gerenciador de Banco de Dados (SGBD) utilizado.",
+        "c": "A modelagem conceitual tem como objetivo representar aspectos do mundo real em um nível de abstração que independe de tecnologia.",
+        "d": "O modelo conceitual define a estrutura física de armazenamento dos dados no disco.",
+        "e": "A modelagem conceitual é realizada após a implementação do banco de dados."
+      },
+      "correct_answer": "c",
+      "source_image": "Leia o trecho a seguir.png"
+    },
+    {
+      "question": "Durante o planejamento de sistemas de informação, diferentes modelos são utilizados para representar dados e suas relações. Esses modelos ajudam a compreender a estrutura e o comportamento dos dados dentro de um sistema.\nConsiderando os conceitos de modelagem de dados, assinale a alternativa correta:",
+      "options": {
+        "a": "O modelo lógico é independente de qualquer SGBD e representa apenas entidades e relacionamentos.",
+        "b": "O modelo físico é o primeiro a ser desenvolvido durante o projeto de banco de dados.",
+        "c": "O modelo conceitual representa a visão mais abstrata dos dados, sem considerar aspectos de implementação.",
+        "d": "O modelo relacional não pode ser utilizado na etapa de modelagem lógica.",
+        "e": "A modelagem de dados é utilizada apenas em bancos de dados não relacionais."
+      },
+      "correct_answer": "c",
+      "source_image": "Durante o planejamento de sistemas de informação, diferentes modelos.jpg"
+    },
+    {
+      "question": "Durante o planejamento de sistemas de informação, diferentes abordagens podem ser adotadas para organizar e estruturar os dados. A escolha do modelo adequado depende dos requisitos do sistema e das necessidades dos usuários.\nAssinale a alternativa que descreve corretamente uma característica da modelagem conceitual de banco de dados:",
+      "options": {
+        "a": "Define os tipos de dados e restrições específicas do SGBD.",
+        "b": "Utiliza diagramas de entidade-relacionamento para representar a estrutura dos dados.",
+        "c": "É dependente da linguagem SQL para sua construção.",
+        "d": "Especifica os índices e chaves primárias do banco de dados.",
+        "e": "É realizada exclusivamente por administradores de banco de dados."
+      },
+      "correct_answer": "b",
+      "source_image": "Durante o planejamento de sistemas de informação.png"
+    },
+    {
+      "question": "Modelos conceituais são essenciais na fase inicial de desenvolvimento de um banco de dados, pois permitem uma visão clara e organizada das informações que o sistema deverá gerenciar.\nSobre a modelagem conceitual de banco de dados, é correto afirmar que:",
+      "options": {
+        "a": "O diagrama entidade-relacionamento (DER) é uma ferramenta utilizada na modelagem conceitual.",
+        "b": "A modelagem conceitual define diretamente a estrutura das tabelas no banco de dados.",
+        "c": "O modelo conceitual é criado após a normalização das tabelas.",
+        "d": "A modelagem conceitual não considera as relações entre os dados.",
+        "e": "O modelo conceitual é específico para um SGBD particular."
+      },
+      "correct_answer": "a",
+      "source_image": "Modelos conceituais são essenciais na fase inicial de desenvolvimento.png"
+    },
+    {
+      "question": "Observe a seguinte situação. Durante o levantamento de requisitos para estruturar um novo sistema de gestão acadêmica, o analista identificou as seguintes entidades: Aluno, Disciplina e Professor. Cada aluno pode se matricular em várias disciplinas, e cada disciplina pode ter vários alunos matriculados. Além disso, cada disciplina é ministrada por um único professor, mas um professor pode ministrar várias disciplinas.\nCom base nesse cenário, assinale a alternativa que representa corretamente os relacionamentos entre as entidades no modelo conceitual:",
+      "options": {
+        "a": "Aluno – Disciplina: 1:N; Disciplina – Professor: N:N",
+        "b": "Aluno – Disciplina: N:N; Disciplina – Professor: N:1",
+        "c": "Aluno – Disciplina: 1:1; Disciplina – Professor: 1:N",
+        "d": "Aluno – Disciplina: N:N; Disciplina – Professor: 1:1",
+        "e": "Aluno – Disciplina: 1:N; Disciplina – Professor: 1:1"
+      },
+      "correct_answer": "b",
+      "source_image": "Observe a seguinte situação..Durante o levantamento de requisitos para estruturar um novo sistema.png"
+    },
+    {
+      "question": "Os Bancos de Dados estão presentes em praticamente todos os sistemas de informação modernos. Sua modelagem adequada é fundamental para garantir a integridade, a eficiência e a escalabilidade do sistema.\nConsiderando os conceitos fundamentais de banco de dados e sua modelagem, assinale a alternativa correta:",
+      "options": {
+        "a": "Um banco de dados relacional organiza os dados em documentos JSON.",
+        "b": "A chave primária é utilizada para estabelecer relações entre tabelas diferentes.",
+        "c": "O modelo entidade-relacionamento é uma técnica usada na fase de modelagem conceitual.",
+        "d": "A normalização é um processo exclusivo da modelagem conceitual.",
+        "e": "O modelo físico é independente do SGBD utilizado."
+      },
+      "correct_answer": "c",
+      "source_image": "Os Bancos de Dados estão presentes.png"
+    },
+    {
+      "question": "Quando se fala em modelagem de dados, é essencial entender os diferentes níveis de abstração envolvidos no projeto de um banco de dados. Cada nível atende a um propósito específico e é direcionado a diferentes públicos.\nSobre os níveis de abstração na modelagem de dados, analise as afirmativas:\nI. O modelo conceitual é voltado para a compreensão do domínio do problema, sem se preocupar com detalhes técnicos.\nII. O modelo lógico traduz o modelo conceitual em uma estrutura que pode ser implementada em um SGBD específico.\nIII. O modelo físico define como os dados serão armazenados fisicamente, incluindo índices e partições.\nEstá correto o que se afirma em:",
+      "options": {
+        "a": "I, apenas.",
+        "b": "I e II, apenas.",
+        "c": "II e III, apenas.",
+        "d": "I e III, apenas.",
+        "e": "I, II e III."
+      },
+      "correct_answer": "e",
+      "source_image": "Quando se fala em modelagem de dados.png"
+    },
+    {
+      "question": "Sistemas de informação dependem da modelagem conceitual para garantir que os dados sejam organizados de maneira coerente e eficiente. Essa etapa é crucial para evitar redundâncias e inconsistências no banco de dados.\nAssinale a alternativa que apresenta corretamente um dos objetivos da modelagem conceitual:",
+      "options": {
+        "a": "Definir a estrutura física de armazenamento dos dados no disco.",
+        "b": "Traduzir os requisitos do sistema em uma representação visual das entidades e seus relacionamentos.",
+        "c": "Implementar diretamente as tabelas no SGBD escolhido.",
+        "d": "Estabelecer os índices e chaves estrangeiras do banco de dados.",
+        "e": "Otimizar as consultas SQL para melhor desempenho."
+      },
+      "correct_answer": "b",
+      "source_image": "Sistemas de informação dependem da modelagem conceitual para garantir .jpg"
+    }
+  ],
+  "semana_2": [
+    {
+      "question": "A modelagem conceitual de banco de dados contempla diferentes componentes que ajudam a representar a estrutura e as relações dos dados. Dentre eles, os atributos desempenham um papel importante na descrição das entidades.\nConsiderando os tipos de atributos no modelo Entidade-Relacionamento, assinale a alternativa correta:",
+      "options": {
+        "a": "Atributos compostos são aqueles que podem assumir múltiplos valores simultaneamente.",
+        "b": "Atributos derivados são calculados a partir de outros atributos existentes no modelo.",
+        "c": "Atributos multivalorados são aqueles que identificam unicamente uma entidade.",
+        "d": "Atributos simples são aqueles que podem ser subdivididos em partes menores.",
+        "e": "Atributos-chave podem assumir valores nulos em qualquer circunstância."
+      },
+      "correct_answer": "b",
+      "source_image": "A modelagem conceitual de banco de dados contempla diferentes.png"
+    },
+    {
+      "question": "Em ambientes computacionais, a organização dos dados é essencial para garantir a eficiência e a integridade das informações armazenadas. No contexto de bancos de dados relacionais, diferentes conceitos fundamentam a estruturação das tabelas e seus componentes.\nAssinale a alternativa que define corretamente o conceito de tupla em um banco de dados relacional:",
+      "options": {
+        "a": "Uma tupla representa uma coluna de uma tabela, definindo o tipo de dado armazenado.",
+        "b": "Uma tupla é um registro individual em uma tabela, composto por um conjunto de valores para cada atributo.",
+        "c": "Uma tupla é um conjunto de tabelas relacionadas entre si por chaves estrangeiras.",
+        "d": "Uma tupla é um índice utilizado para otimizar consultas no banco de dados.",
+        "e": "Uma tupla é um tipo de restrição que impede a duplicação de dados em uma tabela."
+      },
+      "correct_answer": "b",
+      "source_image": "Em ambientes computacionais, a organização dos dados é essencial.png"
+    },
+    {
+      "question": "Em restrições de domínio, no contexto de Banco de Dados (BD), existe uma especificidade para os valores de cada atributo.\nAssinale a alternativa correta sobre restrições de domínio:",
+      "options": {
+        "a": "As restrições de domínio permitem que qualquer tipo de dado seja armazenado em qualquer coluna.",
+        "b": "As restrições de domínio definem os valores permitidos para um atributo, como tipo de dado, formato e intervalo.",
+        "c": "As restrições de domínio são aplicadas apenas em bancos de dados não relacionais.",
+        "d": "As restrições de domínio garantem que todas as tabelas tenham o mesmo número de colunas.",
+        "e": "As restrições de domínio são utilizadas exclusivamente para definir chaves primárias."
+      },
+      "correct_answer": "b",
+      "source_image": "Em restrições de domínio, no contexto de Banco de Dados (BD), existe uma especificidade.png"
+    },
+    {
+      "question": "Leia o trecho a seguir.\nNa modelagem de dados, os relacionamentos entre entidades são classificados de acordo com a cardinalidade, que define quantas instâncias de uma entidade podem se associar a instâncias de outra.\nCom base no trecho, assinale a alternativa que apresenta corretamente um exemplo de relacionamento N:N:",
+      "options": {
+        "a": "Um aluno pode se matricular em várias disciplinas e cada disciplina pode ter vários alunos.",
+        "b": "Cada funcionário pertence a um único departamento e cada departamento tem um único gerente.",
+        "c": "Cada pedido está associado a um único cliente e cada cliente pode fazer vários pedidos.",
+        "d": "Cada país tem uma única capital e cada capital pertence a um único país.",
+        "e": "Cada produto pertence a uma única categoria e cada categoria pode conter vários produtos."
+      },
+      "correct_answer": "a",
+      "source_image": "Leia o trecho a seguir..Na modelagem de dados, os relacionamentos entre entidades são.png"
+    },
+    {
+      "question": "No contexto de Banco de Dados, os valores de chave primária devem ser únicos e não nulos.\nAssinale a alternativa correta sobre chave primária:",
+      "options": {
+        "a": "A chave primária pode conter valores duplicados desde que sejam do mesmo tipo de dado.",
+        "b": "A chave primária identifica unicamente cada registro em uma tabela.",
+        "c": "A chave primária é utilizada apenas para estabelecer relações entre tabelas.",
+        "d": "Uma tabela pode ter múltiplas chaves primárias.",
+        "e": "A chave primária pode assumir valores nulos em situações específicas."
+      },
+      "correct_answer": "b",
+      "source_image": "No contexto de -complete-, os valores de chave primária.png"
+    },
+    {
+      "question": "No contexto de Banco de Dados (BD), é importante estar familiarizado com certas nomenclaturas. A relação (ou tabela) é a estrutura fundamental de um banco de dados relacional.\nAssinale a alternativa que define corretamente o conceito de relação em um banco de dados relacional:",
+      "options": {
+        "a": "Uma relação é um conjunto desordenado de tuplas, onde cada tupla representa um registro único.",
+        "b": "Uma relação é um tipo de índice utilizado para otimizar consultas.",
+        "c": "Uma relação é um comando SQL utilizado para criar tabelas.",
+        "d": "Uma relação é uma restrição que impede a duplicação de dados.",
+        "e": "Uma relação é um tipo de chave utilizada para conectar tabelas diferentes."
+      },
+      "correct_answer": "a",
+      "source_image": "No contexto de Banco de Dados (BD), é importante estar familiarizado com certas nomenclaturas.png"
+    },
+    {
+      "question": "No contexto de Bancos de Dados (BD), existem diferentes tipos de técnicas, orientações e estruturas que são utilizados para se criar e trabalhar com um BD.\nAssinale a alternativa correta sobre o modelo relacional:",
+      "options": {
+        "a": "O modelo relacional organiza os dados em grafos.",
+        "b": "O modelo relacional utiliza tabelas compostas por linhas e colunas para organizar os dados.",
+        "c": "O modelo relacional não suporta o uso de chaves estrangeiras.",
+        "d": "O modelo relacional é exclusivo para bancos de dados NoSQL.",
+        "e": "O modelo relacional não permite a definição de restrições de integridade."
+      },
+      "correct_answer": "b",
+      "source_image": "No contexto de Bancos de Dados (BD), existem diferentes tipos de técnicas, orientações.png"
+    },
+    {
+      "question": "No contexto de Bancos de Dados (BD), é recorrente a presença da técnica de normalização para organizar os dados de forma eficiente.\nAssinale a alternativa correta sobre normalização:",
+      "options": {
+        "a": "A normalização visa aumentar a redundância de dados para melhorar o desempenho das consultas.",
+        "b": "A normalização é um processo que organiza as tabelas e seus atributos para minimizar a redundância de dados.",
+        "c": "A normalização é aplicada apenas em bancos de dados não relacionais.",
+        "d": "A normalização elimina a necessidade de chaves primárias nas tabelas.",
+        "e": "A normalização é utilizada exclusivamente para definir índices no banco de dados."
+      },
+      "correct_answer": "b",
+      "source_image": "No contexto de Bancos de Dados (BD), é recorrente a presença da técnica.png"
+    },
+    {
+      "question": "No processo de projeto de banco de dados, os relacionamentos entre entidades podem ser classificados de acordo com sua cardinalidade.\nAssinale a alternativa que descreve corretamente um relacionamento 1:N (um para muitos):",
+      "options": {
+        "a": "Cada instância de uma entidade se relaciona com exatamente uma instância de outra entidade.",
+        "b": "Cada instância de uma entidade pode se relacionar com várias instâncias de outra entidade, mas cada instância da segunda entidade se relaciona com apenas uma da primeira.",
+        "c": "Várias instâncias de uma entidade se relacionam com várias instâncias de outra entidade.",
+        "d": "Nenhuma instância de uma entidade se relaciona com outra entidade.",
+        "e": "O relacionamento 1:N não é utilizado em bancos de dados relacionais."
+      },
+      "correct_answer": "b",
+      "source_image": "No processo de projeto de banco de dados, os relacionamentos.png"
+    },
+    {
+      "question": "Para organizar e consultar informações de forma eficiente, os bancos de dados relacionais utilizam a linguagem SQL.\nAssinale a alternativa que apresenta corretamente a função do comando SELECT em SQL:",
+      "options": {
+        "a": "O comando SELECT é utilizado para inserir novos registros em uma tabela.",
+        "b": "O comando SELECT é utilizado para consultar e recuperar dados de uma ou mais tabelas.",
+        "c": "O comando SELECT é utilizado para excluir registros de uma tabela.",
+        "d": "O comando SELECT é utilizado para criar novas tabelas no banco de dados.",
+        "e": "O comando SELECT é utilizado para alterar a estrutura de uma tabela existente."
+      },
+      "correct_answer": "b",
+      "source_image": "Para organizar e consultar informações de forma eficiente, os bancos.png"
+    }
+  ],
+  "semana_3": [
+    {
+      "question": "A modelagem de dados exige atenção à estrutura lógica das tabelas para evitar redundâncias e anomalias. A normalização é uma técnica que visa organizar os dados de forma eficiente.\nConsiderando os conceitos de normalização, assinale a alternativa correta:",
+      "options": {
+        "a": "A Primeira Forma Normal (1FN) exige que todos os atributos sejam atômicos, ou seja, não contenham valores compostos ou multivalorados.",
+        "b": "A Segunda Forma Normal (2FN) exige que a tabela esteja na 1FN e que todos os atributos dependam parcialmente da chave primária.",
+        "c": "A Terceira Forma Normal (3FN) permite dependências transitivas entre atributos não-chave.",
+        "d": "A normalização sempre melhora o desempenho das consultas ao banco de dados.",
+        "e": "A Forma Normal de Boyce-Codd (FNBC) é menos restritiva que a 3FN."
+      },
+      "correct_answer": "a",
+      "source_image": "A modelagem de dados exige atenção à estrutura lógica das tabelas.png"
+    },
+    {
+      "question": "A normalização busca eliminar anomalias em bancos de dados relacionais. Uma das formas normais trata especificamente das dependências transitivas.\nSobre a Terceira Forma Normal (3FN), assinale a alternativa correta:",
+      "options": {
+        "a": "A 3FN exige que todos os atributos não-chave dependam diretamente da chave primária, eliminando dependências transitivas.",
+        "b": "A 3FN permite que atributos não-chave dependam de outros atributos não-chave.",
+        "c": "A 3FN é aplicada antes da 1FN no processo de normalização.",
+        "d": "A 3FN exige que a tabela não tenha chave primária composta.",
+        "e": "A 3FN é equivalente à Forma Normal de Boyce-Codd (FNBC)."
+      },
+      "correct_answer": "a",
+      "source_image": "A normalização busca eliminar anomalias em bancos de dados relacionais.png"
+    },
+    {
+      "question": "A normalização é uma técnica aplicada ao projeto lógico de bancos de dados relacionais, com o objetivo de organizar os dados e minimizar redundâncias.\nConsiderando as formas normais, analise as afirmativas:\nI. Uma tabela está na 1FN se todos os seus atributos contêm apenas valores atômicos.\nII. Uma tabela está na 2FN se está na 1FN e todos os atributos não-chave dependem totalmente da chave primária.\nIII. Uma tabela está na 3FN se está na 2FN e não possui dependências transitivas.\nEstá correto o que se afirma em:",
+      "options": {
+        "a": "I, apenas.",
+        "b": "I e II, apenas.",
+        "c": "II e III, apenas.",
+        "d": "I, II e III.",
+        "e": "III, apenas."
+      },
+      "correct_answer": "d",
+      "source_image": "A normalização é uma técnica aplicada ao projeto lógico de bancos de dados.png"
+    },
+    {
+      "question": "A organização eficiente das entidades em bancos de dados depende de uma modelagem bem estruturada. A normalização é essencial para garantir a integridade dos dados.\nSobre a Segunda Forma Normal (2FN), assinale a alternativa correta:",
+      "options": {
+        "a": "A 2FN exige que a tabela esteja na 1FN e que todos os atributos não-chave dependam totalmente da chave primária.",
+        "b": "A 2FN permite dependências parciais em relação à chave primária.",
+        "c": "A 2FN é aplicada apenas em tabelas com chave primária simples.",
+        "d": "A 2FN elimina todas as dependências transitivas.",
+        "e": "A 2FN é equivalente à 3FN quando a chave primária é composta."
+      },
+      "correct_answer": "a",
+      "source_image": "A organização eficiente das entidades em bancos de dados.png"
+    },
+    {
+      "question": "Ao projetar e alimentar bancos de dados relacionais, a estrutura lógica das tabelas deve seguir princípios de normalização para evitar problemas como anomalias de inserção, atualização e exclusão.\nConsiderando uma tabela com os atributos: CódigoProduto, NomeProduto, CódigoFornecedor, NomeFornecedor, Telefone, onde CódigoProduto é a chave primária, identifique o problema de normalização presente e a forma normal violada:",
+      "options": {
+        "a": "Dependência parcial – viola a 2FN.",
+        "b": "Dependência transitiva – viola a 3FN.",
+        "c": "Valores não atômicos – viola a 1FN.",
+        "d": "Dependência multivalorada – viola a 4FN.",
+        "e": "Não há violação de normalização."
+      },
+      "correct_answer": "b",
+      "source_image": "Ao projetar e alimentar bancos de dados relacionais, a estrutura lógica.png"
+    },
+    {
+      "question": "Considere a tabela Matrícula com os seguintes atributos: RA_Aluno, CódigoDisciplina, NomeDisciplina, NomeProfessor, NotaFinal. A chave primária é composta por (RA_Aluno, CódigoDisciplina).\nAnalisando as dependências funcionais, assinale a alternativa que identifica corretamente o problema e a forma normal violada:",
+      "options": {
+        "a": "Dependência parcial de NomeDisciplina em relação à chave composta – viola a 2FN.",
+        "b": "Dependência transitiva – viola a 3FN.",
+        "c": "Valores não atômicos – viola a 1FN.",
+        "d": "A tabela está corretamente normalizada até a 3FN.",
+        "e": "Dependência multivalorada – viola a 4FN."
+      },
+      "correct_answer": "a",
+      "source_image": "Considere a tabela Matrícula com os seguintes atributos.png"
+    },
+    {
+      "question": "Leia o trecho a seguir.\n\"A normalização é um processo sistemático que visa organizar os dados em um banco de dados relacional, reduzindo redundâncias e dependências indesejadas.\"\nCom base no trecho e nos conceitos de normalização, assinale a alternativa correta:",
+      "options": {
+        "a": "A desnormalização nunca é recomendável em nenhum cenário.",
+        "b": "A normalização sempre resulta em melhor desempenho nas consultas.",
+        "c": "O processo de normalização pode envolver a decomposição de tabelas para eliminar dependências indesejadas.",
+        "d": "A normalização elimina a necessidade de índices no banco de dados.",
+        "e": "A normalização é aplicada apenas na fase de modelagem conceitual."
+      },
+      "correct_answer": "c",
+      "source_image": "Leia o trecho a seguir..A normalização é um processo sistemático.png"
+    },
+    {
+      "question": "No processo de projeto de um banco de dados relacional, a normalização é uma ferramenta importante para garantir a qualidade e integridade dos dados armazenados.\nSobre as anomalias que a normalização busca resolver, assinale a alternativa correta:",
+      "options": {
+        "a": "Anomalias de inserção ocorrem quando não é possível adicionar dados sem informações completas sobre todas as entidades relacionadas.",
+        "b": "Anomalias de exclusão ocorrem quando a remoção de um registro não afeta nenhum outro dado.",
+        "c": "Anomalias de atualização não podem ser resolvidas pela normalização.",
+        "d": "A normalização não tem relação com a eliminação de anomalias.",
+        "e": "Anomalias só ocorrem em bancos de dados não relacionais."
+      },
+      "correct_answer": "a",
+      "source_image": "No processo de projeto de um banco de dados relacional.png"
+    }
+  ],
+  "semana_4": [
+    {
+      "question": "A linguagem SQL é composta por diferentes categorias de comandos, cada uma com uma função específica no gerenciamento de bancos de dados.\nConsiderando as categorias da linguagem SQL, analise as afirmativas:\nI. DDL (Data Definition Language) inclui comandos como CREATE, ALTER e DROP.\nII. DML (Data Manipulation Language) inclui comandos como SELECT, INSERT, UPDATE e DELETE.\nIII. DCL (Data Control Language) inclui comandos como GRANT e REVOKE.\nEstá correto o que se afirma em:",
+      "options": {
+        "a": "I, apenas.",
+        "b": "I e II, apenas.",
+        "c": "II e III, apenas.",
+        "d": "I, II e III.",
+        "e": "III, apenas."
+      },
+      "correct_answer": "d",
+      "source_image": "A linguagem SQL é composta por diferentes categorias de comandos.png"
+    },
+    {
+      "question": "A Linguagem de Definição de Dados (DDL) é uma subcategoria da SQL utilizada para definir e gerenciar a estrutura dos objetos em um banco de dados.\nAssinale a alternativa que apresenta corretamente uma característica da DDL:",
+      "options": {
+        "a": "Os comandos DDL são utilizados para consultar dados nas tabelas.",
+        "b": "O comando CREATE TABLE é um exemplo de comando DDL.",
+        "c": "A DDL é utilizada para controlar permissões de acesso ao banco de dados.",
+        "d": "Os comandos DDL manipulam diretamente os dados armazenados nas tabelas.",
+        "e": "A DDL é uma linguagem exclusiva de bancos de dados NoSQL."
+      },
+      "correct_answer": "b",
+      "source_image": "A Linguagem de Definição de Dados (DDL).png"
+    },
+    {
+      "question": "Ao trabalhar com bancos de dados relacionais, o comando CREATE TABLE é fundamental para definir a estrutura das tabelas.\nConsiderando a sintaxe e as opções do comando CREATE TABLE em SQL, assinale a alternativa correta:",
+      "options": {
+        "a": "O comando CREATE TABLE pode definir colunas, tipos de dados e restrições como PRIMARY KEY e NOT NULL.",
+        "b": "O comando CREATE TABLE é utilizado para inserir dados em uma tabela existente.",
+        "c": "O comando CREATE TABLE não permite a definição de chaves estrangeiras.",
+        "d": "O comando CREATE TABLE é um comando DML.",
+        "e": "O comando CREATE TABLE pode ser utilizado para alterar a estrutura de uma tabela existente."
+      },
+      "correct_answer": "a",
+      "source_image": "Ao trabalhar com bancos de dados relacionais, o comando CREATE TABLE.png"
+    },
+    {
+      "question": "Considere o seguinte comando SQL:\nCREATE TABLE Funcionarios (\n  id INT PRIMARY KEY,\n  nome VARCHAR(100) NOT NULL,\n  departamento_id INT,\n  salario DECIMAL(10,2),\n  FOREIGN KEY (departamento_id) REFERENCES Departamentos(id)\n);\nSobre este comando e seus componentes, assinale a alternativa correta:",
+      "options": {
+        "a": "O atributo 'nome' pode receber valores nulos.",
+        "b": "A chave estrangeira 'departamento_id' garante que os valores inseridos existam na tabela 'Departamentos'.",
+        "c": "O tipo DECIMAL(10,2) permite armazenar valores com até 2 dígitos inteiros e 10 decimais.",
+        "d": "O comando cria a tabela 'Departamentos' automaticamente.",
+        "e": "A chave primária 'id' pode conter valores duplicados."
+      },
+      "correct_answer": "b",
+      "source_image": "Considere o seguinte comando SQL.png"
+    },
+    {
+      "question": "Em um banco de dados relacional, os comandos DML (Data Manipulation Language) são utilizados para manipular os dados armazenados nas tabelas.\nAssinale a alternativa que apresenta corretamente a função do comando INSERT em SQL:",
+      "options": {
+        "a": "O comando INSERT é utilizado para alterar dados existentes em uma tabela.",
+        "b": "O comando INSERT é utilizado para adicionar novos registros em uma tabela.",
+        "c": "O comando INSERT é utilizado para excluir registros de uma tabela.",
+        "d": "O comando INSERT é utilizado para criar novas tabelas no banco de dados.",
+        "e": "O comando INSERT é utilizado para consultar dados em uma tabela."
+      },
+      "correct_answer": "b",
+      "source_image": "Em um banco de dados relacional, os comandos DML.png"
+    },
+    {
+      "question": "Leia o trecho a seguir.\n\"Os Sistemas Gerenciadores de Banco de Dados (SGBDs) utilizam a linguagem SQL como principal ferramenta para criação, manipulação e gerenciamento de dados.\"\nCom base no trecho e nos conceitos de SQL, assinale a alternativa correta sobre o comando ALTER TABLE:",
+      "options": {
+        "a": "O comando ALTER TABLE é utilizado para modificar a estrutura de uma tabela existente, como adicionar ou remover colunas.",
+        "b": "O comando ALTER TABLE é utilizado para inserir dados em uma tabela.",
+        "c": "O comando ALTER TABLE pertence à categoria DML.",
+        "d": "O comando ALTER TABLE não pode ser utilizado para renomear colunas.",
+        "e": "O comando ALTER TABLE é utilizado para excluir uma tabela do banco de dados."
+      },
+      "correct_answer": "a",
+      "source_image": "Leia o trecho a seguir..Os Sistemas Gerenciadores de Banco de Dados.png"
+    },
+    {
+      "question": "No gerenciamento de bancos de dados, os comandos SQL são classificados em diferentes categorias de acordo com sua função.\nSobre o comando DROP TABLE, assinale a alternativa correta:",
+      "options": {
+        "a": "O comando DROP TABLE remove apenas os dados da tabela, mantendo sua estrutura.",
+        "b": "O comando DROP TABLE exclui permanentemente a tabela e todos os seus dados do banco de dados.",
+        "c": "O comando DROP TABLE é um comando DML.",
+        "d": "O comando DROP TABLE pode ser desfeito facilmente com um ROLLBACK em todos os SGBDs.",
+        "e": "O comando DROP TABLE é utilizado para renomear uma tabela."
+      },
+      "correct_answer": "b",
+      "source_image": "No gerenciamento de bancos de dados, os comandos SQL.png"
+    },
+    {
+      "question": "Os tipos de dados são fundamentais na definição das colunas de uma tabela em SQL. A escolha correta do tipo de dado impacta diretamente na integridade e no desempenho do banco de dados.\nConsiderando os tipos de dados em SQL, analise as afirmativas:\nI. O tipo VARCHAR permite armazenar cadeias de caracteres de comprimento variável.\nII. O tipo INT é utilizado para armazenar números inteiros.\nIII. O tipo DATE armazena valores de data no formato padrão.\nEstá correto o que se afirma em:",
+      "options": {
+        "a": "I, apenas.",
+        "b": "I e II, apenas.",
+        "c": "II e III, apenas.",
+        "d": "I, II e III.",
+        "e": "III, apenas."
+      },
+      "correct_answer": "d",
+      "source_image": "Os tipos de dados são fundamentais na definição das colunas.png"
+    }
+  ],
+  "semana_5": [
+    {
+      "question": "A cláusula WHERE é utilizada em comandos SQL para filtrar registros com base em condições específicas.\nAssinale a alternativa que apresenta corretamente o uso da cláusula WHERE:",
+      "options": {
+        "a": "A cláusula WHERE é utilizada apenas com o comando SELECT.",
+        "b": "A cláusula WHERE pode ser utilizada com SELECT, UPDATE e DELETE para filtrar registros.",
+        "c": "A cláusula WHERE não suporta operadores lógicos como AND e OR.",
+        "d": "A cláusula WHERE é equivalente à cláusula HAVING.",
+        "e": "A cláusula WHERE é utilizada para agrupar registros."
+      },
+      "correct_answer": "b",
+      "source_image": "A cláusula WHERE é utilizada em comandos SQL.png"
+    },
+    {
+      "question": "As funções de agregação em SQL permitem realizar cálculos sobre conjuntos de registros, retornando um único valor como resultado.\nConsiderando as funções de agregação, analise as afirmativas:\nI. A função COUNT() retorna o número de registros em um conjunto.\nII. A função SUM() retorna a soma dos valores de uma coluna numérica.\nIII. A função AVG() retorna a média aritmética dos valores de uma coluna numérica.\nEstá correto o que se afirma em:",
+      "options": {
+        "a": "I, apenas.",
+        "b": "I e II, apenas.",
+        "c": "II e III, apenas.",
+        "d": "I, II e III.",
+        "e": "III, apenas."
+      },
+      "correct_answer": "d",
+      "source_image": "As funções de agregação em SQL permitem realizar cálculos.png"
+    },
+    {
+      "question": "Considere a seguinte consulta SQL:\nSELECT departamento, COUNT(*) AS total_funcionarios\nFROM funcionarios\nWHERE salario > 3000\nGROUP BY departamento\nHAVING COUNT(*) > 5\nORDER BY total_funcionarios DESC;\nSobre esta consulta, assinale a alternativa correta:",
+      "options": {
+        "a": "A cláusula HAVING filtra os registros antes do agrupamento.",
+        "b": "A cláusula WHERE é aplicada após o GROUP BY.",
+        "c": "A consulta retorna os departamentos que possuem mais de 5 funcionários com salário superior a 3000, ordenados pelo total de funcionários em ordem decrescente.",
+        "d": "O ORDER BY é executado antes do GROUP BY.",
+        "e": "A função COUNT(*) conta apenas os valores não nulos."
+      },
+      "correct_answer": "c",
+      "source_image": "Considere a seguinte consulta SQL..SELECT departamento.png"
+    },
+    {
+      "question": "Em banco de dados relacional, a cláusula GROUP BY é utilizada para agrupar registros que possuem valores iguais em determinadas colunas.\nAssinale a alternativa correta sobre o uso do GROUP BY:",
+      "options": {
+        "a": "O GROUP BY pode ser utilizado sem funções de agregação.",
+        "b": "O GROUP BY é utilizado para filtrar registros individuais.",
+        "c": "O GROUP BY agrupa registros com valores iguais e é frequentemente utilizado com funções de agregação.",
+        "d": "O GROUP BY é equivalente ao ORDER BY.",
+        "e": "O GROUP BY não pode ser combinado com a cláusula WHERE."
+      },
+      "correct_answer": "c",
+      "source_image": "Em banco de dados relacional, a cláusula GROUP BY.png"
+    },
+    {
+      "question": "No contexto de consultas SQL, as subconsultas (subqueries) são consultas aninhadas dentro de outras consultas.\nAssinale a alternativa correta sobre subconsultas em SQL:",
+      "options": {
+        "a": "Subconsultas podem ser utilizadas na cláusula WHERE, HAVING e FROM.",
+        "b": "Subconsultas sempre retornam múltiplos valores.",
+        "c": "Subconsultas não podem ser utilizadas com o operador IN.",
+        "d": "Subconsultas substituem completamente a necessidade de JOINs.",
+        "e": "Subconsultas são executadas após a consulta principal."
+      },
+      "correct_answer": "a",
+      "source_image": "No contexto de consultas SQL, as subconsultas.png"
+    },
+    {
+      "question": "O ordenamento de resultados é uma funcionalidade importante em consultas SQL, permitindo que os dados sejam apresentados de forma organizada.\nSobre a cláusula ORDER BY, assinale a alternativa correta:",
+      "options": {
+        "a": "A cláusula ORDER BY pode ordenar resultados em ordem crescente (ASC) ou decrescente (DESC).",
+        "b": "A cláusula ORDER BY é aplicada antes da cláusula WHERE.",
+        "c": "A cláusula ORDER BY não pode ser utilizada com múltiplas colunas.",
+        "d": "A cláusula ORDER BY é obrigatória em todas as consultas SELECT.",
+        "e": "A cláusula ORDER BY modifica permanentemente a ordem dos registros na tabela."
+      },
+      "correct_answer": "a",
+      "source_image": "O ordenamento de resultados é uma funcionalidade importante.png"
+    },
+    {
+      "question": "Um sistema de controle operacional armazena dados distribuídos entre três entidades relacionadas: pedidos, clientes e transportadoras. Um analista de dados precisa aplicar comandos SQL com filtros compostos para extrair subconjuntos específicos de registros com base em faixas e exclusões.\nDado o relacionamento entre as tabelas pedidos, clientes e transportadoras\nCom relação a este tema e consultas complexas a entidades do banco de dados, interprete as afirmativas a seguir:\nI - SELECT * FROM pedidos\nWHERE id_cliente IN (SELECT nome FROM clientes);\nII - SELECT nome FROM clientes\nWHERE id NOT IN (SELECT id_cliente FROM pedidos WHERE status = 'cancelado');\nIII - SELECT * FROM transportadoras\nWHERE ano_credenciamento BETWEEN 2015 AND 2020;\nEstá correto o que se afirma em:",
+      "options": {
+        "a": "I e II, apenas.",
+        "b": "I, apenas.",
+        "c": "I e III, apenas.",
+        "d": "II e III, apenas.",
+        "e": "I, II e III."
+      },
+      "correct_answer": "d",
+      "source_image": "Um sistema de controle operacional armazena dados distribuídos.png"
+    },
+    {
+      "question": "Uma empresa de tecnologia mantém uma tabela com os dados de seus colaboradores. O setor de recursos humanos precisa localizar rapidamente nomes de funcionários que iniciam com determinada letra, utilizando comandos SQL para realizar as suas buscas na base de dados.\nDiante do contexto, assinale a alternativa que reconhece a listagem de registros em que o nome do funcionário inicia com a letra 'M':",
+      "options": {
+        "a": "SELECT nome FROM colaboradores WHERE nome = '%M%';",
+        "b": "SELECT nome FROM colaboradores WHERE nome LIKE '%M';",
+        "c": "SELECT nome FROM colaboradores WHERE nome LIKE 'M_';",
+        "d": "SELECT nome FROM colaboradores WHERE nome LIKE 'M%';",
+        "e": "SELECT nome FROM colaboradores WHERE nome = 'M%';"
+      },
+      "correct_answer": "d",
+      "source_image": "Uma empresa de tecnologia mantém uma tabela.png"
+    }
+  ],
+  "semana_6": [
+    {
+      "question": "Durante a construção de uma consulta SQL em um sistema de controle de pedidos, o analista precisa filtrar os registros com base na data e hora atual do sistema, para obter resultados dinâmicos e atualizados em tempo real a partir de uma coluna de data presente na tabela.\nDiante do contexto, assinale a alternativa que identifica o comando SQL que retorne apenas os registros com data igual ao momento atual:",
+      "options": {
+        "a": "SELECT * FROM pedidos WHERE data_pedido IN NOW();",
+        "b": "SELECT * FROM pedidos WHERE data_pedido == NOW();",
+        "c": "SELECT * FROM pedidos WHERE data_pedido = NOW();",
+        "d": "SELECT * FROM pedidos WHERE NOW() = \"data_pedido\";",
+        "e": "SELECT * FROM pedidos WHERE NOW() LIKE data_pedido;"
+      },
+      "correct_answer": "c",
+      "source_image": "Durante a construção de uma consulta SQL em um sistema.png"
+    },
+    {
+      "question": "Em um sistema de atendimento ao cliente, os dados de interações e clientes estão distribuídos em duas tabelas relacionadas por chave estrangeira. O analista precisa gerar um relatório que agrupe registros por cliente, com filtro textual no nome e condições sobre a quantidade de interações realizadas.\n\nCom relação a este contexto e sobre o conteúdo estudado, julgue as asserções a seguir e a relação proposta entre elas:\nI. A consulta SQL é válida para obter nomes de clientes e a quantidade de interações com mais de 5 registros, filtrando clientes cujo nome contenha \"Silva\":\nSELECT c.nome, COUNT(*) AS total\nFROM clientes c LEFT JOIN interacoes i ON c.id_cliente = i.id_cliente\nWHERE c.nome LIKE '%Silva%' GROUP BY c.nome HAVING COUNT(*) > 5;\nPORQUE\nII. isso ocorre devido à cláusula HAVING ser mais apropriada para consultas sem o uso de WHERE, sendo recomendável substituir o uso de HAVING COUNT(*) > 5 por WHERE COUNT(*) > 5, aplicando toda a filtragem antes da agregação.\nA respeito dessas asserções, assinale a alternativa correta:",
+      "options": {
+        "a": "As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa da I.",
+        "b": "As asserções I e II são proposições verdadeiras, e a II é uma justificativa da I.",
+        "c": "A asserção I é uma proposição verdadeira, e a II é uma proposição falsa.",
+        "d": "A asserção I é uma proposição falsa, e a II é uma proposição verdadeira.",
+        "e": "As asserções I e II são falsas."
+      },
+      "correct_answer": "e",
+      "correct_answer_note": "ERRO - A imagem indica que a resposta marcada (e) estava ERRADA. A resposta correta não é confirmada.",
+      "source_image": "ERRO - Em um sistema de atendimento ao cliente, os dados de interações.png"
+    },
+    {
+      "question": "Em ambientes corporativos que adotam sistemas de Business Intelligence, a estruturação de dados em esquemas analíticos é essencial para apoiar decisões. A modelagem em floco de neve representa uma variação estruturada da arquitetura tradicional de dados analíticos.\nCom relação a este tema e base nos princípios de modelagem multidimensional, avalie as afirmativas a seguir:\nI. No esquema floco de neve, as tabelas fato armazenam atributos textuais desnormalizados para otimizar a leitura, enquanto as dimensões mantêm dados agregados.\nII. O modelo em floco de neve promove a normalização das tabelas dimensão, permitindo maior controle de redundância e padronização dos dados.\nIII. Em um esquema floco de neve, as tabelas dimensão podem ser divididas em subdimensões relacionadas, favorecendo consultas mais detalhadas e segmentadas.\nEstá correto o que se afirma em:",
+      "options": {
+        "a": "I, II e III.",
+        "b": "II e III, apenas.",
+        "c": "I e II, apenas.",
+        "d": "I, apenas.",
+        "e": "I e III, apenas."
+      },
+      "correct_answer": "b",
+      "source_image": "Em ambientes corporativos que adotam sistemas de Business Intelligence.png"
+    },
+    {
+      "question": "Em projetos de Business Intelligence, as empresas precisam definir arquiteturas de dados eficientes. Duas abordagens amplamente utilizadas são os Data Warehouses e os Data Lakes, que diferem na estruturação dos dados, na forma de ingestão e no tipo de análise que suportam em sistemas corporativos.\nCom relação a este contexto e sobre, avalie as asserções a seguir e a relação proposta entre elas:\nI. O Data Warehouse é ideal para armazenamento de grandes volumes de dados brutos, sejam eles estruturados ou não, permitindo flexibilidade analítica.\nPORQUE\nII. Isso ocorre visto que o Data Lake organiza previamente os dados em esquemas rígidos, otimizados para relatórios gerenciais e consultas padronizadas\nA respeito dessas asserções, assinale a alternativa correta:",
+      "options": {
+        "a": "A asserção I é uma proposição falsa, e a II é uma proposição verdadeira.",
+        "b": "As asserções I e II são falsas.",
+        "c": "As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa da I.",
+        "d": "As asserções I e II são proposições verdadeiras, e a II é uma justificativa da I.",
+        "e": "A asserção I é uma proposição verdadeira, e a II é uma proposição falsa."
+      },
+      "correct_answer": "b",
+      "source_image": "Em projetos de Business Intelligence, as empresas.png"
+    },
+    {
+      "question": "Em um projeto de Business Intelligence, é essencial estruturar o ambiente de dados de forma a permitir análises eficientes, seguras e escaláveis. Para isso, diferentes abordagens de armazenamento são adotadas conforme o tipo de dado e o objetivo analítico do sistema.\nNo contexto de soluções em Business Intelligence, [preencher 1] é responsável por armazenar dados estruturados de forma integrada e historicamente consistente, enquanto [preencher 2] permite o armazenamento em larga escala de dados estruturados e não estruturados, viabilizando análises exploratórias e em tempo real.\nNesse contexto, reconheça os termos de [preencher 1] e [preencher 2] que são substituídos por:",
+      "options": {
+        "a": "1 – Data Mart; 2 – Banco Relacional",
+        "b": "1 – Banco Relacional; 2 – Banco Multidimensional",
+        "c": "1 – Data Warehouse; 2 – Data Lake",
+        "d": "1 – Data Mining; 2 – ETL",
+        "e": "1 – Data Lake; 2 – Data Warehouse"
+      },
+      "correct_answer": "c",
+      "source_image": "Em um projeto de Business Intelligence, é essencial estruturar o.png"
+    },
+    {
+      "question": "Em um sistema de monitoramento ambiental, dados meteorológicos são coletados e armazenados em diferentes tabelas relacionadas por chaves estrangeiras. O analista é responsável por elaborar consultas SQL que combinem corretamente essas informações para alimentar os relatórios técnicos.\nDado um modelo entidade-relacionamento contendo as entidades Estações (id_estacao, nome, localizacao), Medições (id_medicao, id_estacao, data, temperatura) e Sensores (id_sensor, id_estacao, tipo_sensor).\nDiante do contexto, assinale a alternativa que compreende o nome da estação, a temperatura medida e o tipo de sensor, considerando apenas os registros com correspondência em todas as tabelas:",
+      "options": {
+        "a": "SELECT nome, temperatura, tipo_sensor FROM estacoes e INNER JOIN sensores s ON s.id_sensor = m.id_sensor INNER JOIN medicoes m;",
+        "b": "SELECT e.nome, m.temperatura, s.tipo_sensor FROM estacoes e JOIN medicoes m JOIN sensores s ON e.id_estacao = m.id_estacao;",
+        "c": "SELECT nome, temperatura, tipo_sensor FROM estacoes, medicoes, sensores WHERE estacoes.id_estacao = sensores.id_sensor;",
+        "d": "SELECT e.nome, m.temperatura, s.tipo_sensor FROM estacoes e INNER JOIN medicoes m ON e.id_estacao = m.id_estacao INNER JOIN sensores s ON e.id_estacao = s.id_estacao;",
+        "e": "SELECT e.nome, m.temperatura, tipo_sensor FROM estacoes e INNER JOIN medicoes m AND sensores s WHERE e.id_estacao = m.id_estacao;"
+      },
+      "correct_answer": "d",
+      "source_image": "Em um sistema de monitoramento ambiental, dados meteorológicos.png"
+    },
+    {
+      "question": "Em um sistema que integra informações de diferentes áreas operacionais, o analista de dados precisa elaborar consultas SQL para extrair registros específicos a partir de múltiplas tabelas relacionadas por chaves estrangeiras.\nVeja o cenário a seguir:\nentregas (id_entrega, id_motorista, status, data_entrega)\nmotoristas (id_motorista, nome, categoria_habilitacao)\nveiculos (id_veiculo, id_motorista, tipo_veiculo, placa)\nCom relação ao cenário e a necessidade das entregas feitas por motoristas habilitados na categoria E ou que conduzem veículos do tipo Caminhão., compreenda as afirmativas a seguir:\nI. SELECT * FROM entregas WHERE id_motorista IN (SELECT id_motorista FROM motoristas WHERE categoria_habilitacao = 'E' OR id_motorista IN (SELECT id_motorista FROM veiculos WHERE tipo_veiculo = 'Caminhão'));\nII. SELECT * FROM entregas WHERE id_motorista IN (SELECT m.id_motorista FROM motoristas m JOIN veiculos v ON m.id_motorista = v.id_motorista WHERE m.categoria_habilitacao = 'E' OR v.tipo_veiculo = 'Caminhão');\nIII. SELECT * FROM entregas WHERE id_motorista IN SELECT id_motorista FROM motoristas WHERE categoria_habilitacao = 'E' OR id_motorista = (SELECT id_motorista FROM veiculos WHERE tipo_veiculo = 'Caminhão');\nEstá correto o que se afirma em:",
+      "options": {
+        "a": "I e III, apenas.",
+        "b": "II e III, apenas.",
+        "c": "I e II, apenas.",
+        "d": "I, II e III.",
+        "e": "I, apenas."
+      },
+      "correct_answer": "c",
+      "source_image": "Em um sistema que integra informações de diferentes áreas operacionais, o analista.png"
+    },
+    {
+      "question": "Um analista de dados está desenvolvendo relatórios em SQL com base em dados armazenados em múltiplas tabelas de um sistema de gestão empresarial. Em determinadas consultas, ele precisa incluir registros mesmo quando não há correspondência entre todas as tabelas envolvidas.\nApós a leitura do contexto, assinale a alternativa que reconhece define o uso da cláusula LEFT JOIN em consultas SQL.",
+      "options": {
+        "a": "O LEFT JOIN retorna todos os registros da tabela à esquerda, mesmo que não haja correspondência com a tabela à direita.",
+        "b": "A cláusula LEFT JOIN serve para unir registros duplicados e exibir os valores únicos das colunas da esquerda.",
+        "c": "O LEFT JOIN é utilizado como alternativa para consultas envolvendo tabelas que possuam a mesma chave primária.",
+        "d": "O LEFT JOIN elimina todos os registros sem correspondência entre as duas tabelas consultadas em SQL.",
+        "e": "Utiliza-se o LEFT JOIN quando se deseja excluir da consulta todos os registros nulos das tabelas envolvidas."
+      },
+      "correct_answer": "a",
+      "source_image": "Um analista de dados está desenvolvendo relatórios em SQL.png"
+    },
+    {
+      "question": "Uma empresa de médio porte pretende implementar uma solução de Business Intelligence. O analista responsável precisa avaliar os diferentes tipos de Data Warehouse disponíveis no mercado e identificar o mais adequado conforme os objetivos de uso e estrutura tecnológica da empresa.\nCom base no contexto, compreenda e associe os tipos de Data Warehouse apresentados com as respectivas situações de aplicação descritas.\n\n| Tipos de Data Warehouse | Aplicação |\n|---|---|\n| I. Corporativo | A. Fornece uma visão unificada a partir de múltiplos repositórios físicos e virtuais, com flexibilidade para integração de fontes. |\n| II. Virtual | B. Integra dados de múltiplas áreas e fornece uma visão única e consolidada para toda a organização. |\n| III. Lógico | C. Armazena dados consolidados de um setor específico, como marketing ou vendas. |\n| IV. Data Mart | D. Utiliza consultas em tempo real sobre as fontes de dados sem replicá-los fisicamente. |\n\nAssinale a alternativa que apresenta a associação correta:",
+      "options": {
+        "a": "I-B; II-A; III-D; IV-C.",
+        "b": "I-C; II-A; III-D; IV-B.",
+        "c": "I-A; II-C; III-B; IV-D.",
+        "d": "I-B; II-D; III-A; IV-C.",
+        "e": "I-D; II-B; III-C; IV-A."
+      },
+      "correct_answer": "d",
+      "source_image": "Uma empresa de médio porte pretende implementar uma.png"
+    }
+  ],
+  "semana_7": [
+    {
+      "question": "As transações são utilizadas para garantir que múltiplas operações em um banco de dados ocorram de forma segura. Para assegurar confiabilidade, os sistemas de banco utilizam propriedades específicas que regulam a forma como essas operações devem ser executadas.\nCom base no contexto, identifique e associe a propriedade ACID com a situação.\n\n| ACID | Aplicação |\n|---|---|\n| I. Atomicidade | A. Durante uma transação, o sistema impede a visualização de dados intermediários por outra transação concorrente. |\n| II. Consistência | B. Uma transação falha no meio do processo e nenhuma de suas operações é aplicada. |\n| III. Isolamento | C. Após uma queda de energia, os dados de uma transação confirmada ainda estão salvos no banco. |\n| IV. Durabilidade | D. O banco rejeita uma transação que violaria regras de integridade referencial entre tabelas. |\n\nAssinale a alternativa que apresenta a associação correta:",
+      "options": {
+        "a": "I-B; II-D; III-A; IV-C.",
+        "b": "I-B; II-A; III-D; IV-C.",
+        "c": "I-D; II-B; III-C; IV-A",
+        "d": "I-A; II-C; III-B; IV-D.",
+        "e": "I-C; II-A; III-D; IV-B."
+      },
+      "correct_answer": "a",
+      "source_image": "As transações são utilizadas para garantir que múltiplas operações em.png"
+    },
+    {
+      "question": "No contexto de processamento de transações, a propriedade que garante que, uma vez que uma transação tenha sido confirmada (commit), seus efeitos serão permanentes e não serão perdidos mesmo em caso de falha subsequente do sistema é a:",
+      "options": {
+        "a": "Atomicidade",
+        "b": "Consistência",
+        "c": "Isolamento",
+        "d": "Durabilidade",
+        "e": "Serializabilidade"
+      },
+      "correct_answer": "d"
+    },
+    {
+      "question": "O problema de concorrência que ocorre quando uma transação T1 lê um item de dado que foi alterado por uma transação T2, mas que ainda não foi confirmada por T2 (commit), é conhecido como:",
+      "options": {
+        "a": "Atualização Perdida",
+        "b": "Leitura Suja (Dirty Read)",
+        "c": "Leitura Não Repetível",
+        "d": "Fantasma (Phantom Read)",
+        "e": "Deadlock"
+      },
+      "correct_answer": "b"
+    },
+    {
+      "question": "Durante a execução de transações simultâneas, pode ocorrer uma situação onde duas ou mais transações ficam esperando indefinidamente por recursos bloqueados uma pela outra. Este fenômeno é chamado de:",
+      "options": {
+        "a": "Starvation",
+        "b": "Lock binário",
+        "c": "Deadlock",
+        "d": "Rollback",
+        "e": "Checkpoint"
+      },
+      "correct_answer": "c"
+    },
+    {
+      "question": "A propriedade ACID que trata a transação como uma unidade atômica de trabalho ('tudo ou nada') é a:",
+      "options": {
+        "a": "Durabilidade",
+        "b": "Isolamento",
+        "c": "Consistência",
+        "d": "Atomicidade",
+        "e": "Integridade"
+      },
+      "correct_answer": "d"
+    },
+    {
+      "question": "O LOG de transações é um componente vital do SGBD que registra todas as operações de escrita no banco. Sua principal função relacionada à recuperação de falhas é permitir os processos de:",
+      "options": {
+        "a": "Agrupamento e Ordenação",
+        "b": "Indexação e Particionamento",
+        "c": "REDO (refazer) e UNDO (desfazer)",
+        "d": "Criptografia e Autenticação",
+        "e": "Normalização e Denormalização"
+      },
+      "correct_answer": "c"
+    }
+  ]
+}

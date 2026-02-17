@@ -1,0 +1,366 @@
+{
+  "1": {
+    "title": "Introdução a Banco de Dados e MER",
+    "theory": "<h3>Introdução e Modelo Entidade-Relacionamento</h3><p>Na primeira semana da disciplina COM300, exploramos os conceitos fundamentais de banco de dados. Um banco de dados é uma coleção organizada de dados gerenciada por um SGBD (MySQL, PostgreSQL, etc).</p><p>O Modelo Entidade-Relacionamento (MER) é o pilar da modelagem conceitual.</p><div class='theory-card'><strong>O que é o MER:</strong> Uma ferramenta de modelagem que ajuda a visualizar a estrutura lógica de um banco de dados. Ele utiliza diagramas para representar entidades, atributos e relacionamentos de forma abstrata.</div><h3>Entidades</h3><div class='theory-card'><strong>Definição:</strong> Entidades são objetos ou conceitos do mundo real que têm existência independente (ex: pessoa, produto, evento). Cada entidade possui atributos que descrevem suas características.<br><br><strong>Exemplo:</strong> Em um sistema acadêmico, 'Aluno' e 'Disciplina' são entidades.</div><h3>Atributos</h3><div class='theory-card'><strong>Definição:</strong> Atributos são propriedades que descrevem uma entidade. Por exemplo, a entidade 'Aluno' pode ter atributos como 'Nome', 'RA' e 'Curso'. Eles definem o que queremos salvar sobre cada objeto.</div><h3>Chaves</h3><div class='theory-card'><strong>Definição:</strong> Chaves são atributos que identificam unicamente uma entidade em um conjunto. A 'Número de Aluno' pode ser uma chave primária para a entidade 'Aluno', garantindo que não haja duplicidade.</div><h3>Relacionamentos</h3><div class='theory-card'><strong>Definição:</strong> Descrevem como as entidades estão associadas umas às outras. No MER, os relacionamentos são representados por linhas que conectam as entidades, indicando suas interações.<br><br><strong>Exemplo:</strong> O relacionamento entre 'Aluno' e 'Disciplina' indica em quais matérias o aluno está matriculado.</div><h3>Cardinalidade</h3><div class='theory-card'><strong>Definição:</strong> Define o número de instâncias de uma entidade que podem estar associadas a outra. Os tipos comuns são 1:1, 1:N e N:M.<br><br><strong>Exemplo:</strong> A relação 'Aluno' e 'Disciplina' é N:M, pois um aluno cursa várias matérias e uma disciplina tem vários alunos.</div><h3>Exemplo Prático: UNIVERSIDADE</h3><p>No banco de dados de uma universidade, modelamos a realidade assim:</p><ul><li><strong>Entidades:</strong> Aluno, Disciplina, Turma, Professor.</li><li><strong>Atributos:</strong> Nome, Créditos, Departamento.</li><li><strong>Relacionamentos:</strong> Aluno matriculado em Turma, Professor leciona Disciplina.</li></ul><h3>Implementação SQL</h3><p>O conceito do MER se torna concreto através do SQL:</p><pre><code>CREATE TABLE Aluno (\n  RA INT PRIMARY KEY,\n  Nome VARCHAR(100),\n  Curso VARCHAR(50)\n);</code></pre><h3>Conclusão</h3><p>Dominar o MER permite uma representação clara e organizada dos dados, facilitando a implementação e manutenção do banco de dados de forma escalável e eficiente.</p>",
+    "key_concepts": [
+      {
+        "term": "Banco de Dados",
+        "definition": "Uma coleção organizada de dados que pode ser facilmente acessada, gerenciada e atualizada."
+      },
+      {
+        "term": "SGBD",
+        "definition": "Sistema de Gerenciamento de Banco de Dados, software que facilita a interação com bancos de dados."
+      },
+      {
+        "term": "Modelo Entidade-Relacionamento (MER)",
+        "definition": "Uma ferramenta de modelagem que ajuda a visualizar a estrutura lógica de um banco de dados."
+      },
+      {
+        "term": "Entidade",
+        "definition": "Objetos ou conceitos do mundo real que têm existência independente."
+      },
+      {
+        "term": "Atributo",
+        "definition": "Propriedades que descrevem uma entidade."
+      },
+      {
+        "term": "Chave",
+        "definition": "Atributos ou combinações de atributos que identificam unicamente uma entidade."
+      },
+      {
+        "term": "Relacionamento",
+        "definition": "Descreve como as entidades estão associadas umas às outras."
+      },
+      {
+        "term": "Cardinalidade",
+        "definition": "Define o número de instâncias de uma entidade que podem estar associadas a uma instância de outra entidade."
+      }
+    ],
+    "video_summaries": [
+      {
+        "number": 1,
+        "summary": "Introduz os conceitos básicos de banco de dados e a importância dos SGBDs."
+      },
+      {
+        "number": 2,
+        "summary": "Explora o Modelo Entidade-Relacionamento, focando em entidades, atributos e chaves."
+      },
+      {
+        "number": 3,
+        "summary": "Discute os relacionamentos no MER, incluindo tipos de cardinalidade."
+      }
+    ],
+    "study_tips": [
+      "Revise os conceitos de entidades e atributos com exemplos práticos.",
+      "Pratique a criação de diagramas MER para diferentes cenários.",
+      "Familiarize-se com a sintaxe SQL básica para definir tabelas e chaves."
+    ],
+    "quiz_tips": [
+      "A modelagem conceitual é uma etapa fundamental para representar aspectos do mundo real em um nível de abstração (Q1).",
+      "O modelo conceitual representa a visão mais abstrata dos dados, sem considerar aspectos de implementação (Q2).",
+      "Diagramas de entidade-relacionamento são usados para representar a estrutura dos dados (Q3).",
+      "O diagrama entidade-relacionamento (DER) é uma ferramenta utilizada na modelagem conceitual (Q4).",
+      "A relação Aluno – Disciplina é N:N; Disciplina – Professor é N:1 (Q5)."
+    ],
+    "book_references": "Cap 1, 2 e 3 (Seções 1.1, 1.2, 1.4-1.7, 2.2, 2.4, 3.7)"
+  },
+  "2": {
+    "title": "Modelo Relacional e Mapeamento MER",
+    "theory": "<h3>Modelo Relacional</h3><p>O modelo relacional é o pilar dos bancos de dados modernos, baseando-se em conceitos matemáticos de conjuntos e relações para estruturar dados de forma clara.</p><h3>Domínios e Tuplas</h3><div class='theory-card'><strong>Definição:</strong> Um <strong>domínio</strong> é o conjunto de valores permitidos para um atributo. Uma <strong>tupla</strong> é um registro individual (linha) e uma <strong>relação</strong> é o conjunto de tuplas (tabela).</div><h3>Restrições de Domínio</h3><div class='theory-card'><strong>O que são:</strong> Regras que garantem a integridade dos dados, limitando os valores possíveis (ex: idade entre 15 e 80).</div><h3>Mapeamento MER para Relacional</h3><div class='theory-card'><strong>Processo:</strong> Transformamos Entidades em Tabelas e Atributos em Colunas. Relacionamentos tornam-se Chaves Estrangeiras para manter o vínculo entre os dados.</div><h3>Exemplo Prático SQL</h3><p>Veja a implementação de um sistema de matrícula:</p><pre><code>CREATE TABLE Aluno (\n  CPF CHAR(11) PRIMARY KEY,\n  Nome VARCHAR(100),\n  Idade INT CHECK (Idade BETWEEN 15 AND 80)\n);\n\nCREATE TABLE Matricula (\n  CPF_Aluno CHAR(11),\n  Cod_Disc INT,\n  FOREIGN KEY (CPF_Aluno) REFERENCES Aluno(CPF)\n);</code></pre><h3>Conclusão</h3><p>O modelo relacional garante que os dados sejam armazenados de forma consistente, permitindo consultas complexas e seguras.</p>",
+    "key_concepts": [
+      {
+        "term": "Domínio",
+        "definition": "Conjunto de valores atômicos permitidos para um atributo em uma tabela."
+      },
+      {
+        "term": "Tupla",
+        "definition": "Registro individual em uma tabela, composto por valores de atributos."
+      },
+      {
+        "term": "Relação",
+        "definition": "Conjunto de tuplas, representando uma tabela no banco de dados."
+      },
+      {
+        "term": "Mapeamento MER para Relacional",
+        "definition": "Processo de converter um modelo Entidade-Relacionamento em um modelo relacional."
+      }
+    ],
+    "video_summaries": [
+      {
+        "number": 4,
+        "summary": "Explora as características e formalizações do modelo relacional, incluindo suas restrições principais."
+      },
+      {
+        "number": 5,
+        "summary": "Discute o mapeamento de entidades, atributos e chaves do modelo MER para o modelo relacional."
+      },
+      {
+        "number": 6,
+        "summary": "Foca no mapeamento de relacionamentos e cardinalidades do MER para o modelo relacional."
+      }
+    ],
+    "study_tips": [
+      "Revise os conceitos de chave primária e estrangeira para entender melhor as restrições de integridade.",
+      "Pratique o mapeamento de diagramas MER para tabelas relacionais com exemplos práticos.",
+      "Utilize ferramentas de modelagem para visualizar a transformação de MER para o modelo relacional."
+    ],
+    "quiz_tips": [
+      "Atributos derivados são calculados a partir de outros atributos, como a idade calculada a partir da data de nascimento.",
+      "Uma tupla é um registro individual em uma tabela, essencial para entender a estrutura de dados no modelo relacional.",
+      "Restrições de domínio são cruciais para garantir que os dados inseridos estejam dentro dos limites permitidos, como tipos de dados e formatos.",
+      "Entender a cardinalidade dos relacionamentos ajuda a modelar corretamente as associações entre entidades, como alunos e disciplinas.",
+      "Chaves primárias são essenciais para identificar unicamente cada registro em uma tabela, garantindo a integridade dos dados."
+    ],
+    "book_references": "Cap 5 e 9 (Seções 5-5.2.4, 9-9.1.2)"
+  },
+  "3": {
+    "title": "SGBDs de Mercado e Normalização",
+    "theory": "<h3>Normalização de Dados</h3><p>A normalização organiza o banco de dados para minimizar redundâncias e eliminar anomalias de atualização, separando dados em tabelas menores.</p><h3>Dependências Funcionais</h3><div class='theory-card'><strong>Conceito:</strong> Ocorre quando um atributo determina o valor de outro (X → Y). Ex: O CPF determina o Nome do funcionário. É a base para as regras de normalização.</div><h3>Primeira Forma Normal (1FN)</h3><div class='theory-card'><strong>Regra:</strong> Exige que todos os atributos sejam atômicos (indivisíveis). Não é permitido listas ou múltiplos valores em um único campo.</div><h3>Segunda Forma Normal (2FN)</h3><div class='theory-card'><strong>Regra:</strong> Deve estar na 1FN e todos os atributos não-chave devem depender totalmente da chave primária (elimina dependências parciais).</div><h3>Terceira Forma Normal (3FN)</h3><div class='theory-card'><strong>Regra:</strong> Deve estar na 2FN e não possuir dependências transitivas. Atributos não-chave devem depender apenas da chave primária.</div><h3>Anomalias de Atualização</h3><div class='theory-card'><strong>Problemas:</strong> Sem normalização, surgem anomalias de Inserção (não conseguir adicionar), Atualização (inconsistência) e Exclusão (perda acidental de dados).</div><h3>Exemplo de Normalização</h3><p>Ao separar Departamentos de Funcionários, evitamos redundância:</p><pre><code>CREATE TABLE Departamento (ID INT PRIMARY KEY, Nome VARCHAR(50));\nCREATE TABLE Funcionario (ID INT PRIMARY KEY, Nome VARCHAR(50), DeptID INT);</code></pre>",
+    "key_concepts": [
+      {
+        "term": "Dependência Funcional",
+        "definition": "Uma relação entre dois conjuntos de atributos em que um conjunto determina unicamente o outro."
+      },
+      {
+        "term": "Primeira Forma Normal (1FN)",
+        "definition": "Exige que todos os atributos sejam atômicos, sem conjuntos de valores ou listas."
+      },
+      {
+        "term": "Segunda Forma Normal (2FN)",
+        "definition": "Requer que a tabela esteja na 1FN e que todos os atributos não-chave dependam totalmente da chave primária."
+      },
+      {
+        "term": "Terceira Forma Normal (3FN)",
+        "definition": "Exige que a tabela esteja na 2FN e que não haja dependências transitivas."
+      },
+      {
+        "term": "Forma Normal de Boyce-Codd (FNBC)",
+        "definition": "Uma versão mais rigorosa da 3FN, onde cada dependência funcional tem uma superchave como determinante."
+      },
+      {
+        "term": "Anomalias de Atualização",
+        "definition": "Problemas que ocorrem durante operações de inserção, atualização ou exclusão devido a redundâncias."
+      }
+    ],
+    "video_summaries": [
+      {
+        "number": 7,
+        "summary": "Explora os principais SGBDs disponíveis no mercado, destacando suas características e casos de uso."
+      },
+      {
+        "number": 8,
+        "summary": "Introduz o conceito de normalização e explica as primeiras formas normais, 1NF e 2NF."
+      },
+      {
+        "number": 9,
+        "summary": "Aprofunda o estudo da normalização, abordando a 3NF e a BCNF, com exemplos práticos."
+      }
+    ],
+    "study_tips": [
+      "Pratique a criação de tabelas e a aplicação de formas normais usando exemplos reais.",
+      "Compare diferentes SGBDs para entender suas vantagens e desvantagens.",
+      "Revise os conceitos de dependência funcional para compreender melhor a normalização."
+    ],
+    "quiz_tips": [
+      "Para resolver questões sobre 1FN, lembre-se de que todos os atributos devem ser atômicos.",
+      "A 2FN elimina dependências parciais; todos os atributos não-chave devem depender totalmente da chave primária.",
+      "A 3FN elimina dependências transitivas, garantindo que atributos não-chave dependam apenas da chave primária.",
+      "A FNBC é uma forma mais rigorosa que elimina qualquer tipo de anomalia, mesmo em 3FN."
+    ],
+    "book_references": "Cap 14 (Seções 14-14.7)"
+  },
+  "4": {
+    "title": "SQL — DDL, Ferramentas e Indexação",
+    "theory": "<h3>SQL DDL e Ferramentas</h3><p>A DDL (Data Definition Language) é a parte do SQL usada para definir a estrutura do banco de dados, como criar tabelas e índices.</p><h3>MySQL Workbench</h3><div class='theory-card'><strong>Ferramenta:</strong> Interface visual para design de banco de dados, modelagem e administração, facilitando a criação de esquemas complexos.</div><h3>Comandos DDL Principais</h3><div class='theory-card'><strong>CREATE, ALTER, DROP:</strong> Usados para criar novos objetos, modificar estruturas existentes ou remover tabelas e índices do banco.</div><h3>Tipos de Dados SQL</h3><div class='theory-card'><strong>INT, VARCHAR, DECIMAL:</strong> Fundamentais para definir o formato de cada coluna. O VARCHAR(n) é ideal para textos de tamanho variável.</div><h3>Restrições de Integridade</h3><div class='theory-card'><strong>PRIMARY & FOREIGN KEY:</strong> Garantem que os dados sejam únicos e que as relações entre tabelas sejam consistentes (Integridade Referencial).</div><h3>Ações em Cascata</h3><div class='theory-card'><strong>ON DELETE CASCADE:</strong> Permite que atualizações ou exclusões em uma tabela pai se reflitam automaticamente nas tabelas filhas, mantendo a ordem.</div><h3>Comando INSERT</h3><p>Adicionando dados reais:</p><pre><code>INSERT INTO Alunos (ID, Nome, Idade) VALUES (1, 'Ana', 21);</code></pre>",
+    "key_concepts": [
+      {
+        "term": "DDL (Data Definition Language)",
+        "definition": "Conjunto de comandos SQL usados para definir e modificar a estrutura de objetos de banco de dados, como tabelas e índices."
+      },
+      {
+        "term": "Integridade Referencial",
+        "definition": "Conjunto de regras que garantem que as relações entre tabelas permaneçam consistentes, evitando referências inválidas."
+      },
+      {
+        "term": "Chave Primária",
+        "definition": "Uma ou mais colunas que identificam unicamente cada linha em uma tabela, garantindo que não haja valores duplicados ou nulos."
+      },
+      {
+        "term": "Chave Estrangeira",
+        "definition": "Uma coluna ou conjunto de colunas em uma tabela que estabelece uma relação com uma chave primária em outra tabela."
+      }
+    ],
+    "video_summaries": [
+      {
+        "number": 10,
+        "summary": "A videoaula 10 apresenta o MySQL Workbench, uma ferramenta CASE que facilita o design e administração de bancos de dados MySQL."
+      },
+      {
+        "number": 11,
+        "summary": "A videoaula 11 introduz a linguagem SQL, focando nas instruções DDL para definição e modificação de estruturas de banco de dados."
+      },
+      {
+        "number": 12,
+        "summary": "A videoaula 12 discute a importância da indexação em bancos de dados e como ela pode melhorar o desempenho das consultas."
+      }
+    ],
+    "study_tips": [
+      "Pratique criando e modificando tabelas usando instruções DDL no MySQL Workbench.",
+      "Experimente criar índices em diferentes colunas e observe o impacto no desempenho das consultas.",
+      "Revise os conceitos de DDL e indexação para entender como eles afetam a estrutura e eficiência do banco de dados."
+    ],
+    "quiz_tips": [
+      "Para questões sobre DDL, lembre-se de que CREATE TABLE é usado para definir a estrutura inicial de uma tabela, incluindo colunas e restrições.",
+      "Ao responder sobre integridade referencial, considere como as chaves estrangeiras garantem que os dados em uma tabela correspondam aos dados em outra tabela.",
+      "Para comandos DML como INSERT, foque em como adicionar registros respeitando as restrições de integridade definidas na tabela."
+    ],
+    "book_references": "Cap 6 (SQL básica)"
+  },
+  "5": {
+    "title": "Consultas SQL",
+    "theory": "<h3>Consultas SQL Avançadas</h3><p>Dominar o SELECT permite extrair informações valiosas de grandes volumes de dados de forma rápida e precisa.</p><h3>Cláusula WHERE e Filtros</h3><div class='theory-card'><strong>Filtragem:</strong> Usada para selecionar registros específicos. O operador LIKE permite buscar padrões de texto (ex: nome que começa com 'A').</div><h3>Funções de Agregação</h3><div class='theory-card'><strong>Cálculos:</strong> COUNT (contar), SUM (somar), AVG (média), MAX (maior) e MIN (menor) resumem conjuntos de dados em um único valor.</div><h3>Agrupamento com GROUP BY</h3><div class='theory-card'><strong>Sumarização:</strong> Organiza registros por valores iguais em colunas (ex: contar alunos por curso). O HAVING filtra o resultado após o agrupamento.</div><h3>Ordenação com ORDER BY</h3><div class='theory-card'><strong>Exibição:</strong> Organiza os resultados em ordem crescente (ASC) ou decrescente (DESC) para facilitar a leitura.</div><h3>Subconsultas</h3><div class='theory-card'><strong>Aninhamento:</strong> Consultas dentro de outras. Úteis para encontrar dados que dependem de outro resultado (ex: quem ganha acima da média).</div><h3>Operadores Lógicos</h3><p>Combine condições com AND, OR e NOT para filtros mais complexos:</p><pre><code>SELECT * FROM produtos WHERE preco > 100 AND categoria = 'Eletrônicos';</code></pre>",
+    "key_concepts": [
+      {
+        "term": "Cláusula WHERE",
+        "definition": "Usada para filtrar registros com base em condições específicas em comandos SQL como SELECT, UPDATE e DELETE."
+      },
+      {
+        "term": "Funções de Agregação",
+        "definition": "Permitem realizar cálculos sobre conjuntos de registros, retornando um único valor, como COUNT, SUM, AVG, MAX e MIN."
+      },
+      {
+        "term": "Cláusula GROUP BY",
+        "definition": "Agrupa registros que possuem valores iguais em determinadas colunas, frequentemente usado com funções de agregação."
+      },
+      {
+        "term": "Cláusula HAVING",
+        "definition": "Filtra grupos de registros após a aplicação do GROUP BY."
+      },
+      {
+        "term": "Cláusula ORDER BY",
+        "definition": "Usada para ordenar os resultados de uma consulta em ordem crescente ou decrescente."
+      },
+      {
+        "term": "Subconsultas",
+        "definition": "Consultas aninhadas dentro de outras consultas, usadas em cláusulas como WHERE, HAVING e FROM."
+      },
+      {
+        "term": "LIKE",
+        "definition": "Usado para buscar padrões em strings, permitindo buscas flexíveis."
+      },
+      {
+        "term": "Filtros Complexos",
+        "definition": "Criados combinando múltiplas condições usando operadores lógicos como AND, OR e NOT."
+      }
+    ],
+    "video_summaries": [
+      {
+        "number": 13,
+        "summary": "Explora consultas SQL variadas, incluindo o uso de cláusulas como WHERE, ORDER BY e LIMIT para filtrar e ordenar dados."
+      },
+      {
+        "number": 14,
+        "summary": "Foca no uso de funções SQL para realizar cálculos e manipulações de dados, como COUNT, SUM, AVG, MAX e MIN."
+      }
+    ],
+    "study_tips": [
+      "Pratique escrevendo consultas SQL em um ambiente de banco de dados real.",
+      "Experimente diferentes funções SQL para entender suas aplicações.",
+      "Revise exemplos práticos para consolidar o aprendizado.",
+      "Utilize recursos online para explorar mais sobre funções SQL avançadas."
+    ],
+    "quiz_tips": [
+      "Para questões sobre a cláusula WHERE, lembre-se de que ela pode ser usada com SELECT, UPDATE e DELETE para filtrar registros.",
+      "Funções de agregação são essenciais para cálculos em conjuntos de dados, como contar registros ou calcular médias.",
+      "O GROUP BY é frequentemente usado com funções de agregação para agrupar dados antes de aplicar cálculos.",
+      "Subconsultas são poderosas para criar consultas dinâmicas e complexas, permitindo a comparação de resultados internos."
+    ],
+    "book_references": "Cap 7 (SQL avançada)"
+  },
+  "6": {
+    "title": "JOINs, Views e Data Lake",
+    "theory": "<h3>Relacionando Tabelas: JOINs</h3><p>Em um banco normalizado, os dados estão espalhados em várias tabelas. O JOIN é a cola que une essas informações.</p><h3>Tipos de JOINs</h3><div class='theory-card'><strong>INNER, LEFT & RIGHT:</strong> O INNER traz apenas correspondências em ambos. O LEFT traz tudo da esquerda mesmo sem par na direita.</div><h3>Views: Tabelas Virtuais</h3><div class='theory-card'><strong>Abstração:</strong> Uma consulta salva que funciona como tabela. Simplifica consultas complexas e aumenta a segurança dos dados.</div><h3>Data Lake</h3><div class='theory-card'><strong>Big Data:</strong> Repositório central para armazenar dados brutos (estruturados ou não) em larga escala para análise futura.</div><h3>Data Lake vs Data Warehouse</h3><p>Enquanto o Warehouse é estruturado para relatórios fixos, o Lake é flexível para ciência de dados e exploração.</p><h3>Exemplo de JOIN</h3><pre><code>SELECT a.nome, c.nome_curso \nFROM alunos a \nINNER JOIN cursos c ON a.curso_id = c.id;</code></pre>",
+    "key_concepts": [
+      {
+        "term": "JOIN",
+        "definition": "Combina registros de duas ou mais tabelas."
+      },
+      {
+        "term": "INNER JOIN",
+        "definition": "Retorna registros com correspondência em ambas as tabelas."
+      },
+      {
+        "term": "LEFT JOIN",
+        "definition": "Retorna todos os registros da tabela à esquerda e correspondências da direita."
+      },
+      {
+        "term": "RIGHT JOIN",
+        "definition": "Retorna todos os registros da tabela à direita e correspondências da esquerda."
+      },
+      {
+        "term": "FULL JOIN",
+        "definition": "Retorna registros com correspondência em qualquer uma das tabelas."
+      },
+      {
+        "term": "View",
+        "definition": "Consulta armazenada que age como uma tabela virtual."
+      },
+      {
+        "term": "Data Lake",
+        "definition": "Repositório centralizado para armazenar dados em seu formato bruto."
+      }
+    ],
+    "video_summaries": [
+      {
+        "number": 15,
+        "summary": "Explora os diferentes tipos de JOINs em SQL, mostrando como combinar dados de múltiplas tabelas de forma eficiente."
+      },
+      {
+        "number": 16,
+        "summary": "Discute a criação e uso de Views em SQL e introduz o conceito de Data Lake para armazenamento de dados em larga escala."
+      }
+    ],
+    "study_tips": [
+      "Pratique escrevendo consultas SQL usando diferentes tipos de JOINs.",
+      "Experimente criar e manipular Views para entender sua utilidade.",
+      "Pesquise sobre Data Lakes e suas aplicações em Big Data."
+    ]
+  },
+  "7": {
+    "title": "Processamento de Transações e Controle de Concorrência",
+    "theory": "<h3>Processamento de Transações e Controle de Concorrência</h3><p>Estudo de como o SGBD garante a integridade dos dados em ambientes multiusuário e sobrevive a falhas.</p><h3>Conceitos Fundamentais</h3><div class='theory-card'><strong>Transacao:</strong> Unidade lógica de processamento de banco de dados que inclui uma ou mais operações de acesso (leitura/escrita).</div><div class='theory-card'><strong>Propriedades_Acid:</strong><ul><li><strong>Atomicidade:</strong> A transação é uma unidade 'tudo ou nada'. Se falhar, o banco sofre rollback.</li><li><strong>Consistência:</strong> A transação leva o banco de um estado válido a outro estado válido.</li><li><strong>Isolamento:</strong> Transações executadas simultaneamente não devem interferir umas nas outras.</li><li><strong>Durabilidade:</strong> Uma vez confirmada (commit), a alteração é permanente, mesmo em falhas de energia.</li></ul></div><h3>Problemas de Concorrência</h3><p>Em ambientes multiusuário, sem controle, podem ocorrer:</p><div class='theory-card'><strong>Atualização Perdida:</strong> Duas transações acessam o mesmo dado e uma sobrescreve a outra.</div><div class='theory-card'><strong>Leitura Suja:</strong> Uma transação lê um dado alterado por outra que ainda não deu commit.</div><div class='theory-card'><strong>Leitura Não Repetível:</strong> O valor de um dado muda entre duas leituras da mesma transação.</div><h3>Mecanismos de Controle</h3><div class='theory-card'><strong>Lock:</strong> Bloqueios binários ou de leitura/escrita para impedir acesso simultâneo conflitante.</div><div class='theory-card'><strong>Deadlock:</strong> Situação de impasse onde duas transações esperam eternamente por recursos bloqueados uma pela outra.</div><div class='theory-card'><strong>Log De Transacoes:</strong> Registro de todas as operações para permitir o REDO (refazer) ou UNDO (desfazer) em caso de queda do sistema.</div><h3>Referência</h3><p>Elmasri & Navathe, Capítulos 20 e 21</p>",
+    "key_concepts": [
+      {
+        "term": "Transacao",
+        "definition": "Unidade lógica de processamento de banco de dados que inclui uma ou mais operações de acesso (leitura/escrita)."
+      },
+      {
+        "term": "Atomicidade",
+        "definition": "A transação é uma unidade 'tudo ou nada'. Se falhar, o banco sofre rollback."
+      },
+      {
+        "term": "Consistência",
+        "definition": "A transação leva o banco de um estado válido a outro estado válido."
+      },
+      {
+        "term": "Isolamento",
+        "definition": "Transações executadas simultaneamente não devem interferir umas nas outras."
+      },
+      {
+        "term": "Durabilidade",
+        "definition": "Uma vez confirmada (commit), a alteração é permanente, mesmo em falhas de energia."
+      }
+    ],
+    "video_summaries": [],
+    "study_tips": [
+      "Revise as propriedades ACID.",
+      "Estude as anomalias de concorrência.",
+      "Pratique comandos de transação (COMMIT/ROLLBACK)."
+    ],
+    "quiz_tips": [
+      "A propriedade de Atomicidade garante o 'tudo ou nada'.",
+      "O Isolamento impede que transações paralelas se interfiram."
+    ],
+    "book_references": "Elmasri & Navathe, Capítulos 20 e 21"
+  }
+}
