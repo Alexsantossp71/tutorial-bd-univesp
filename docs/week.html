@@ -144,21 +144,20 @@
 
         @media (max-width: 600px) {
             .memory-board {
-                grid-template-columns: repeat(2, 1fr);
-                /* 2 columns for mobile */
-                gap: 10px;
+                grid-template-columns: repeat(3, 1fr);
+                /* 3 columns for mobile */
+                gap: 8px;
             }
 
             .memory-card {
-                aspect-ratio: 3/4;
-                /* Taller on mobile to fit text */
+                aspect-ratio: 2/3;
+                /* Even taller on mobile for 3 cols */
             }
 
             .memory-card-front,
             .memory-card-back {
-                font-size: 0.8rem;
-                /* Slightly smaller font on very small screens if needed, but boxes are bigger */
-                padding: 6px;
+                font-size: 0.75rem;
+                padding: 4px;
             }
         }
     </style>
