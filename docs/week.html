@@ -37,12 +37,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 4px;
-            /* Minimal padding to maximize space */
+            padding: 8px;
+            /* Increased padding slightly */
             border-radius: 12px;
-            font-size: 0.75rem;
-            /* Even smaller to fit long definitions */
-            line-height: 1.1;
+            font-size: 0.85rem;
+            /* Increased font size */
+            line-height: 1.2;
             text-align: center;
             border: 2px solid var(--toggl-purple);
             font-weight: 700;
@@ -54,7 +54,8 @@
         .memory-card-front {
             background: var(--toggl-pink);
             color: white;
-            font-size: 1.5rem;
+            font-size: 2rem;
+            /* Larger ? icon */
             border: none;
         }
 
@@ -132,6 +133,34 @@
         #theory-content li {
             margin-bottom: 0.5rem;
         }
+
+        /* Responsive Memory Game */
+        @media (max-width: 900px) {
+            .memory-board {
+                grid-template-columns: repeat(3, 1fr);
+                /* 3 columns for tablet */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .memory-board {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 columns for mobile */
+                gap: 10px;
+            }
+
+            .memory-card {
+                aspect-ratio: 3/4;
+                /* Taller on mobile to fit text */
+            }
+
+            .memory-card-front,
+            .memory-card-back {
+                font-size: 0.8rem;
+                /* Slightly smaller font on very small screens if needed, but boxes are bigger */
+                padding: 6px;
+            }
+        }
     </style>
 </head>
 
@@ -181,6 +210,17 @@
         <div class="container">
             <h2 class="section-title" style="color: white;">Desafio de Memória</h2>
             <div class="landing-grid">
+                <!-- Instructions (Now First) -->
+                <div style="padding: 1rem;">
+                    <h3 style="color: var(--toggl-pink); font-size: 2rem;">Aprenda brincando.</h3>
+                    <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(255,255,255,0.8);">
+                        Combine os <strong>Termos</strong> com suas <strong>Definições</strong>.
+                        A repetição lúdica é uma das melhores formas de fixar conceitos técnicos complexos.
+                    </p>
+                    <button class="btn btn-primary" onclick="initMemoryGame()">Reiniciar Jogo</button>
+                </div>
+
+                <!-- Game Board (Now Second) -->
                 <div id="memory-board-container"
                     style="min-height: 400px; display: flex; flex-direction: column; justify-content: center;">
                     <div class="memory-board" id="memory-board"></div>
@@ -189,14 +229,6 @@
                         <p style="margin-bottom: 1.5rem;">Você dominou os conceitos desta semana!</p>
                         <button class="btn btn-secondary" onclick="initMemoryGame()">Jogar Novamente</button>
                     </div>
-                </div>
-                <div style="padding-left: 2rem;">
-                    <h3 style="color: var(--toggl-pink); font-size: 2rem;">Aprenda brincando.</h3>
-                    <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(255,255,255,0.8);">
-                        Combine os <strong>Termos</strong> com suas <strong>Definições</strong>.
-                        A repetição lúdica é uma das melhores formas de fixar conceitos técnicos complexos.
-                    </p>
-                    <button class="btn btn-primary" onclick="initMemoryGame()">Reiniciar Jogo</button>
                 </div>
             </div>
         </div>
@@ -366,8 +398,23 @@
                     victory.style.display = 'none';
 
                     let gameState = { locked: false, flipped: null, matches: 0 };
+
+                    // Normalize to 6 pairs (12 cards) for consistent grid
+                    let flashcards = [...weekStudy.flashcards];
+                    if (flashcards.length > 6) {
+                        flashcards = flashcards.slice(0, 6);
+                    } else {
+                        while (flashcards.length < 6) {
+                            // Filler cards to ensure grid is full (4x3 or 2x6)
+                            flashcards.push({
+                                front: "TutorIA",
+                                back: "TutorIA"
+                            });
+                        }
+                    }
+
                     let deck = [];
-                    weekStudy.flashcards.forEach((fc, i) => {
+                    flashcards.forEach((fc, i) => {
                         deck.push({ id: i, text: fc.front, type: 't' });
                         deck.push({ id: i, text: fc.back, type: 'd' });
                     });
@@ -386,7 +433,7 @@
                             if (gameState.flipped.dataset.id === this.dataset.id) {
                                 this.classList.add('matched'); gameState.flipped.classList.add('matched');
                                 gameState.matches++; gameState.flipped = null; gameState.locked = false;
-                                if (gameState.matches === weekStudy.flashcards.length) {
+                                if (gameState.matches === flashcards.length) {
                                     setTimeout(() => { board.style.display = 'none'; victory.style.display = 'block'; }, 600);
                                 }
                             } else {
