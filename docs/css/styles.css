@@ -300,6 +300,22 @@ a {
 }
 
 /* --- Theory Content Styles --- */
+.landing-grid>div {
+  min-width: 0;
+  /* critical for preventing grid blowout */
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+  max-width: 100%;
+  background: #f4f4f4;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .theory-text h3 {
   color: var(--toggl-purple);
   font-family: var(--font-serif);
