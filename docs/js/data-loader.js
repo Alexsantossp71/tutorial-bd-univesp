@@ -1506,8 +1506,8 @@ window.TUTORIA_DATA = {
       "book_references": "Elmasri & Navathe, Cap 6"
     },
     "5": {
-      "title": "SQL: Consultas e Junções",
-      "theory": "<h3>O Poder do SELECT</h3><p>Consultar dados é a operação mais frequente. Além do <code>WHERE</code> (filtros simples), temos ferramentas poderosas para análise.</p><h3>JOINs: Unindo Tabelas</h3><p>Traz dados de múltiplas tabelas conectadas por chaves.</p><div class='theory-card'><strong>INNER JOIN:</strong> Interseção. Só traz se existir nas duas tabelas. (Ex: Alunos QUE TÊM matrícula).</div><div class='theory-card'><strong>LEFT JOIN:</strong> Prioridade à esquerda. Traz todos da 1ª tabela, e preenche com NULL se não achar na 2ª. (Ex: Todos Alunos, mesmo sem matrícula).</div><h3>Agregação e Agrupamento</h3><p>Transformar dados em informação.</p><ul><li><strong>Funções:</strong> COUNT(*), SUM(valor), AVG(media), MAX/MIN.</li><li><strong>GROUP BY:</strong> 'Achata' a tabela em grupos. Obrigatório se usar funcões de agregação com outras colunas.</li><li><strong>HAVING:</strong> O 'Where' do Group By. Filtra <strong>depois</strong> de agrupar.</li></ul><pre><code>-- Ex: Cursos com média de idade > 20\nSELECT Curso, AVG(Idade)\nFROM Alunos\nGROUP BY Curso\nHAVING AVG(Idade) > 20;</code></pre><h3>Ordenação</h3><p><code>ORDER BY campo DESC</code> (decrescente) ou <code>ASC</code> (crescente).</p>",
+      "title": "Consultas SQL Avançadas e Junções",
+      "theory": "<h3>O Poder do SELECT</h3><p>Consultar dados é a operação mais frequente em bancos de dados. Além do <code>WHERE</code> para filtros simples, o SQL oferece ferramentas poderosas para análise complexa de dados.</p><h3>Filtragem Avançada com WHERE</h3><div class='theory-card'><strong>Operadores Lógicos:</strong> <code>AND</code>, <code>OR</code>, <code>NOT</code>.<br><strong>Operador IN:</strong> Verifica se o valor está em uma lista. <code>WHERE id IN (1, 2, 5)</code>.<br><strong>Operador BETWEEN:</strong> Se o valor está entre um intervalo. <code>WHERE preco BETWEEN 10 AND 50</code>.<br><strong>Operador LIKE:</strong> Busca por padrões em texto.<br> - <code>%</code>: Qualquer sequência de caracteres.<br> - <code>_</code>: Um único caractere.<br>Ex: <code>WHERE nome LIKE 'A%'</code> (Começa com A).</div><h3>Funções de Agregação</h3><p>Usadas para realizar cálculos sobre um conjunto de registros:</p><ul><li><strong>COUNT(*):</strong> Conta o total de linhas. <code>COUNT(coluna)</code> ignora nulos.</li><li><strong>SUM(coluna):</strong> Soma os valores.</li><li><strong>AVG(coluna):</strong> Calcula a média aritmética.</li><li><strong>MAX(coluna) / MIN(coluna):</strong> Maior e menor valor.</li></ul><h3>Agrupamento: GROUP BY e HAVING</h3><div class='theory-card'><strong>GROUP BY:</strong> Agrupa linhas que têm valores iguais em colunas específicas, criando 'resumos'.</div><div class='theory-card'><strong>HAVING:</strong> O filtro dos grupos. A diferença vital: <code>WHERE</code> filtra linhas <strong>antes</strong> de agrupar. <code>HAVING</code> filtra os resultados <strong>depois</strong> das agregações.</div><pre><code>-- Departamentos com média salarial > 5000\nSELECT Depto, AVG(Salario)\nFROM Funcionarios\nGROUP BY Depto\nHAVING AVG(Salario) > 5000;</code></pre><h3>Subconsultas (Subqueries)</h3><p>Uma query dentro de outra. Podem retornar um único valor, uma lista ou uma tabela.</p><pre><code>-- Quem ganha mais que a média?\nSELECT Nome FROM Func \nWHERE Salario > (SELECT AVG(Salario) FROM Func);</code></pre><h3>Ordem de Execução Lógica</h3><p>O SQL não executa na ordem que escrevemos. A ordem real é:</p><ol><li><strong>FROM / JOIN:</strong> Pega as tabelas.</li><li><strong>WHERE:</strong> Filtra as linhas.</li><li><strong>GROUP BY:</strong> Agrupa.</li><li><strong>HAVING:</strong> Filtra grupos.</li><li><strong>SELECT:</strong> Escolhe colunas.</li><li><strong>ORDER BY:</strong> Ordena.</li><li><strong>LIMIT:</strong> Limita linhas.</li></ol>",
       "key_concepts": [
         {
           "term": "INNER JOIN",
@@ -1523,7 +1523,19 @@ window.TUTORIA_DATA = {
         },
         {
           "term": "HAVING",
-          "definition": "Filtra grupos criados pelo GROUP BY (funciona com agragados)."
+          "definition": "Filtra grupos criados pelo GROUP BY (funciona com agregados)."
+        },
+        {
+          "term": "LIKE",
+          "definition": "Operador de busca de padrões em texto (% para muitos chars, _ para um)."
+        },
+        {
+          "term": "Subconsulta",
+          "definition": "Consulta aninhada dentro de outra instrução SQL."
+        },
+        {
+          "term": "Funções de Agregação",
+          "definition": "Cálculos em conjuntos de dados: COUNT, SUM, AVG, MAX, MIN."
         }
       ],
       "video_summaries": [
@@ -1542,13 +1554,15 @@ window.TUTORIA_DATA = {
       ],
       "study_tips": [
         "Where filtra linha, Having filtra grupo.",
-        "Null em operações matemáticas geralmente anula o resultado.",
-        "Left Join é útil para achar registros 'órfãos' ou sem correspondência."
+        "O operador LIKE é case-insensitive em alguns bancos, mas sensitive em outros (como PostgreSQL).",
+        "Sempre pense na ordem de execução: FROM -> WHERE -> GROUP BY...",
+        "Subconsultas no WHERE costumam ser menos eficientes que JOINs em grandes volumes."
       ],
       "quiz_tips": [
         "Ordem lógica: FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY.",
         "Count(*) conta linhas, Count(campo) ignora nulos.",
-        "Se usou Group By, o Select só pode ter as colunas do grupo ou funções de agregação."
+        "Se usou Group By, o Select só pode ter as colunas do grupo ou funções de agregação.",
+        "LIKE '%a' termina com a; LIKE 'a%' começa com a."
       ],
       "book_references": "Elmasri & Navathe, Cap 7"
     },
