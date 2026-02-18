@@ -96,8 +96,9 @@ a {
   padding: var(--space-md) 0;
   border-bottom: 1px solid rgba(44, 19, 56, 0.1);
   background: var(--bg-primary);
-  position: sticky;
-  top: 0;
+  position: relative;
+  /* changed from sticky to relative */
+  /* top: 0; remove top since it's not sticky/fixed */
   z-index: 100;
 }
 
