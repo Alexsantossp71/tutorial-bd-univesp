@@ -274,9 +274,9 @@
                 if (window.TUTORIA_DATA) {
                     // Local / Offline Mode
                     console.log('📦 Loading data from local bundle...');
-                    examQs = JSON.parse(window.TUTORIA_DATA.examQuestions);
-                    studyData = JSON.parse(window.TUTORIA_DATA.weekData);
-                    enrichedData = JSON.parse(window.TUTORIA_DATA.weekContent);
+                    examQs = window.TUTORIA_DATA.examQuestions;
+                    studyData = window.TUTORIA_DATA.weekData;
+                    enrichedData = window.TUTORIA_DATA.weekContent;
                 } else {
                     // Server Mode
                     const [examRes, studyRes, enrichedRes] = await Promise.all([
