@@ -98,51 +98,59 @@
     "book_references": "Elmasri & Navathe, Cap 5"
   },
   "3": {
-    "title": "Álgebra Relacional",
-    "theory": "<h3>A Matemática dos Dados</h3><p>Antes do SQL, existe a Álgebra Relacional. Ela é uma linguagem <strong>procedural</strong> que define as operações passo-a-passo para obter dados.</p><h3>Operações Fundamentais</h3><div class='theory-card'><strong>Seleção (σ - Sigma):</strong> Filtra <strong>LINHAS</strong> que satisfazem uma condição. Equivale ao <code>WHERE</code> do SQL.<br><em>Ex: σ idade > 18 (Alunos)</em></div><div class='theory-card'><strong>Projeção (π - Pi):</strong> Filtra <strong>COLUNAS</strong>, descartando as outras. Equivale ao <code>SELECT nome, cpf</code>.<br><em>Ex: π nome (Alunos)</em></div><div class='theory-card'><strong>Produto Cartesiano (X):</strong> Combina <strong>TODAS</strong> as linhas de A com TODAS as linhas de B. Resultado gigante (Linhas A * Linhas B). Geralmente inútil sem filtro.</div><div class='theory-card'><strong>Junção (⨝ - Bowtie):</strong> É um Produto Cartesiano seguido de uma Seleção. Combina tabelas baseando-se em colunas comuns (FK = PK). Equivale ao <code>JOIN</code>.</div><div class='theory-card'><strong>União (U):</strong> Junta os resultados de duas consultas (precisam ter as mesmas colunas).</div><h3>Procedural vs Declarativa</h3><p>A Álgebra é procedural (diz COMO fazer: pegue tabela, filtre linha, projete coluna). O SQL é declarativo (diz O QUE eu quero: Traga nomes dos alunos maiores de idade).</p>",
+    "title": "Normalização e Qualidade de Dados",
+    "theory": "<h3>Aprofundando em Normalização</h3><p>Normalização não é apenas separar dados; é garantir que cada tabela represente um conceito único. O objetivo é eliminar <strong>Anomalias de Atualização</strong>, <strong>Inserção</strong> e <strong>Exclusão</strong> que ocorrem em tabelas mal projetadas com dados redundantes.</p><h3>Conceitos Fundamentais</h3><div class='theory-card'><strong>Dependência Funcional (X → Y):</strong> Significa que se eu sei o valor de X, eu sei obrigatoriamente o valor de Y. Ex: CPF → Nome.</div><div class='theory-card'><strong>Dependência Funcional Total:</strong> O atributo depende da chave primária inteira.</div><div class='theory-card'><strong>Dependência Parcial:</strong> O atributo depende apenas de <em>uma parte</em> da chave primária composta (Viola a 2FN).</div><div class='theory-card'><strong>Dependência Transitiva:</strong> Um atributo não-chave depende de outro atributo não-chave (Viola a 3FN).</div><h3>As Formas Normais em Detalhe</h3><p>Cada forma normal pressupõe que a tabela já está na forma anterior.</p><div class='theory-card'><strong>1ª Forma Normal (1FN): O Fim dos Grupos Repetitivos.</strong><br>Exige <strong>Atomicidade</strong>. Uma célula deve conter apenas um valor. Não pode ter listas (telefone1, telefone2) ou vetores. Solução: Crie uma nova tabela para o atributo multivalorado.</div><div class='theory-card'><strong>2ª Forma Normal (2FN): Dependência Total da Chave.</strong><br>Só se aplica se a chave for Composta (ex: CursoID, AlunoID). Se a tabela tem chave simples, já está na 2FN. Violada quando um atributo (ex: Nome do Curso) depende só de parte da chave (CursoID). Solução: Mova o atributo para sua tabela de origem.</div><div class='theory-card'><strong>3ª Forma Normal (3FN): Independência entre Não-Chaves.</strong><br>Elimina a Dependência Transitiva. Ex: Em 'Pedidos', se tivermos 'Cidade' dependendo de 'CEP', isso viola a 3FN. 'Cidade' deve ficar numa tabela de CEPs, não na tabela de Pedidos.</div><div class='theory-card'><strong>Forma Normal de Boyce-Codd (FNBC):</strong> Mais rigorosa que a 3FN. Exige que <strong>todo determinante seja uma superchave</strong>. Resolve casos raros de chaves compostas sobrepostas.</div>",
     "key_concepts": [
       {
-        "term": "Seleção (σ)",
-        "definition": "Operação que filtra linhas (tuplas) baseado em critério."
+        "term": "Normalização",
+        "definition": "Técnica para organizar dados e reduzir redundância e anomalias."
       },
       {
-        "term": "Projeção (π)",
-        "definition": "Operação que seleciona colunas (atributos) específicas."
+        "term": "1FN",
+        "definition": "Exige valores atômicos e indivisíveis. Sem grupos repetitivos."
       },
       {
-        "term": "Produto Cartesiano",
-        "definition": "Combinação de todas as tuplas de duas relações."
+        "term": "2FN",
+        "definition": "Exige dependência funcional total da chave primária."
       },
       {
-        "term": "Junção (⨝)",
-        "definition": "Combinação de tuplas relacionadas de duas tabelas."
+        "term": "3FN",
+        "definition": "Exige ausência de dependências transitivas entre atributos não-chave."
+      },
+      {
+        "term": "Dependência Transitiva",
+        "definition": "Quando A -> B e B -> C."
+      },
+      {
+        "term": "Dependência Parcial",
+        "definition": "Quando um atributo depende só de parte de uma chave composta."
       }
     ],
     "video_summaries": [
       {
-        "number": 7,
-        "summary": "Introdução à Álgebra Relacional."
+        "number": 16,
+        "summary": "Conceitos de Dependência Funcional e Anomalias."
       },
       {
-        "number": 8,
-        "summary": "Operações Unárias: Seleção e Projeção."
+        "number": 17,
+        "summary": "Aplicando a 1ª e 2ª Formas Normais."
       },
       {
-        "number": 9,
-        "summary": "Operações Binárias: Junção e Produto Cartesiano."
+        "number": 18,
+        "summary": "3ª Forma Normal e FNBC."
       }
     ],
     "study_tips": [
-      "Associe Sigma (σ) com 'Select rows' (WHERE).",
-      "Associe Pi (π) com 'Pick columns' (SELECT list).",
-      "Junção é a operação mais custosa e importante."
+      "Para 1FN: Pense em 'uma informação por campo'.",
+      "Para 2FN: Olhe para chaves compostas. Se a chave é simples, pule para 3FN.",
+      "Para 3FN: Olhe para colunas comuns (ex: descrição de status) que se repetem."
     ],
     "quiz_tips": [
-      "Produto Cartesiano de tabela com 10 linhas x tabela com 5 linhas = 50 linhas.",
-      "Junção Natural remove colunas duplicadas automaticamente.",
-      "SQL é baseada na Álgebra Relacional."
+      "Listas ou arrays num campo violam a 1FN.",
+      "Se um atributo depende de outro que não é a chave principal, viola 3FN.",
+      "A Normalização geralmente aumenta o número de tabelas (JOINs necessários), mas melhora a integridade."
     ],
-    "book_references": "Elmasri & Navathe, Cap 8"
+    "book_references": "Elmasri & Navathe, Cap 14"
   },
   "4": {
     "title": "SQL: DDL e Manipulação",
@@ -239,55 +247,51 @@
     "book_references": "Elmasri & Navathe, Cap 7"
   },
   "6": {
-    "title": "Normalização e Qualidade",
-    "theory": "<h3>Por Que Normalizar?</h3><p>Normalização é um processo científico para organizar tabelas e evitar <strong>Redundância</strong> e <strong>Anomalias</strong>. Um banco mal projetado causa inconsistência (ex: mudar o endereço do cliente em 10 lugares diferentes).</p><h3>Formas Normais</h3><div class='theory-card'><strong>1FN (Primeira Forma Normal):</strong> Atomicidade. Nada de listas, vetores ou tabelas aninhadas dentro de um campo. Cada célula = 1 valor.</div><div class='theory-card'><strong>2FN (Segunda Forma Normal):</strong> Dependência Parcial. (Só se aplica a Chaves Compostas). Todo atributo deve depender da Chave Primária <em>Inteira</em>, e não só de um pedaço dela.</div><div class='theory-card'><strong>3FN (Terceira Forma Normal):</strong> Dependência Transitiva. Atributo não pode depender de outro atributo que não seja chave (ex: Nome do Estado depender da Sigla do Estado, e não do ID da pessoa).</div><h3>Dependência Funcional</h3><p>É quando 'A determina B'. Se eu sei o CPF (A), eu sei o Nome (B). Normalizar é garantir que todas as dependências funcionais apontem para a Chave Primária.</p><h3>Anomalias</h3><p>Sem normalizar, sofremos anomalias de Inserção (não posso cadastrar curso sem aluno), Exclusão (apago aluno e curso some junto) e Modificação.</p>",
+    "title": "Álgebra Relacional",
+    "theory": "<h3>A Matemática por trás do Banco de Dados</h3><p>A Álgebra Relacional é a linguagem formal que fundamenta o SQL. Enquanto o SQL é prático, a Álgebra define a lógica exata de como os dados são manipulados.</p><h3>Operações Fundamentais</h3><div class='theory-card'><strong>Seleção (σ - Sigma):</strong> Corta a tabela na HORIZONTAL. Seleciona linhas que cumprem uma regra. Equivalente ao <code>WHERE</code>.</div><div class='theory-card'><strong>Projeção (π - Pi):</strong> Corta a tabela na VERTICAL. Seleciona apenas as colunas desejadas. Equivalente ao <code>SELECT col1, col2</code>.</div><div class='theory-card'><strong>Produto Cartesiano (X):</strong> Combina todas as linhas da Tabela A com todas da Tabela B. Se A tem 10 linhas e B tem 5, o resultado tem 50 linhas. Base para o JOIN.</div><div class='theory-card'><strong>Junção (⨝ - Bowtie):</strong> É a operação mais importante. Conecta tabelas baseada em valores comuns (Chaves).</div><div class='theory-card'><strong>União (U):</strong> Soma os resultados de duas tabelas compatíveis (mesmas colunas).</div><h3>Procedural</h3><p>A Álgebra é dita <strong>Procedural</strong> porque especifica passo-a-passo COMO obter o dado, ao contrário do SQL (Cálculo Relacional) que é Declarativo (diz apenas o que quer).</p>",
     "key_concepts": [
       {
-        "term": "Normalização",
-        "definition": "Processo de decomposição de tabelas para reduzir redundância."
+        "term": "Seleção (σ)",
+        "definition": "Operação unária que filtra as tuplas de uma relação."
       },
       {
-        "term": "1FN",
-        "definition": "Elimina grupos de repetição e garante atomicidade."
+        "term": "Projeção (π)",
+        "definition": "Operação unária que filtra os atributos (colunas) de uma relação."
       },
       {
-        "term": "2FN",
-        "definition": "Remove dependências parciais da chave primária."
+        "term": "Produto Cartesiano",
+        "definition": "Operação binária que combina todas as possíveis pares de tuplas."
       },
       {
-        "term": "3FN",
-        "definition": "Remove dependências transitivas (coluna dependendo de coluna não-chave)."
-      },
-      {
-        "term": "Anomalias",
-        "definition": "Erros lógicos ao inserir, apagar ou atualizar dados redundantes."
+        "term": "Junção Natural",
+        "definition": "Combinação baseada em atributos com mesmo nome e tipo."
       }
     ],
     "video_summaries": [
       {
-        "number": 16,
-        "summary": "Conceitos de Dependência Funcional."
+        "number": 7,
+        "summary": "Introdução à Álgebra Relacional."
       },
       {
-        "number": 17,
-        "summary": "1ª e 2ª Formas Normais."
+        "number": 8,
+        "summary": "Operações Unárias: Seleção e Projeção."
       },
       {
-        "number": 18,
-        "summary": "3ª Forma Normal e Forma Normal de Boyce-Codd (FNBC)."
+        "number": 9,
+        "summary": "Operações de Conjunto: União, Interseção, Diferença."
       }
     ],
     "study_tips": [
-      "A 3FN é o padrão de mercado para bancos transacionais.",
-      "Desnormalizar as vezes é necessário para performance (Data Warehouses), mas exige cuidado.",
-      "Dependência Funcional é a base matemática da normalização."
+      "Memorize os símbolos gregos: Sigma (σ) = Select/Where, Pi (π) = Projection/Select List.",
+      "Produto cartesiano gera crescimento exponencial de dados, cuidado.",
+      "Junção = Produto Cartesiano + Seleção."
     ],
     "quiz_tips": [
-      "Se tem lista no campo, viola 1FN.",
-      "Se depende de parte da chave, viola 2FN.",
-      "Se A->B e B->C, então A->C (Transitividade) viola 3FN."
+      "SQL 'SELECT * FROM T WHERE id=1' em álgebra é uma Seleção (Sigma), não Projeção.",
+      "Projeção remove duplicatas na teoria matemática (pois conjuntos não têm repetidos).",
+      "União exige que as tabelas tenham a mesma estrutura (união-compatíveis)."
     ],
-    "book_references": "Elmasri & Navathe, Cap 14"
+    "book_references": "Elmasri & Navathe, Cap 8"
   },
   "7": {
     "title": "Transações e Concorrência",
