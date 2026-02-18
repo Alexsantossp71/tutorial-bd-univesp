@@ -222,81 +222,81 @@
     ]
   },
   "3": {
-    "image": "operacao_selecao.svg",
+    "image": "normalizacao.svg",
     "flashcards": [
       {
-        "front": "SELEÇÃO (σ)",
-        "back": "Filtra LINHAS de uma tabela com base em uma condição (Horizontal). EQ: WHERE."
+        "front": "NORMALIZAÇÃO",
+        "back": "Processo de organização de dados para reduzir redundância e melhorar integridade."
       },
       {
-        "front": "PROJEÇÃO (π)",
-        "back": "Filtra COLUNAS de uma tabela, descartando as outras (Vertical). EQ: SELECT."
+        "front": "1FN",
+        "back": "Primeira Forma Normal. Exige atomicidade (um valor por célula, sem listas)."
       },
       {
-        "front": "PRODUTO CARTESIANO (X)",
-        "back": "Combina cada linha de uma tabela com todas as linhas de outra. Gera Tabela A x Tabela B linhas."
+        "front": "2FN",
+        "back": "Segunda Forma Normal. Elimina dependência PARCIAL da chave primária (apenas para chaves compostas)."
       },
       {
-        "front": "JUNÇÃO (⨝)",
-        "back": "Operação que combina tuplas relacionadas de duas tabelas (geralmente via Chave Estrangeira)."
+        "front": "3FN",
+        "back": "Terceira Forma Normal. Elimina dependência TRANSITIVA (atributo dependendo de atributo não-chave)."
       },
       {
-        "front": "PROCEDURAL",
-        "back": "Linguagem que especifica COMO obter os dados (Álgebra) vs O QUE obter (Cálculo/SQL)."
+        "front": "ANOMALIA",
+        "back": "Problema causado por má estruturação (ex: alterar endereço de um cliente e ter que mudar em 50 pedidos)."
       },
       {
-        "front": "UNIÃO (U)",
-        "back": "Combina o resultado de duas consultas, retornando registros que estão em uma, na outra ou em ambas."
+        "front": "DEPENDÊNCIA FUNCIONAL",
+        "back": "Quando o valor de um ou mais atributos determina exclusivamente o valor de outro atributo."
       }
     ],
     "quiz": [
       {
-        "question": "Qual operação da álgebra relacional corresponde à cláusula WHERE do SQL?",
+        "question": "Para uma tabela estar na 2FN, ela primeiramente precisa atender a qual requisito?",
         "options": [
-          "Projeção (π)",
-          "Seleção (σ)",
-          "Junção (⨝)",
-          "União (U)"
+          "Ter Chave Estrangeira",
+          "Estar na 1FN",
+          "Estar na 3FN",
+          "Ter poucos dados"
         ],
         "correct": 1
       },
       {
-        "question": "Se a Tabela A tem 10 linhas e a Tabela B tem 5 linhas, quantas linhas terá o Produto Cartesiano (A X B)?",
+        "question": "O que caracteriza a 1ª Forma Normal (1FN)?",
         "options": [
-          "15",
-          "50",
-          "5",
-          "100"
+          "Tabelas separadas",
+          "Valores atômicos e indivisíveis",
+          "Chaves primárias compostas",
+          "Uso de JSON"
         ],
         "correct": 1
       },
       {
-        "question": "A operação de Projeção (π) atua sobre:",
+        "question": "Uma 'Dependência Transitiva' viola qual forma normal?",
         "options": [
-          "Linhas (reduzindo quantidade de registros)",
-          "Colunas (reduzindo atributos)",
-          "Tabelas (unindo dados)",
-          "Chaves (criando PKs)"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Qual o símbolo da Junção Natural?",
-        "options": [
-          "σ (sigma)",
-          "π (pi)",
-          "⨝ (borboleta)",
-          "U (união)"
+          "1FN",
+          "2FN",
+          "3FN",
+          "4FN"
         ],
         "correct": 2
       },
       {
-        "question": "A Álgebra Relacional é considerada uma linguagem:",
+        "question": "Qual o principal objetivo da normalização?",
         "options": [
-          "Declarativa (O Que)",
-          "Procedural (Como)",
-          "Orientada a Objetos",
-          "Funcional"
+          "Aumentar o espaço em disco",
+          "Reduzir redundâncias e evitar inconsistências",
+          "Deixar o banco mais lento",
+          "Criptografar dados"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Se um atributo depende apenas de PARTE da chave primária composta, ele viola a:",
+        "options": [
+          "1FN",
+          "2FN",
+          "3FN",
+          "BCNF"
         ],
         "correct": 1
       }
@@ -465,81 +465,81 @@
     ]
   },
   "6": {
-    "image": "normalizacao.svg",
+    "image": "operacao_selecao.svg",
     "flashcards": [
       {
-        "front": "NORMALIZAÇÃO",
-        "back": "Processo de organização de dados para reduzir redundância e melhorar integridade."
+        "front": "SELEÇÃO (σ)",
+        "back": "Filtra LINHAS de uma tabela com base em uma condição (Horizontal). EQ: WHERE."
       },
       {
-        "front": "1FN",
-        "back": "Primeira Forma Normal. Exige atomicidade (um valor por célula, sem listas)."
+        "front": "PROJEÇÃO (π)",
+        "back": "Filtra COLUNAS de uma tabela, descartando as outras (Vertical). EQ: SELECT."
       },
       {
-        "front": "2FN",
-        "back": "Segunda Forma Normal. Elimina dependência PARCIAL da chave primária (apenas para chaves compostas)."
+        "front": "PRODUTO CARTESIANO (X)",
+        "back": "Combina cada linha de uma tabela com todas as linhas de outra. Gera Tabela A x Tabela B linhas."
       },
       {
-        "front": "3FN",
-        "back": "Terceira Forma Normal. Elimina dependência TRANSITIVA (atributo dependendo de atributo não-chave)."
+        "front": "JUNÇÃO (⨝)",
+        "back": "Operação que combina tuplas relacionadas de duas tabelas (geralmente via Chave Estrangeira)."
       },
       {
-        "front": "ANOMALIA",
-        "back": "Problema causado por má estruturação (ex: alterar endereço de um cliente e ter que mudar em 50 pedidos)."
+        "front": "PROCEDURAL",
+        "back": "Linguagem que especifica COMO obter os dados (Álgebra) vs O QUE obter (Cálculo/SQL)."
       },
       {
-        "front": "DEPENDÊNCIA FUNCIONAL",
-        "back": "Quando o valor de um ou mais atributos determina exclusivamente o valor de outro atributo."
+        "front": "UNIÃO (U)",
+        "back": "Combina o resultado de duas consultas, retornando registros que estão em uma, na outra ou em ambas."
       }
     ],
     "quiz": [
       {
-        "question": "Para uma tabela estar na 2FN, ela primeiramente precisa atender a qual requisito?",
+        "question": "Qual operação da álgebra relacional corresponde à cláusula WHERE do SQL?",
         "options": [
-          "Ter Chave Estrangeira",
-          "Estar na 1FN",
-          "Estar na 3FN",
-          "Ter poucos dados"
+          "Projeção (π)",
+          "Seleção (σ)",
+          "Junção (⨝)",
+          "União (U)"
         ],
         "correct": 1
       },
       {
-        "question": "O que caracteriza a 1ª Forma Normal (1FN)?",
+        "question": "Se a Tabela A tem 10 linhas e a Tabela B tem 5 linhas, quantas linhas terá o Produto Cartesiano (A X B)?",
         "options": [
-          "Tabelas separadas",
-          "Valores atômicos e indivisíveis",
-          "Chaves primárias compostas",
-          "Uso de JSON"
+          "15",
+          "50",
+          "5",
+          "100"
         ],
         "correct": 1
       },
       {
-        "question": "Uma 'Dependência Transitiva' viola qual forma normal?",
+        "question": "A operação de Projeção (π) atua sobre:",
         "options": [
-          "1FN",
-          "2FN",
-          "3FN",
-          "4FN"
+          "Linhas (reduzindo quantidade de registros)",
+          "Colunas (reduzindo atributos)",
+          "Tabelas (unindo dados)",
+          "Chaves (criando PKs)"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Qual o símbolo da Junção Natural?",
+        "options": [
+          "σ (sigma)",
+          "π (pi)",
+          "⨝ (borboleta)",
+          "U (união)"
         ],
         "correct": 2
       },
       {
-        "question": "Qual o principal objetivo da normalização?",
+        "question": "A Álgebra Relacional é considerada uma linguagem:",
         "options": [
-          "Aumentar o espaço em disco",
-          "Reduzir redundâncias e evitar inconsistências",
-          "Deixar o banco mais lento",
-          "Criptografar dados"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Se um atributo depende apenas de PARTE da chave primária composta, ele viola a:",
-        "options": [
-          "1FN",
-          "2FN",
-          "3FN",
-          "BCNF"
+          "Declarativa (O Que)",
+          "Procedural (Como)",
+          "Orientada a Objetos",
+          "Funcional"
         ],
         "correct": 1
       }
@@ -601,26 +601,6 @@
           "Estão salvos (Durabilidade)",
           "Ficam corrompidos",
           "Depende da sorte"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Qual propriedade garante que transações simultâneas não gerem conflitos?",
-        "options": [
-          "Atomicidade",
-          "Consistência",
-          "Isolamento",
-          "Durabilidade"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "O comando ROLLBACK serve para:",
-        "options": [
-          "Apagar o banco",
-          "Desfazer a transação",
-          "Criar um backup",
-          "Reiniciar o servidor"
         ],
         "correct": 1
       }
