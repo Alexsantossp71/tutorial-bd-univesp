@@ -22,7 +22,7 @@
         </g>
         
         <!-- Chaos indicator -->
-        <text x="125" y="150" font-family="Arial" font-size="14" fill="#ef4444" text-anchor="middle" font-style="italic">Redundância & Anomalias</text>
+        <text x="125" y="150" font-family="Arial" font-size="14" fill="#ef4444" text-anchor="middle" font-style="italic">Redundância &amp; Anomalias</text>
     </g>
 
     <!-- Arrow -->
