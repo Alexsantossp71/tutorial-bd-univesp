@@ -184,12 +184,16 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="container">
-            <h1 id="week-title">Semana <span id="hero-week-num">-</span>: <span id="hero-title">Carregando...</span>
-            </h1>
-            <p id="week-subtitle">Domine os conceitos fundamentais de Banco de Dados com TutorIA.</p>
-            <div class="btn-group">
-                <a href="#theory" class="btn btn-secondary">Estudar Teoria</a>
-                <a href="#quiz" class="btn btn-primary">Testar Conhecimentos</a>
+            <div class="hero-content">
+                <img id="hero-image" src="" alt="Week Icon" class="hero-icon"
+                    style="max-width: 150px; margin-bottom: 2rem; display: none;">
+                <h1 id="week-title">Semana <span id="hero-week-num">-</span>: <span id="hero-title">Carregando...</span>
+                </h1>
+                <p id="week-subtitle">Domine os conceitos fundamentais de Banco de Dados com TutorIA.</p>
+                <div class="btn-group">
+                    <a href="#theory" class="btn btn-secondary">Estudar Teoria</a>
+                    <a href="#quiz" class="btn btn-primary">Testar Conhecimentos</a>
+                </div>
             </div>
         </div>
     </header>
@@ -298,6 +302,11 @@
             document.getElementById('week-subtitle').textContent = meta.subtitle;
 
             // Image fallback logic is now handled inside the theory-content loop
+            if (meta.image) {
+                const heroImg = document.getElementById('hero-image');
+                heroImg.src = meta.image;
+                heroImg.style.display = 'inline-block';
+            }
 
             try {
                 let examQs, studyData, enrichedData;
