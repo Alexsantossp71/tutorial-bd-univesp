@@ -147,6 +147,7 @@
     <!-- Scripts -->
     <script src="js/quiz-engine.js"></script>
     <script src="js/quiz-ui.js"></script>
+    <script src="js/data-loader.js"></script>
     <script>
         // ---- Data ----
         let examQuestions = {};
@@ -160,13 +161,23 @@
         // ---- Load Data ----
         async function loadData() {
             try {
-                const [examRes, studyRes] = await Promise.all([
-                    fetch('data/exam_questions.json'),
-                    fetch('data/week_data.json')
-                ]);
+                let studyData;
 
-                examQuestions = await examRes.json();
-                const studyData = await studyRes.json();
+                if (window.TUTORIA_DATA) {
+                    // Local / Offline Mode
+                    console.log('📦 Loading data from local bundle...');
+                    examQuestions = JSON.parse(window.TUTORIA_DATA.examQuestions);
+                    studyData = JSON.parse(window.TUTORIA_DATA.weekData);
+                } else {
+                    // Server Mode
+                    const [examRes, studyRes] = await Promise.all([
+                        fetch('data/exam_questions.json'),
+                        fetch('data/week_data.json')
+                    ]);
+
+                    examQuestions = await examRes.json();
+                    studyData = await studyRes.json();
+                }
 
                 // Convert study questions to same format as exam questions
                 studyQuestions = {};

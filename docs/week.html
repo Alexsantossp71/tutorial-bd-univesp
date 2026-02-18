@@ -159,7 +159,7 @@
             <h1 id="week-title">Semana <span id="hero-week-num">-</span>: <span id="hero-title">Carregando...</span>
             </h1>
             <p id="week-subtitle">Domine os conceitos fundamentais de Banco de Dados com TutorIA.</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+            <div class="btn-group">
                 <a href="#theory" class="btn btn-secondary">Estudar Teoria</a>
                 <a href="#quiz" class="btn btn-primary">Testar Conhecimentos</a>
             </div>
@@ -232,6 +232,7 @@
 
     <script src="js/quiz-engine.js"></script>
     <script src="js/quiz-ui.js"></script>
+    <script src="js/data-loader.js"></script>
     <script>
         const weekMeta = {
             1: { title: 'Modelagem Conceitual', subtitle: 'MER, Entidades, Atributos, Relacionamentos', image: 'assets/images/dados_vs_informacao.svg' },
@@ -268,14 +269,25 @@
             // Image fallback logic is now handled inside the theory-content loop
 
             try {
-                const [examRes, studyRes, enrichedRes] = await Promise.all([
-                    fetch('data/exam_questions.json'),
-                    fetch('data/week_data.json'),
-                    fetch('data/week_content.json')
-                ]);
-                const examQs = await examRes.json();
-                const studyData = await studyRes.json();
-                const enrichedData = await enrichedRes.json();
+                let examQs, studyData, enrichedData;
+
+                if (window.TUTORIA_DATA) {
+                    // Local / Offline Mode
+                    console.log('📦 Loading data from local bundle...');
+                    examQs = JSON.parse(window.TUTORIA_DATA.examQuestions);
+                    studyData = JSON.parse(window.TUTORIA_DATA.weekData);
+                    enrichedData = JSON.parse(window.TUTORIA_DATA.weekContent);
+                } else {
+                    // Server Mode
+                    const [examRes, studyRes, enrichedRes] = await Promise.all([
+                        fetch('data/exam_questions.json'),
+                        fetch('data/week_data.json'),
+                        fetch('data/week_content.json')
+                    ]);
+                    examQs = await examRes.json();
+                    studyData = await studyRes.json();
+                    enrichedData = await enrichedRes.json();
+                }
 
                 // --- Theory Content ---
                 const currentWeekData = enrichedData[currentWeek.toString()];

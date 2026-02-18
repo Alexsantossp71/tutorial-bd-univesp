@@ -27,28 +27,25 @@
     <!-- Hero -->
     <header class="hero">
         <div class="container">
-            <h1 style="font-family: 'Lora', serif; font-size: 5rem; letter-spacing: -2px;">Estude Banco de Dados <span
-                    style="color: var(--toggl-pink);">sem stress.</span></h1>
-            <p style="max-width: 700px; margin: 0 auto var(--space-lg); font-size: 1.4rem;">
+            <h1 class="hero-title-large">Estude Banco de Dados <span class="text-gradient">sem stress.</span></h1>
+            <p>
                 A ferramenta completa para alunos da UNIVESP dominarem a disciplina COM300.
                 Quiz, teoria e jogos em um só lugar.
             </p>
-            <div style="display: flex; gap: 1rem; justify-content: center;">
-                <a href="week.html?week=1" class="btn btn-primary"
-                    style="padding: 1.2rem 2.5rem; font-size: 1.2rem;">Começar Agora</a>
-                <a href="syllabus.html" class="btn btn-outline" style="padding: 1.2rem 2.5rem; font-size: 1.2rem;">Ver
-                    Jornada</a>
+            <div class="btn-group">
+                <a href="week.html?week=1" class="btn btn-primary btn-lg">Começar Agora</a>
+                <a href="syllabus.html" class="btn btn-outline btn-lg">Ver Jornada</a>
             </div>
-            <div style="margin-top: 4rem;">
+            <div style="margin-top: var(--space-xl);">
                 <img src="assets/images/dados_vs_informacao.svg" alt="Illustration"
-                    style="max-width: 500px; opacity: 0.9;">
+                    style="max-width: 100%; height: auto; max-height: 400px; opacity: 0.9;">
             </div>
         </div>
     </header>
 
     <!-- Stats Section -->
     <section class="section">
-        <div class="container" style="display: flex; justify-content: space-around; text-align: center;">
+        <div class="container stats-grid">
             <div>
                 <div style="font-size: 4rem; font-weight: 900; color: var(--toggl-pink);">7</div>
                 <p style="font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Semanas</p>
@@ -65,26 +62,24 @@
     </section>
 
     <!-- Features Section (Bento Grid Style) -->
-    <section class="section" style="background: var(--toggl-purple); color: white;">
+    <section class="section section-dark">
         <div class="container">
-            <h2 class="section-title" style="color: white; font-family: 'Lora', serif;">Tudo o que você precisa.</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <div
-                    style="background: rgba(255,255,255,0.05); padding: 3rem; border-radius: 2rem; border: 1px solid rgba(255,255,255,0.1);">
+            <h2 class="section-title" style="color: white; font-family: var(--font-serif);">Tudo o que você precisa.
+            </h2>
+            <div class="feature-grid">
+                <div class="feature-card">
                     <div style="font-size: 3rem; margin-bottom: 1.5rem;">📝</div>
                     <h3 style="font-size: 2rem;">Quiz de Provas</h3>
                     <p style="font-size: 1.1rem; opacity: 0.8;">Questões reais das provas anteriores da UNIVESP com
                         correção instantânea.</p>
                 </div>
-                <div
-                    style="background: rgba(255,255,255,0.05); padding: 3rem; border-radius: 2rem; border: 1px solid rgba(255,255,255,0.1);">
+                <div class="feature-card">
                     <div style="font-size: 3rem; margin-bottom: 1.5rem;">🃏</div>
                     <h3 style="font-size: 2rem;">Jogo da Memória</h3>
                     <p style="font-size: 1.1rem; opacity: 0.8;">Aprenda termos técnicos e definições fundamentais sem
                         cansar o cérebro.</p>
                 </div>
-                <div
-                    style="background: rgba(255,255,255,0.05); padding: 3rem; border-radius: 2rem; border: 1px solid rgba(255,255,255,0.1);">
+                <div class="feature-card">
                     <div style="font-size: 3rem; margin-bottom: 1.5rem;">📖</div>
                     <h3 style="font-size: 2rem;">Teoria Direta</h3>
                     <p style="font-size: 1.1rem; opacity: 0.8;">Resumos focados no que realmente cai nas provas,
