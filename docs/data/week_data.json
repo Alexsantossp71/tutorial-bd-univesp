@@ -162,6 +162,10 @@
       {
         "front": "TABELA ASSOCIATIVA",
         "back": "Tabela criada para resolver relacionamentos N:M (Muitos para Muitos)."
+      },
+      {
+        "front": "DOMÍNIO",
+        "back": "Conjunto de valores atômicos permitidos para um atributo."
       }
     ],
     "quiz": [
@@ -239,6 +243,10 @@
       {
         "front": "PROCEDURAL",
         "back": "Linguagem que especifica COMO obter os dados (Álgebra) vs O QUE obter (Cálculo/SQL)."
+      },
+      {
+        "front": "UNIÃO (U)",
+        "back": "Combina o resultado de duas consultas, retornando registros que estão em uma, na outra ou em ambas."
       }
     ],
     "quiz": [
@@ -316,6 +324,10 @@
       {
         "front": "TRUNCATE",
         "back": "Esvazia a tabela rapidamente, resetando a estrutura, mas não a apaga."
+      },
+      {
+        "front": "ALTER TABLE",
+        "back": "Comando DDL usado para adicionar, excluir ou modificar colunas de uma tabela existente."
       }
     ],
     "quiz": [
@@ -393,6 +405,10 @@
       {
         "front": "ORDER BY",
         "back": "Cláusula usada para ordenar o resultado (ASC ou DESC)."
+      },
+      {
+        "front": "WHERE",
+        "back": "Cláusula usada para filtrar registros antes de qualquer agrupamento."
       }
     ],
     "quiz": [
@@ -470,6 +486,10 @@
       {
         "front": "ANOMALIA",
         "back": "Problema causado por má estruturação (ex: alterar endereço de um cliente e ter que mudar em 50 pedidos)."
+      },
+      {
+        "front": "DEPENDÊNCIA FUNCIONAL",
+        "back": "Quando o valor de um ou mais atributos determina exclusivamente o valor de outro atributo."
       }
     ],
     "quiz": [
@@ -547,6 +567,10 @@
       {
         "front": "DURABILIDADE",
         "back": "Uma vez confirmada (commit), a alteração é permanente, mesmo em falhas de energia."
+      },
+      {
+        "front": "LOCK (Bloqueio)",
+        "back": "Mecanismo utilizado para controlar o acesso concorrente a dados, garantindo o isolamento."
       }
     ],
     "quiz": [
