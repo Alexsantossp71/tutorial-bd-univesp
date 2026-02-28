@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zine Histórico - The Arcade</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&amp;family=Bangers&amp;family=Permanent+Marker&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;family=Archivo+Black&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0caae4", // Cyan
+                        "secondary": "#EC008C", // Magenta
+                        "tertiary": "#FFF200", // Yellow
+                        "ink": "#1A1A1A", // Key Black
+                        "paper": "#F4F1EA", // Paper White
+                        "halftone": "#D1D3D4", // Grey
+                        "background-light": "#F4F1EA",
+                        "background-dark": "#101d22",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "comic": ["Bangers", "cursive"],
+                        "marker": ["Permanent Marker", "cursive"],
+                        "mono": ["Space Mono", "monospace"],
+                        "ui": ["Archivo Black", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem", 
+                        "lg": "0.25rem", 
+                        "xl": "0.5rem", 
+                        "full": "0.75rem",
+                        "sm": "0.125rem" // keeping consistent with user config
+                    },
+                    boxShadow: {
+                        "hard": "4px 4px 0px #1A1A1A",
+                        "hard-hover": "6px 6px 0px #EC008C",
+                        "hard-sm": "2px 2px 0px #1A1A1A",
+                    },
+                    backgroundImage: {
+                        'halftone-pattern': "radial-gradient(#D1D3D4 1px, transparent 1px)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Patterns and Utilities */
+        .bg-halftone {
+            background-size: 10px 10px;
+            background-image: radial-gradient(#1A1A1A 1px, transparent 1px);
+            opacity: 0.1;
+        }
+        
+        .bg-grid-paper {
+            background-size: 20px 20px;
+            background-image: linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+                              linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
+        }
+
+        .text-shadow-comic {
+            text-shadow: 2px 2px 0px #1A1A1A;
+        }
+
+        .wrinkled-paper {
+            background-color: #fff;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.2), 0 0 0 2px #f4f1ea inset;
+        }
+
+        /* Scanline effect for screens */
+        .scanlines {
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+            background-size: 100% 4px;
+        }
+
+        /* Cartridge plastic texture */
+        .plastic-texture {
+            background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h4v4H0z' fill='%239ca3af' fill-opacity='0.1'/%3E%3Cpath d='M0 0h1v1H0zM2 2h1v1H2z' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-paper font-display text-ink overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full bg-white border-b-4 border-ink shadow-hard">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<!-- Logo -->
+<div class="flex items-center gap-3 group cursor-pointer">
+<div class="bg-primary border-2 border-ink p-1 shadow-hard-sm group-hover:-translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-white">menu_book</span>
+</div>
+<h1 class="font-comic text-2xl tracking-wide text-ink transform -rotate-1">
+                        Zine <span class="text-primary text-shadow-comic text-white">Histórico</span>
+</h1>
+</div>
+<!-- Nav Links (Desktop) -->
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-ui text-sm uppercase hover:text-primary transition-colors" href="#">Kiosk</a>
+<a class="font-ui text-sm uppercase text-secondary underline decoration-4 decoration-tertiary underline-offset-4" href="#">Arcade</a>
+<a class="font-ui text-sm uppercase hover:text-primary transition-colors" href="#">Album</a>
+</nav>
+<!-- Stats & Profile -->
+<div class="flex items-center gap-6">
+<div class="hidden sm:flex items-center gap-2 bg-ink text-tertiary px-3 py-1 rounded border-2 border-transparent">
+<span class="material-symbols-outlined text-sm">local_fire_department</span>
+<span class="font-mono font-bold text-sm">12</span>
+</div>
+<button class="bg-tertiary hover:bg-primary border-2 border-ink px-4 py-1.5 shadow-hard-sm active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all flex items-center gap-2">
+<span class="font-ui text-xs font-black uppercase tracking-wider">4500 XP</span>
+</button>
+<div class="size-10 rounded-full border-2 border-ink bg-gray-200 overflow-hidden relative shadow-hard-sm">
+<img alt="User avatar showing a young student with glasses" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2DMLaZIjJHVvWkpPtBGZ9Fd7Q-Cfaal4iVqg3IW6mhH6cD6kw9Cm5rPJ1VfmLyDmRGVFUb_LO6JxpinR92eyJAkOd6XvttVamlfnA2JZsGZhVRR2viXjSw7DabekqOXR6B235b203ISwm4xGPrsczAC3LxpcN4iolDHs_ktrenoY_DtD66_XPoba5TTKtNCDQzGIc91QsQPPNgCQMxF3fycbXrAtONmCOoJuK-TtgzYV4MtaCZHOkJ7MeMcCmNppwkWdUyBRAAkI0"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 relative">
+<!-- Page Title Section -->
+<div class="mb-12 relative">
+<div class="absolute -top-6 -left-4 text-9xl font-comic text-gray-200 opacity-50 select-none z-0">PLAY</div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-6xl font-comic text-ink mb-2 text-shadow-comic text-white drop-shadow-lg" style="-webkit-text-stroke: 1.5px #1A1A1A;">THE ARCADE</h2>
+<p class="font-marker text-xl text-gray-600 rotate-1 bg-tertiary inline-block px-2">Escolha seu desafio!</p>
+</div>
+<!-- Filter Tabs -->
+<div class="flex gap-2 bg-ink p-1.5 rounded-lg shadow-hard self-start md:self-auto">
+<button class="bg-primary text-white font-ui text-xs px-4 py-2 rounded border border-transparent">TODOS</button>
+<button class="text-gray-400 hover:text-white font-ui text-xs px-4 py-2">QUIZ</button>
+<button class="text-gray-400 hover:text-white font-ui text-xs px-4 py-2">PUZZLE</button>
+<button class="text-gray-400 hover:text-white font-ui text-xs px-4 py-2">MEMORY</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-12 relative">
+<!-- Left Column: Cartridge Grid -->
+<div class="flex-1">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8">
+<!-- Cartridge 1: Memory Game -->
+<div class="group relative flex flex-col items-center">
+<div class="w-full aspect-[4/5] bg-neutral-300 rounded-t-lg border-4 border-ink shadow-hard group-hover:shadow-hard-hover group-hover:-translate-y-1 transition-all duration-200 relative overflow-hidden plastic-texture">
+<!-- Cartridge Ridges -->
+<div class="absolute top-0 w-full h-8 flex flex-col gap-1 p-2 opacity-20">
+<div class="h-0.5 w-full bg-black"></div>
+<div class="h-0.5 w-full bg-black"></div>
+<div class="h-0.5 w-full bg-black"></div>
+</div>
+<!-- Label Sticker -->
+<div class="absolute top-10 left-3 right-3 bottom-12 bg-white border-2 border-ink overflow-hidden flex flex-col">
+<div class="h-2/3 bg-cover bg-center relative border-b-2 border-ink" data-alt="Vintage black and white photo of a 1960s protest crowd in Brazil" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZdgggeHNx0mAADEmG5dHLaZsGaZi57U8j4mn3h_xqMUTyJpDtEpiFCaLM-0B84bo5EUPMUW85XrdVaRtBI--1J2qp8tQxde6mcMxSU7hk4wHdTkgCuTTofEyJuaAtBvuklJx3Ts3ZfVekxPGfW1UI-vFw4JvzCbleYpM1Bl500tKDLXKA8Vp6dgO053cjfDfVPARNstSmxQZY2qy5wIk6m3ICjOUrHleCokxekiTt3X-0vOzFLdl6Y6ZNN6ZdyvIN2dfUxyROR0oO');">
+<div class="absolute inset-0 bg-secondary/30 mix-blend-multiply"></div>
+<div class="absolute inset-0 bg-halftone"></div>
+</div>
+<div class="h-1/3 bg-tertiary p-2 flex items-center justify-center text-center relative overflow-hidden">
+<h3 class="font-comic text-2xl leading-none text-ink relative z-10">DITADURA MEMORY</h3>
+<div class="absolute -right-4 -bottom-4 text-ink/10 font-ui text-6xl select-none">?</div>
+</div>
+</div>
+<!-- Bottom Grip -->
+<div class="absolute bottom-0 w-full h-8 bg-neutral-400 border-t-2 border-ink/20"></div>
+</div>
+<!-- Action Area -->
+<div class="w-[90%] -mt-4 z-10">
+<button class="w-full bg-ink text-white hover:bg-primary hover:text-ink font-ui py-3 px-4 border-2 border-transparent hover:border-ink shadow-lg flex items-center justify-center gap-2 transition-colors uppercase tracking-widest text-sm rounded-sm">
+<span class="material-symbols-outlined text-lg animate-pulse">play_circle</span> Play
+                            </button>
+</div>
+</div>
+<!-- Cartridge 2: Quiz -->
+<div class="group relative flex flex-col items-center">
+<!-- New Badge -->
+<div class="absolute -top-4 -right-4 z-20 rotate-12 bg-secondary text-white font-ui text-xs px-3 py-1 border-2 border-ink shadow-sm">NOVO!</div>
+<div class="w-full aspect-[4/5] bg-neutral-300 rounded-t-lg border-4 border-ink shadow-hard group-hover:shadow-hard-hover group-hover:-translate-y-1 transition-all duration-200 relative overflow-hidden plastic-texture">
+<div class="absolute top-0 w-full h-8 flex flex-col gap-1 p-2 opacity-20">
+<div class="h-0.5 w-full bg-black"></div>
+<div class="h-0.5 w-full bg-black"></div>
+<div class="h-0.5 w-full bg-black"></div>
+</div>
+<div class="absolute top-10 left-3 right-3 bottom-12 bg-white border-2 border-ink overflow-hidden flex flex-col">
+<div class="h-2/3 bg-cover bg-center relative border-b-2 border-ink" data-alt="Industrial gears and machinery collage style" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBszTWCqqtYVsuvKaYr0b9_nfCVpgrhl2i5WOsO0RdgDAW2v38AmstXCJ1DHZoL5rX-LfQDEgS2qEh4bjXNP5KAZN_EXB0LK08TA3xm-xCfxnGsFeknSNNwMuN6q_TD4xYUY8P85dDNAVfYxnSSo0xhEVMe7WBZ7v2GxdpktPuxRejb0h0P_aFHynMUwFF4LTmPiGiNpqOdk3OMf0fS4oFB9Gmf0Q-g4bz9XlbQf_AjHc4X26XD1PNhWLi2TrAEFELo2onna-IPuuLO');">
+<div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiAvPgo8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjMDAwIiBvcGFjaXR5PSIwLjEiIC8+Cjwvc3ZnPg==')] opacity-50"></div>
+</div>
+<div class="h-1/3 bg-primary p-2 flex items-center justify-center text-center">
+<h3 class="font-comic text-2xl leading-none text-white text-shadow-comic">QUIZ INDUSTRIAL</h3>
+</div>
+</div>
+<div class="absolute bottom-0 w-full h-8 bg-neutral-400 border-t-2 border-ink/20"></div>
+</div>
+<div class="w-[90%] -mt-4 z-10">
+<button class="w-full bg-ink text-white hover:bg-secondary hover:text-white font-ui py-3 px-4 border-2 border-transparent hover:border-ink shadow-lg flex items-center justify-center gap-2 transition-colors uppercase tracking-widest text-sm rounded-sm">
+<span class="material-symbols-outlined text-lg animate-pulse">play_circle</span> Play
+                            </button>
+</div>
+</div>
+<!-- Cartridge 3: Timeline -->
+<div class="group relative flex flex-col items-center">
+<div class="w-full aspect-[4/5] bg-neutral-300 rounded-t-lg border-4 border-ink shadow-hard group-hover:shadow-hard-hover group-hover:-translate-y-1 transition-all duration-200 relative overflow-hidden plastic-texture">
+<div class="absolute top-0 w-full h-8 flex flex-col gap-1 p-2 opacity-20">
+<div class="h-0.5 w-full bg-black"></div>
+<div class="h-0.5 w-full bg-black"></div>
+<div class="h-0.5 w-full bg-black"></div>
+</div>
+<div class="absolute top-10 left-3 right-3 bottom-12 bg-white border-2 border-ink overflow-hidden flex flex-col">
+<div class="h-2/3 bg-cover bg-center relative border-b-2 border-ink" data-alt="Old paper texture with historical timeline dates" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCRCf9qi3EGv4dSUbDNPaUm0fGVaz2EzxOBAnU0tFAryW7gX0bDJSKg5vNEC4OPhWuo5LMxLX8x82t5ZXQKrRnoWqhqaAlbkpjsNWvl94SWHkB8dPd9_3-Bgo-DwAXlV9EYMT_Mh6nG21aQI-M2mZTQirGAOJkwYjGWqbEVYc0Nwhndixo7Bjbga-j9BdUb8AkvRxZxWPDvGA9Qq-W7QhD-iT7A7hga-3VVQTFUplmGOJ9gTQx75ApqAUkty4l2NRZlhsrrCv0W2VPt');">
+<div class="absolute inset-0 bg-tertiary/20 mix-blend-multiply"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-comic text-6xl text-white opacity-40 rotate-45">1889</span>
+</div>
+</div>
+<div class="h-1/3 bg-ink p-2 flex items-center justify-center text-center">
+<h3 class="font-comic text-2xl leading-none text-tertiary">TIMELINE DRAG</h3>
+</div>
+</div>
+<div class="absolute bottom-0 w-full h-8 bg-neutral-400 border-t-2 border-ink/20"></div>
+</div>
+<div class="w-[90%] -mt-4 z-10">
+<button class="w-full bg-ink text-white hover:bg-tertiary hover:text-ink font-ui py-3 px-4 border-2 border-transparent hover:border-ink shadow-lg flex items-center justify-center gap-2 transition-colors uppercase tracking-widest text-sm rounded-sm">
+<span class="material-symbols-outlined text-lg animate-pulse">play_circle</span> Play
+                            </button>
+</div>
+</div>
+<!-- Cartridge 4: Locked -->
+<div class="group relative flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity">
+<div class="w-full aspect-[4/5] bg-neutral-200 rounded-t-lg border-4 border-neutral-500 shadow-none relative overflow-hidden plastic-texture grayscale">
+<!-- Locked Overlay -->
+<div class="absolute inset-0 z-20 flex items-center justify-center bg-black/20">
+<div class="bg-white border-2 border-ink p-3 rounded-full shadow-hard-sm">
+<span class="material-symbols-outlined text-3xl text-ink">lock</span>
+</div>
+</div>
+<div class="absolute top-0 w-full h-8 flex flex-col gap-1 p-2 opacity-20">
+<div class="h-0.5 w-full bg-black"></div>
+<div class="h-0.5 w-full bg-black"></div>
+<div class="h-0.5 w-full bg-black"></div>
+</div>
+<div class="absolute top-10 left-3 right-3 bottom-12 bg-white border-2 border-neutral-400 overflow-hidden flex flex-col">
+<div class="h-2/3 bg-cover bg-center relative border-b-2 border-neutral-400" data-alt="Abstract art shapes representing cold war era" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmoTiA13wpe4i94ODx6Md_FGoobfvYkgCbgIZ6IBCwarMnhgP6iV5XeKZwNL0oY58N27kchmKTFOo4qAYLgbE0axddErsgY0cb79LrOjdikmALg2M0eIxFASNwFuGyu6MwGkw1KEeWvBU8xMwx5WIlvnTP33nRm6piPg8lHP7M36mDA3GmNYqByvebAfWA4xxPJDlphO2E13PvE6oIZZ-1h3DmJIDXENHWNsW1a_yu9O-m2_tlGhdgXDFjKM0kzmLDQ5x8KbrGrC8V');">
+</div>
+<div class="h-1/3 bg-neutral-300 p-2 flex items-center justify-center text-center">
+<h3 class="font-comic text-2xl leading-none text-neutral-600">GUERRA FRIA</h3>
+</div>
+</div>
+<div class="absolute bottom-0 w-full h-8 bg-neutral-300 border-t-2 border-neutral-400"></div>
+</div>
+<div class="w-[90%] -mt-4 z-10">
+<button class="w-full bg-neutral-300 text-neutral-500 font-ui py-3 px-4 border-2 border-transparent shadow-none flex items-center justify-center gap-2 uppercase tracking-widest text-sm rounded-sm cursor-not-allowed">
+                                Bloqueado
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Leaderboard -->
+<aside class="w-full lg:w-80 flex-shrink-0">
+<div class="sticky top-24">
+<!-- Tape Graphic -->
+<div class="w-24 h-8 bg-yellow-200/80 absolute -top-3 left-1/2 -translate-x-1/2 rotate-2 z-20 shadow-sm backdrop-blur-sm border-l border-r border-white/40"></div>
+<div class="bg-white wrinkled-paper p-6 relative shadow-lg rotate-1 transform border border-gray-200">
+<div class="border-b-4 border-ink pb-4 mb-4 flex items-center justify-between">
+<h3 class="font-marker text-2xl text-ink">TOP PLAYERS</h3>
+<span class="material-symbols-outlined text-3xl text-primary animate-bounce">emoji_events</span>
+</div>
+<ul class="space-y-4">
+<!-- Rank 1 -->
+<li class="flex items-center gap-3">
+<div class="font-comic text-3xl text-secondary w-8">1</div>
+<div class="size-10 bg-gray-200 rounded-full border-2 border-ink overflow-hidden">
+<img alt="Avatar of user Ana" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZWnUO3TwjiYmiKP1usCNdNF59-hEphi-ojXOcJ4BUv_Y0oLh_c7BeFGvK_z2u9i0wDk07k0R7qI_Vt9QwDfWuonjImDoXbGdn5gzrEEdgIWD9SzQgkklr3oPOzVJEKNna-TfMOjBI1VGG1IW7_WI3WAo_ftzboj3pZjmTgVfFi_QYoTns8JGpHfU7hrXkWMmA-Vdu88nZnfizwP4RE-M9k3ZTNoVD-VnSkhtlaxUs7d1wb8oTn94yf1H0t816MABagvG2kOQn2xai"/>
+</div>
+<div class="flex-1">
+<div class="font-ui text-sm text-ink uppercase">Ana Silva</div>
+<div class="font-mono text-xs text-gray-500">XP: 9,200</div>
+</div>
+</li>
+<!-- Rank 2 -->
+<li class="flex items-center gap-3">
+<div class="font-comic text-3xl text-primary w-8">2</div>
+<div class="size-10 bg-gray-200 rounded-full border-2 border-ink overflow-hidden">
+<img alt="Avatar of user João" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3X5aczlUu7DtAkmT_NkyGBhtO5j2J6_TbUOBfHu9wxCzxQ-P2p2CQMeqpzW7cCPOZu9PB22u4LkebDHGaOKHtwWXzAcGAhe9w5DcqP1i4eMGRWgnVLR__mqhb_8Kd7lESutK8RRCoS-td3_0csi4_BVdEKPZXVgP5yTZm6w8Uzox4pa5ndzdDsV7_H7_4YxcgYWHpjoFCz5VG-LLTAmCfUVcnkm8XuGIt72q_cTT0tjZJyAw3xfWhdfM9rcKYsxvs4IjnLSBr0eY3"/>
+</div>
+<div class="flex-1">
+<div class="font-ui text-sm text-ink uppercase">João Pedro</div>
+<div class="font-mono text-xs text-gray-500">XP: 8,450</div>
+</div>
+</li>
+<!-- Rank 3 -->
+<li class="flex items-center gap-3">
+<div class="font-comic text-3xl text-tertiary text-shadow-comic w-8">3</div>
+<div class="size-10 bg-gray-200 rounded-full border-2 border-ink overflow-hidden">
+<img alt="Avatar of user Maria" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDplNVA46a18qsjUQm4YwJaNwBg5c2L9aQtkvjBiwhO8K3Q0R1EzkaV-lpk9t5ABEm-hl7CyVa9S0KjCaCls2epFxVbhvDGnjGuAlNUeot4yWmRca0YOYY-gSsrI-gUK5UVRRLum_dRMjRfOfMQ-lzOLZR3yepoGuSOIejWqlpMXhABu1cAn3hr69gHDji65PeN587Lv-HaIKhGWg4mZDgeN59doMLOFKllPFQrhYYbp8SrmPwIgilIJ9Zg1XvTU3WuucgKPmdhgjks"/>
+</div>
+<div class="flex-1">
+<div class="font-ui text-sm text-ink uppercase">Maria C.</div>
+<div class="font-mono text-xs text-gray-500">XP: 7,800</div>
+</div>
+</li>
+<!-- You -->
+<li class="flex items-center gap-3 mt-6 pt-4 border-t-2 border-dashed border-gray-300 bg-yellow-50 -mx-2 px-2 py-2 rounded">
+<div class="font-comic text-2xl text-gray-400 w-8">12</div>
+<div class="size-8 bg-gray-200 rounded-full border-2 border-ink overflow-hidden">
+<img alt="Your avatar" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzb-NyWfGZqVrHVuew7RPjUFuCPdVpvTUWMYBprms3K5it1i5_O1LscUQJWWxoH9OKsFLeSx53qCwmupPOh9Fj0PegkF__R7bw_x4YfhkKvXDdVIJ_9L_SEqbgis-k-tNg9Dn9EOhxeKVzs6qTdHFWq9-0go2VbFSvYv60G9HgcI1gGivy00nMBL1-160VtFiBxgT7CpD4mBCzUsXaO6ThjbXuxlR5nKCeHUXtTJfOL91tjqPsUckC3Qj_iVuixDWxq2-LSYlm7rL5"/>
+</div>
+<div class="flex-1">
+<div class="font-ui text-sm text-ink uppercase">Você</div>
+<div class="font-mono text-xs text-gray-500">XP: 4,500</div>
+</div>
+</li>
+</ul>
+<div class="mt-6 text-center">
+<a class="font-marker text-sm text-primary hover:text-ink transition-colors underline decoration-wavy" href="#">Ver ranking completo</a>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Modal (Currently Hidden in mockup, shown here for structure visualization) -->
+<!-- To see it: Remove 'hidden' class from the outer div -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-ink/90 backdrop-blur-sm hidden">
+<div class="relative w-[90%] md:w-[80%] max-w-5xl bg-white rounded border-4 border-ink shadow-hard-hover overflow-hidden flex flex-col max-h-[90vh]">
+<!-- Modal Header -->
+<div class="bg-primary p-4 border-b-4 border-ink flex justify-between items-center">
+<h3 class="font-comic text-2xl text-white text-shadow-comic tracking-wide">DITADURA MEMORY</h3>
+<button class="bg-white border-2 border-ink p-1 hover:bg-red-500 hover:text-white transition-colors rounded-sm shadow-hard-sm active:shadow-none active:translate-y-0.5">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Game Canvas Placeholder -->
+<div class="bg-gray-900 aspect-video w-full relative flex items-center justify-center scanlines">
+<div class="text-center">
+<span class="material-symbols-outlined text-6xl text-primary animate-bounce mb-4">gamepad</span>
+<p class="font-mono text-primary text-lg animate-pulse">PRESS START</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Game Over Overlay (Hidden) -->
+<div class="fixed inset-0 z-[110] pointer-events-none hidden flex items-center justify-center">
+<h1 class="text-9xl font-comic text-red-600 text-shadow-comic animate-bounce drop-shadow-2xl stroke-black" style="-webkit-text-stroke: 3px black;">FIM DE JOGO</h1>
+</div>
+</body></html>

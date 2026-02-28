@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Issue - Zine Histórico ENEM</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Bangers&amp;family=Permanent+Marker&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0caae4", 
+                        "zine-cyan": "#00AEEF",
+                        "zine-magenta": "#EC008C",
+                        "zine-yellow": "#FFF200",
+                        "zine-black": "#1A1A1A",
+                        "zine-paper": "#F4F1EA",
+                        "zine-grey": "#D1D3D4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101d22",
+                        "legal-pad": "#fff9c4",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "comic": ["Bangers", "cursive"],
+                        "marker": ["Permanent Marker", "cursive"],
+                        "typewriter": ["Space Mono", "monospace"],
+                        "ui": ["Archivo Black", "sans-serif"],
+                        "hand": ["Permanent Marker", "cursive"],
+                    },
+                    boxShadow: {
+                        "hard": "4px 4px 0px #1A1A1A",
+                        "hard-hover": "6px 6px 0px #EC008C",
+                        "hard-sm": "2px 2px 0px #1A1A1A",
+                        "pencil": "2px 2px 0px rgba(0,0,0,0.1)",
+                    },
+                    backgroundImage: {
+                        "halftone": "radial-gradient(#D1D3D4 1px, transparent 1px)",
+                        "lined-paper": "repeating-linear-gradient(transparent, transparent 31px, #e5e7eb 31px, #e5e7eb 32px)",
+                        "legal-lines": "repeating-linear-gradient(transparent, transparent 27px, #a5b4fc 27px, #a5b4fc 28px)",
+                        "crumpled-paper": "url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.05\'/%3E%3C/svg%3E')",
+                    },
+                    backgroundSize: {
+                        "halftone": "8px 8px",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F4F1EA;
+            border-left: 2px solid #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00AEEF;
+            border: 2px solid #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #EC008C;
+        }
+        .bg-halftone-pattern {
+            background-image: radial-gradient(#1A1A1A 1.5px, transparent 1.5px);
+            background-size: 12px 12px;
+            opacity: 0.1;
+        }
+        .marker-highlight {
+            background: linear-gradient(120deg, rgba(255,242,0,0) 0%, rgba(255,242,0,0) 5%, rgba(255,242,0,0.8) 5%, rgba(255,242,0,0.8) 100%);
+            background-size: 100% 40%;
+            background-position: 0 88%;
+            background-repeat: no-repeat;
+            padding: 0 4px;
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            right: -20px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent transparent transparent #1A1A1A;
+        }
+        .speech-bubble-inner::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            right: -14px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent transparent transparent #FFFFFF;
+            z-index: 1;
+        }
+        .post-it {
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            transform: rotate(-1deg);
+            transition: transform 0.2s;
+        }
+        .post-it:hover {
+            transform: rotate(0deg) scale(1.02);
+            z-index: 10;
+        }
+        .tape {
+            background-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            z-index: 10;
+            backdrop-filter: blur(1px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }.tooltip-container {
+            position: relative;
+        }
+        .tooltip-card {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            z-index: 50;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(10px) rotate(2deg) scale(0.95);
+            pointer-events: none;
+            width: 220px;
+        }
+        .tooltip-container:hover .tooltip-card,
+        .tooltip-container:focus-within .tooltip-card {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) rotate(0deg) scale(1);
+            pointer-events: auto;
+        }.tooltip-sticky {
+            background-color: #fef08a;border: 1px solid #eab308;
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.15);
+            padding: 12px;
+            font-family: 'Permanent Marker', cursive;
+            color: #1A1A1A;
+            top: 50%;
+            left: 105%;
+            transform-origin: left center;
+        }
+        .tooltip-sticky::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -8px;
+            margin-top: -8px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-right: 8px solid #fef08a;
+        }.tooltip-index {
+            background-color: #ffffff;
+            background-image: repeating-linear-gradient(transparent, transparent 19px, #e5e7eb 20px);
+            border: 2px solid #1A1A1A;
+            box-shadow: 6px 6px 0px #1A1A1A;
+            padding: 16px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: #1A1A1A;
+            bottom: 105%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px) rotate(-1deg);
+            transform-origin: bottom center;
+        }
+        .tooltip-index::after {
+             content: 'ENEM NOTES';
+             position: absolute;
+             top: -10px;
+             right: 10px;
+             background: #EC008C;
+             color: white;
+             font-family: 'Archivo Black', sans-serif;
+             font-size: 0.6rem;
+             padding: 2px 4px;
+             transform: rotate(2deg);
+        }.magnify-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.1);
+            opacity: 0;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .tooltip-container:hover .magnify-overlay {
+            opacity: 1;
+        }
+        .magnify-icon {
+            background: #FFF200;
+            border: 2px solid #1A1A1A;
+            border-radius: 50%;
+            padding: 8px;
+            box-shadow: 2px 2px 0 #1A1A1A;
+        }.flip-card {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+            background-color: #F4F1EA;
+            border: 2px solid #1A1A1A;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+        }.mind-map-node {
+            transition: all 0.3s ease;
+        }
+        .mind-map-node[open] summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #FFF200;
+        }
+        .mind-map-node[open] summary .expand-icon {
+            transform: rotate(180deg);
+        }
+        .paper-clip {
+            width: 20px;
+            height: 50px;
+            border-radius: 10px;
+            border: 4px solid #C0C0C0;
+            position: absolute;
+            z-index: 20;
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .paper-clip::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 3px;
+            width: 6px;
+            height: 35px;
+            border-radius: 4px;
+            border: 2px solid #C0C0C0;
+            border-bottom: none;
+        }
+        .doodle-connector {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+        }.modal-enter {
+            opacity: 0;
+            transform: scale(0.9) rotate(-2deg);
+        }
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1) rotate(0);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+</head>
+<body class="bg-zine-paper text-zine-black font-typewriter overflow-x-hidden relative selection:bg-zine-cyan selection:text-white">
+<div class="fixed top-0 left-0 w-full h-3 bg-white border-b-2 border-zine-black z-50">
+<div class="h-full bg-zine-magenta w-[35%]" style="transition: width 0.2s ease-out;"></div>
+</div>
+<nav class="fixed top-6 left-0 w-full z-40 px-6 pointer-events-none">
+<div class="max-w-7xl mx-auto flex justify-between items-start">
+<a class="pointer-events-auto bg-zine-yellow border-2 border-zine-black shadow-hard px-4 py-2 transform hover:-rotate-2 transition-transform duration-200 group flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-zine-black">arrow_back</span>
+<span class="font-comic text-xl tracking-wide">THE KIOSK</span>
+</a>
+<div class="pointer-events-auto flex gap-3">
+<button class="bg-white border-2 border-zine-black shadow-hard p-2 hover:bg-zine-cyan hover:text-white transition-colors">
+<span class="material-symbols-outlined font-bold">bookmark</span>
+</button>
+<button class="bg-white border-2 border-zine-black shadow-hard p-2 hover:bg-zine-cyan hover:text-white transition-colors">
+<span class="material-symbols-outlined font-bold">share</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="relative min-h-screen pt-24 pb-32">
+<div class="fixed inset-0 bg-halftone-pattern pointer-events-none z-0"></div>
+<section class="relative w-full h-auto py-6 flex items-center justify-center overflow-visible mb-6 border-b-4 border-zine-black bg-zine-cyan">
+<div class="absolute inset-0 z-0 overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1596561183204-1b12b5e1b238?q=80&amp;w=1920&amp;auto=format&amp;fit=crop')] bg-cover bg-center opacity-20 grayscale mix-blend-hard-light"></div>
+</div>
+<div class="relative z-10 w-full max-w-5xl px-4 flex flex-col md:flex-row items-center gap-4 justify-between">
+<div class="flex-1 text-left">
+<div class="bg-zine-black text-white border-2 border-white shadow-[3px_3px_0_#FFF200] px-3 py-1 -rotate-1 mb-2 inline-block">
+<span class="font-ui text-[10px] uppercase tracking-[0.2em]">Conto Literário • Módulo 04</span>
+</div>
+<h1 class="font-comic text-4xl md:text-6xl text-white drop-shadow-[3px_3px_0_#1A1A1A] leading-none mb-1 uppercase stroke-black paint-order-stroke">
+                        O Pai dos Pobres
+                    </h1>
+<p class="font-marker text-sm md:text-base text-zine-black bg-zine-yellow px-4 py-1 rotate-1 shadow-hard inline-block mt-1 border-2 border-zine-black">
+                        Poder, café e revolução
+                    </p>
+</div>
+<div class="w-full md:w-80 bg-white border-4 border-zine-black shadow-hard p-2 flex items-center gap-3 transform -rotate-1">
+<div class="bg-zine-magenta w-8 h-8 flex items-center justify-center border-2 border-zine-black shrink-0 cursor-pointer hover:bg-zine-black hover:text-zine-magenta transition-colors">
+<span class="material-symbols-outlined text-white text-xl">play_arrow</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-end mb-1">
+<span class="font-ui text-[10px] uppercase">Ouvir a História</span>
+<span class="font-typewriter text-[9px]">14:30</span>
+</div>
+<div class="h-2 bg-zine-grey border-2 border-zine-black relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full w-[35%] bg-zine-cyan bg-halftone-pattern"></div>
+</div>
+</div>
+</div>
+</div>
+<img alt="Radio Mic" class="absolute -bottom-6 left-10 w-20 h-auto border-2 border-white shadow-hard rotate-12 z-20 grayscale contrast-125 hidden md:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9AvgNLru719R8KnjLS1nBQezxbij6J_1QdRkEqc8uHpf1aU_1-rWm_feBfcybXiWjCBilq6Gt19c-h0VFWOMICIUDf2hLhCAHncMHkWuT2NwirABj1vG1Khiu75nI5GPIBHwM7_IubY89Js2MkTF715fdvYe2ZaWSgpqD11fJSit9hLbyWN9-63CEJb7Ce5CXd2biuGMeYExpvKuHdNAS-HHPR4K6Xhs_d_qSoC7OsreE_PcUfEohT3tS8yZMWVZLAfeXPlnncsKm"/>
+</section>
+<div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 md:px-8 relative z-10">
+<aside class="hidden lg:block lg:col-span-3 pt-4 relative">
+<div class="sticky top-32 flex flex-col gap-8">
+<div class="post-it bg-[#ffeb3b] p-4 text-zine-black font-marker text-sm relative rotate-2 group cursor-help transition-all hover:rotate-0 hover:scale-105 hover:z-20">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 bg-black/10 rounded-full blur-[2px]"></div>
+<div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full border border-black/20 shadow-sm z-20"></div>
+<span class="block font-bold mb-2 border-b-2 border-black/10 pb-1 text-red-600">DICA ENEM #1</span>
+<p>O rádio foi a "internet" de Vargas. Fique atento a questões sobre o uso de tecnologias para controle das massas!</p>
+<div class="tooltip-card tooltip-index !left-[110%] !top-0 !bottom-auto !transform-none rotate-2">
+<p class="font-bold text-xs mb-2">💡 CONTEXTO</p>
+    A "Hora do Brasil" tornou-se obrigatória em 1935, consolidando a propaganda estatal.
+</div>
+</div>
+<div class="relative group cursor-pointer hover:rotate-2 transition-transform duration-300 tooltip-container">
+<div class="tape w-24 h-8 -top-3 left-10 rotate-3"></div>
+<img alt="Getulio Vargas Portrait" class="w-full h-auto border-4 border-white shadow-hard sepia brightness-90 contrast-125 relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMBKM9smrXgBtzIMlFWMT5G2FtNRYNM76NAnGJZLVB4BEA5L-B5TOVA4BgsnNMmCMPnghimYCiTwpvdBSPL5xm7S2OOGvWVp-oTZCXNlBNH4mYbtvmyT8y5-_dA95ZbVMLxsjVO55JvUHibcandKA3yV6fuZrw2ZkcRatptJcX62JBdU1EnoG2-ENfSbLFSjt9yLVBJug9E_OV3HhIdTAg-1LaenDH35x67wLqanxIxLHfA5cfAyI09sQCfW87bBOR-XA-bJrnEbUN"/>
+<div class="magnify-overlay z-20">
+<span class="material-symbols-outlined magnify-icon text-xl">search</span>
+</div>
+<p class="bg-zine-black text-white text-[10px] font-ui uppercase p-1 absolute bottom-2 right-2 -rotate-2 z-20">O Chefe</p>
+<div class="tooltip-card tooltip-sticky">
+<p class="text-xs mb-1 font-bold text-red-600">FIGURA CENTRAL</p>
+    Getúlio Vargas (1930-1945). Populismo, trabalhismo e centralização do poder marcam sua era.
+</div>
+</div>
+</div>
+</aside>
+<article class="col-span-1 lg:col-span-6 flex flex-col gap-6 bg-white border-x-2 border-zinc-200 lg:border-none p-4 lg:p-0">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-comic text-3xl text-zine-grey">01.</span>
+<h2 class="font-comic text-3xl text-zine-black uppercase">O Crepúsculo do Café</h2>
+</div>
+<div class="prose prose-lg max-w-none font-typewriter text-zine-black leading-relaxed bg-lined-paper pb-4 text-justify">
+<div class="float-right w-40 ml-4 mb-2 mt-2 transform rotate-2 tooltip-container cursor-pointer">
+<div class="tape w-16 h-6 -top-2 left-10 -rotate-6"></div>
+<div class="relative group">
+<img alt="Coffee beans sack" class="w-full border-2 border-zine-black grayscale contrast-125 shadow-hard-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTkUAl1leXHfl_WOTjVvIM2YsJ96RC3X-vTRaURmgDMn-hcaockl59WNnz6bUaUOiu6npFaWkQ3Sf4tGVaq4eBUob1MxkZPUShaadU1zYoNP2uEJFfVhRhr4mxvUF6WEqTto45Ir6cO6U8q6rREZZqxYfwV911TluMjlwBB27EwQskwLqnEc9y35ZsyQE4XMgMzRL02xpTV0rijCblB13eGrdupQmmO61GqV60PutxY0t8BMmhYA5MRaJdxUFVE7YOZwniwitVcKwv"/>
+<div class="magnify-overlay">
+<span class="material-symbols-outlined magnify-icon text-lg">touch_app</span>
+</div>
+</div>
+<p class="font-marker text-[10px] text-center mt-1 leading-none">Ouro Verde</p>
+<div class="tooltip-card tooltip-index !right-[105%] !left-auto !top-0 !bottom-auto w-48">
+<p class="font-bold border-b border-black mb-1">ECONOMIA</p>
+    Crise de 29: A queda drástica do preço do café enfraqueceu as oligarquias paulistas.
+</div>
+</div>
+<p class="first-letter:text-6xl first-letter:font-comic first-letter:mr-2 first-letter:float-left first-letter:text-zine-cyan drop-shadow-[2px_2px_0_#1A1A1A]">
+                        Era uma tarde abafada de outubro de 1930 quando o trem apitou na estação. Não era um apito comum; soava como o grito de um tempo que se partia ao meio. 
+                    </p>
+<p>
+                        Nos salões do Rio de Janeiro, os barões do café ainda limpavam as migalhas de seus banquetes, confiantes na eterna "política do café com leite". Mal sabiam eles que, nos pampas do sul, um homem baixinho de sorriso enigmático, <span class="marker-highlight font-bold tooltip-container cursor-help border-b-2 border-dotted border-black">
+                            Getúlio Dornelles Vargas
+                            <span class="tooltip-card tooltip-sticky !w-40 !left-1/2 !-translate-x-1/2 !top-full !mt-2">
+                                Liderou a Revolução de 30 que derrubou Washington Luís.
+                            </span>
+</span>, já amarrava seu cavalo no obelisco da história.
+                    </p>
+</div>
+<div class="my-4 relative px-2 transform -rotate-1">
+<div class="bg-zine-cyan text-white p-6 shadow-hard border-2 border-black relative overflow-hidden group hover:scale-[1.02] transition-transform">
+<div class="absolute -right-4 -top-4 text-8xl opacity-20 font-comic text-black rotate-12">”</div>
+<p class="font-comic text-2xl text-center leading-tight relative z-10 italic">
+                            Façamos a revolução antes que o povo a faça!
+                        </p>
+<p class="text-right font-marker text-xs mt-3 text-zine-black">— Antônio Carlos Ribeiro de Andrada</p>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-zine-yellow"></div>
+<div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<div class="bg-white text-zine-black p-2 transform rotate-2 border-2 border-zine-black shadow-hard text-xs font-typewriter max-w-xs text-center">
+    Frase que resume o temor das elites em relação a movimentos populares radicais.
+</div>
+</div>
+</div>
+</div>
+<div class="prose prose-lg max-w-none font-typewriter text-zine-black leading-relaxed bg-lined-paper pb-4 text-justify">
+<p>
+                        A notícia do assassinato de João Pessoa chegou como um raio. Não importava se fora um crime passional ou político; para a Aliança Liberal, era o mártir que faltava. O sangue na Paraíba virou combustível no Rio Grande.
+                    </p>
+<div class="float-left w-48 mr-6 mb-4 mt-2 transform -rotate-2 clear-left tooltip-container cursor-pointer z-20">
+<div class="bg-zine-paper border-2 border-zine-black p-1 shadow-hard relative group">
+<div class="tape w-20 h-6 -top-3 left-12 rotate-2"></div>
+<img alt="Map of Brazil in the 1930s" class="w-full h-auto filter grayscale contrast-125 border border-zinc-400" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr1G9fIFGHAzD0Nut_C91dO1o6tfazBGbK96AvjE-LkytVOUk19AuFA-6XL01_zZb6lAJmY6Lw7U6LTndLv0y2r80_9pVxOduMXdXpXvD1ByUGUGuDm0IoTQMJC-AiouzM93Xs3pmZSDLUoHvXxqJBQOmIpxQ62VQlWAK4JRt1onqwhaQIrC8YLBA96agGW-X4eEZ3GgeVxYI-qgpxjxw8OHWeHTrs7OfBRLxu-7Ouh171zmm-AUZiq3GvdOsrSR47Dz1MTY3T3rqb"/>
+<div class="magnify-overlay">
+<span class="material-symbols-outlined magnify-icon text-xl">map</span>
+</div>
+<p class="font-ui text-[9px] text-center mt-1 uppercase tracking-wide bg-zinc-200">Brasil, Década de 30</p>
+</div>
+<div class="tooltip-card tooltip-index !left-[80%] !top-10 w-56 rotate-3">
+<p class="font-bold text-xs mb-1 bg-zine-cyan text-white px-1 inline-block">GEOPOLÍTICA</p>
+<p>A aliança entre MG, RS e PB foi fundamental para quebrar a hegemonia de SP.</p>
+</div>
+</div>
+<p>
+                        E assim, a "Velha República" ruiu não com um estrondo, mas com o som de botas marchando rumo ao Catete. Vargas assumiu o Governo Provisório prometendo breve retorno à normalidade. Mas o poder, caro estudante, é uma cadeira confortável demais para se levantar rápido.
+                    </p>
+</div>
+<div class="my-8 relative group mx-auto w-full max-w-md flip-card cursor-pointer">
+<div class="flip-card-inner">
+<div class="flip-card-front relative">
+<div class="absolute inset-0 bg-zine-black translate-x-2 translate-y-2 rotate-1 rounded-sm"></div>
+<div class="relative bg-white p-3 pb-8 border-2 border-zine-black rounded-sm flex flex-col items-center shadow-lg h-full">
+<div class="tape w-32 h-8 -top-4 left-1/3 -rotate-1"></div>
+<div class="w-full h-56 bg-zinc-200 overflow-hidden border border-zinc-300 relative group-hover:sepia transition-all">
+<img alt="Old crowd gathering in a public square" class="w-full h-full object-cover grayscale contrast-125 sepia-[.3]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApjfdO-1GvDjR9YXfsbOTY-Pqwjd_UEVoBPkc6Lppqod8D7fJs6P75uKXnsIApi00kGYPyKKOs-ruq5TAWsDBqbh2R50FHLd63P8o9cgA-m3SAPNsPpIELylaf8EiZxVny_G0RpCKhdTgsQ1gfNNoOjlm_LO3qkNkDfHxUbXyG0GUJq2OwHtKG55aIQMz2b3MWyoNDUjbLrOanjitYVPITXV6nCFCOt4j7bqFy5MpK_i6P7LQW3QoOaaT1tH6YwGpNqsy76ezCJeTy"/>
+<div class="absolute bottom-2 right-2 bg-zine-yellow border border-black p-1 rounded-full shadow-sm animate-pulse">
+<span class="material-symbols-outlined text-lg">360</span>
+</div>
+</div>
+<div class="absolute bottom-2 left-0 w-full text-center">
+<p class="font-marker text-sm text-zine-black -rotate-1">O povo aclama, 1930</p>
+</div>
+</div>
+</div>
+<div class="flip-card-back">
+<h3 class="font-comic text-2xl text-zine-magenta mb-2">ANÁLISE DE IMAGEM</h3>
+<p class="font-typewriter text-xs text-justify px-4">
+                            Esta foto mostra a chegada das tropas gaúchas no Rio. Observe a multidão: o varguismo se construiu sobre a <strong>aproximação com as massas urbanas</strong>, uma novidade política na época.
+                        </p>
+<div class="mt-4 border-t-2 border-dashed border-zine-grey pt-2 w-full">
+<p class="font-bold text-[10px] uppercase text-zine-grey">Relevância ENEM:</p>
+<p class="font-handwriting text-sm text-blue-600">Alta. Relacione com Populismo.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-4 mb-2">
+<span class="font-comic text-3xl text-zine-grey">02.</span>
+<h2 class="font-comic text-3xl text-zine-black uppercase">O Estado Novo</h2>
+</div>
+<div class="prose prose-lg max-w-none font-typewriter text-zine-black leading-relaxed bg-lined-paper pb-8 text-justify">
+<p>
+                        O tempo avançou para 1937. O mundo flertava com o fascismo, e Vargas não queria ficar para trás.
+                    </p>
+<div class="bg-[#f0f0f0] border border-zine-grey p-4 my-4 transform rotate-1 shadow-md max-w-sm mx-auto relative cursor-pointer group hover:rotate-0 transition-transform">
+<div class="tape w-16 h-6 -top-3 right-10 rotate-12"></div>
+<h5 class="font-typewriter font-bold text-center border-b border-black mb-2 uppercase text-xs tracking-widest text-red-700 group-hover:scale-110 transition-transform">Top Secret</h5>
+<p class="font-serif text-sm italic text-zinc-600">"O perigo vermelho ronda a nação. Medidas drásticas são necessárias..."</p>
+<div class="absolute bottom-2 right-2 stamp transform -rotate-12 border-2 border-red-700 text-red-700 font-bold px-2 py-1 text-[10px] uppercase rounded opacity-70 group-hover:opacity-100">
+                             PLANO COHEN (FALSO)
+                         </div>
+<div class="absolute inset-0 bg-red-900/90 text-white flex items-center justify-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+<p class="font-typewriter text-xs">Pretexto autoritário usado para fechar o Congresso e outorgar a Constituição de 1937 (Polaca).</p>
+</div>
+</div>
+<p>
+                        Com uma folha de papel na mão — o famigerado <span class="font-bold bg-yellow-200 px-1 border-b-2 border-yellow-500 cursor-help" title="Plano forjado para justificar o golpe">Plano Cohen</span>, uma falsificação grosseira de um plano comunista — ele fechou o Congresso. Nascia o Estado Novo.
+                    </p>
+<div class="bg-zinc-100 p-4 border-l-4 border-zine-magenta my-4 relative">
+<div class="absolute -top-3 -right-3 bg-zine-magenta text-white p-1 shadow-hard transform rotate-12">
+<span class="material-symbols-outlined text-sm">lock</span>
+</div>
+<p class="font-ui text-sm mb-2 uppercase text-zine-magenta">DIP em Ação:</p>
+<ul class="list-none space-y-2 text-sm">
+<li class="flex gap-2 items-start group">
+<span class="material-symbols-outlined text-sm mt-1 text-zine-grey group-hover:text-zine-cyan">radio</span>
+<span class="group-hover:text-zine-cyan transition-colors">As rádios só tocavam a música que o ditador queria ouvir.</span>
+</li>
+<li class="flex gap-2 items-start group">
+<span class="material-symbols-outlined text-sm mt-1 text-zine-grey group-hover:text-zine-magenta">block</span>
+<span class="group-hover:text-zine-magenta transition-colors">Jornais amanheciam com espaços em branco ou poemas sobre flores.</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-8 mb-4 bg-zine-paper border-4 border-zine-black p-4 relative overflow-hidden group hover:bg-white transition-colors">
+<div class="absolute top-0 right-0 p-2">
+<span class="material-symbols-outlined text-4xl text-zine-cyan animate-bounce">help</span>
+</div>
+<h4 class="font-comic text-xl mb-2 text-zine-magenta">DESAFIO RÁPIDO</h4>
+<p class="mb-4 text-sm font-bold">Como o DIP ajudou a manter Vargas no poder?</p>
+<div class="grid grid-cols-1 gap-2">
+<button class="text-left px-3 py-2 border-2 border-zine-grey hover:border-zine-cyan hover:bg-zine-cyan/10 transition-colors font-ui text-[10px]">
+                            A) Organizando eleições livres e diretas.
+                        </button>
+<button class="text-left px-3 py-2 border-2 border-zine-grey hover:border-zine-cyan hover:bg-zine-cyan/10 transition-colors font-ui text-[10px]">
+                            B) Criando a imagem de "Pai dos Pobres" e censurando críticas.
+                        </button>
+</div>
+</div>
+<div class="relative mt-12 mb-8 mx-auto w-full max-w-2xl transform rotate-1">
+<div class="paper-clip -top-4 right-10"></div>
+<div class="paper-clip -top-4 right-16 border-red-400 rotate-6" style="border-color: #b91c1c;"></div>
+<div class="bg-legal-pad bg-legal-lines p-8 shadow-hard border border-zinc-300 relative">
+<div class="absolute -top-3 right-28 z-30">
+<button class="group flex flex-col items-center cursor-pointer hover:scale-110 transition-transform" onclick="document.getElementById('exportModal').classList.remove('hidden');">
+<div class="bg-white border-2 border-dashed border-zine-black p-2 rounded-full shadow-sm group-hover:bg-zine-yellow transition-colors relative">
+<span class="material-symbols-outlined text-zine-black text-xl rotate-90">content_cut</span>
+<div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0.5 h-3 bg-zinc-400"></div>
+</div>
+<span class="bg-white border border-zine-black px-1 text-[8px] font-ui uppercase tracking-tighter mt-1 shadow-[2px_2px_0_rgba(0,0,0,0.2)]">Tear Out</span>
+</button>
+</div>
+<div class="absolute top-0 left-0 w-full h-8 border-b-2 border-red-300"></div>
+<div class="absolute top-0 left-12 w-0.5 h-full border-l-2 border-red-300 z-0"></div>
+<div class="relative z-10 pl-8">
+<h3 class="font-hand text-2xl text-center mb-6 text-zinc-800 underline decoration-wavy decoration-zine-magenta">
+                MIND MAP: ERA VARGAS
+            </h3>
+<div class="flex flex-col gap-6 items-center">
+<details class="mind-map-node group w-full max-w-xs open:max-w-md transition-all duration-300">
+<summary class="list-none cursor-pointer bg-white border-2 border-black shadow-pencil p-3 rounded-lg flex items-center justify-between hover:bg-zinc-50 relative z-20">
+<span class="font-ui text-sm uppercase">Revolução de 30</span>
+<span class="material-symbols-outlined expand-icon transition-transform">expand_more</span>
+</summary>
+<div class="bg-white border-2 border-black border-t-0 p-4 rounded-b-lg -mt-1 pt-4 shadow-pencil">
+<ul class="list-disc pl-4 space-y-2 text-xs font-hand text-zinc-700">
+<li>Fim da República do Café com Leite.</li>
+<li>Aliança Liberal (RS, MG, PB).</li>
+<li>Estopim: Assassinato de João Pessoa.</li>
+<li><strong>Consequência:</strong> Centralização do poder.</li>
+</ul>
+</div>
+</details>
+<div class="h-8 w-0.5 bg-black"></div>
+<div class="w-full flex justify-between gap-4">
+<details class="mind-map-node group w-[48%]">
+<summary class="list-none cursor-pointer bg-zine-cyan/20 border-2 border-black shadow-pencil p-2 rounded-lg flex items-center justify-between hover:bg-zine-cyan/30">
+<span class="font-ui text-xs uppercase">Gov. Provisório</span>
+<span class="material-symbols-outlined text-sm expand-icon transition-transform">add</span>
+</summary>
+<div class="bg-white border-2 border-black border-t-0 p-3 rounded-b-lg -mt-1 pt-3 shadow-pencil">
+<ul class="list-none text-[10px] font-typewriter space-y-1">
+<li>→ Rev. Const. de 1932 (SP)</li>
+<li>→ Código Eleitoral (Voto Feminino)</li>
+<li>→ Constituição de 1934</li>
+</ul>
+</div>
+</details>
+<details class="mind-map-node group w-[48%]">
+<summary class="list-none cursor-pointer bg-zine-magenta/20 border-2 border-black shadow-pencil p-2 rounded-lg flex items-center justify-between hover:bg-zine-magenta/30">
+<span class="font-ui text-xs uppercase">Estado Novo (37-45)</span>
+<span class="material-symbols-outlined text-sm expand-icon transition-transform">add</span>
+</summary>
+<div class="bg-white border-2 border-black border-t-0 p-3 rounded-b-lg -mt-1 pt-3 shadow-pencil">
+<ul class="list-none text-[10px] font-typewriter space-y-1">
+<li>→ Plano Cohen (Golpe)</li>
+<li>→ DIP (Censura/Propaganda)</li>
+<li>→ CLT (Leis Trabalhistas)</li>
+<li>→ Industrialização (CSN)</li>
+</ul>
+</div>
+</details>
+</div>
+<div class="h-8 w-full border-t-2 border-black border-dashed mt-2 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-legal-pad px-2 font-hand text-xs text-zinc-500">contexto</div>
+</div>
+<details class="mind-map-node group w-full max-w-sm">
+<summary class="list-none cursor-pointer bg-zine-yellow border-2 border-black shadow-pencil p-3 rounded-lg flex items-center justify-between hover:bg-yellow-300 relative z-20 transform -rotate-1">
+<span class="font-ui text-xs uppercase">O Populismo Varguista</span>
+<span class="material-symbols-outlined expand-icon transition-transform">ads_click</span>
+</summary>
+<div class="bg-white border-2 border-black border-t-0 p-4 rounded-b-lg -mt-1 pt-4 shadow-pencil transform -rotate-1">
+<p class="font-hand text-xs text-zinc-800 leading-snug">
+                            Vargas se colocava como o mediador entre o capital e o trabalho. O "Pai dos Pobres" dava direitos (CLT) mas tirava a liberdade política (sindicatos pelegos).
+                        </p>
+</div>
+</details>
+</div>
+<div class="absolute bottom-4 right-4 text-[10px] font-typewriter text-zinc-400">
+                (clique nos tópicos para expandir)
+            </div>
+</div>
+</div>
+</div>
+</article>
+<aside class="hidden lg:block lg:col-span-3 pt-10 relative">
+<div class="sticky top-32 flex flex-col gap-12">
+<div class="relative w-full ml-auto rotate-1 group cursor-pointer hover:rotate-0 transition-transform duration-300 tooltip-container">
+<div class="tape w-20 h-6 -top-2 left-1/2 -translate-x-1/2 -rotate-1"></div>
+<img alt="Newspaper clipping from the era" class="border-2 border-white shadow-hard w-full h-auto sepia contrast-100 brightness-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB76Zpl1PwD6oA_SKjJk-axusq-Ed68fXkqced2MNyX_9teORpJUtiUH1ESXJ5pj3ey3iwJIp3Db-APkGujQBwSUQ3ckbSRZZrQ97f0vKDlfNTMKNs_5G7iQJ1t4VZcqzvqGYNH8JLKsbDcDUypxTkaM7XPvuAIIF-0cyrFBVV4f5GUl2CWdnEbhCL0701ajy6lPAzcoc5IoX1gzR3LXfROTbKi3__mnlyeBypUZnihSZnITXz8CyJH-MF_QsdRmYAgOy3nwH_P4VbZ"/>
+<div class="magnify-overlay">
+<span class="material-symbols-outlined magnify-icon text-xl">article</span>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-zine-black text-white px-2 py-1 font-ui text-[9px] uppercase border border-white rotate-3 group-hover:rotate-0 transition-transform">Jornal da Manhã</div>
+<div class="tooltip-card tooltip-sticky !right-[100%] !left-auto !top-10 w-48">
+<p class="font-bold text-red-600 mb-1">CENSURA</p>
+    A imprensa era vigiada de perto pelo DIP. Notícias contra o regime eram proibidas.
+</div>
+</div>
+<div class="post-it bg-[#ff4081] p-4 text-white font-marker text-sm relative -rotate-2 cursor-help hover:scale-105 transition-transform tooltip-container">
+<div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-yellow-300 rounded-full border border-black/20 shadow-sm z-20"></div>
+<span class="block font-bold mb-2 border-b-2 border-white/20 pb-1 text-yellow-300">VOCABULÁRIO</span>
+<p class="leading-tight text-xs">"Peleguismo": Sindicatos controlados pelo governo. Vem da pelego (pele de carneiro) usada para amaciar a sela.</p>
+<div class="tooltip-card tooltip-index !right-[105%] !left-auto !top-0 !bottom-auto w-56 rotate-2">
+<p class="font-bold text-xs mb-1">📚 CONCEITO CHAVE</p>
+    O controle dos sindicatos evitava greves e mantinha o operariado sob tutela do Estado.
+</div>
+</div>
+<div class="relative bg-white border-2 border-zine-black p-2 shadow-hard rotate-1 group hover:rotate-0 transition-transform tooltip-container cursor-pointer">
+<div class="tape w-10 h-6 -top-3 left-4 rotate-45"></div>
+<div class="border border-black p-2 bg-zinc-50 relative overflow-hidden">
+<h4 class="font-comic text-center text-sm mb-2 border-b border-black">Humor Político</h4>
+<div class="grid grid-cols-2 gap-2">
+<div class="bg-gray-200 h-16 border border-black flex items-center justify-center overflow-hidden hover:bg-zinc-300 transition-colors">
+<span class="material-symbols-outlined text-4xl opacity-50">theater_comedy</span>
+</div>
+<div class="bg-gray-200 h-16 border border-black flex items-center justify-center overflow-hidden hover:bg-zinc-300 transition-colors">
+<span class="material-symbols-outlined text-4xl opacity-50">campaign</span>
+</div>
+</div>
+<p class="text-[8px] font-typewriter mt-1 text-center">Cartuns criticavam a censura velada.</p>
+<div class="absolute inset-0 bg-zine-yellow/95 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity p-2 text-center">
+<p class="font-marker text-xs text-black leading-tight">A charge política foi uma resistência silenciosa durante o Estado Novo.</p>
+</div>
+</div>
+</div>
+<div class="relative mt-4">
+<div class="relative bg-white border-2 border-zine-black p-3 shadow-hard rounded-lg speech-bubble speech-bubble-inner group hover:scale-105 transition-transform cursor-help" style="transform: scaleX(-1);">
+<div style="transform: scaleX(-1);">
+<h4 class="font-comic text-lg text-zine-cyan mb-1">Nota Mental</h4>
+<p class="text-[10px] leading-tight font-typewriter">Vargas não era fascista nem comunista. Ele era... Varguista. O pragmatismo era sua ideologia.</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<div class="lg:hidden max-w-[1200px] mx-auto px-4 mt-8 grid gap-6">
+<div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 transform rotate-1">
+<h4 class="font-bold text-yellow-800 font-marker mb-1">Dica ENEM</h4>
+<p class="text-sm text-yellow-900">O rádio foi a "internet" de Vargas. Fique atento a questões sobre o uso de tecnologias para controle das massas!</p>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4">
+<div class="relative flex-shrink-0 group">
+<img alt="Newspaper clipping mobile" class="w-48 h-auto border-2 border-white shadow-md sepia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB76Zpl1PwD6oA_SKjJk-axusq-Ed68fXkqced2MNyX_9teORpJUtiUH1ESXJ5pj3ey3iwJIp3Db-APkGujQBwSUQ3ckbSRZZrQ97f0vKDlfNTMKNs_5G7iQJ1t4VZcqzvqGYNH8JLKsbDcDUypxTkaM7XPvuAIIF-0cyrFBVV4f5GUl2CWdnEbhCL0701ajy6lPAzcoc5IoX1gzR3LXfROTbKi3__mnlyeBypUZnihSZnITXz8CyJH-MF_QsdRmYAgOy3nwH_P4VbZ"/>
+<div class="absolute bottom-2 left-2 right-2 bg-black/70 text-white text-[9px] p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    Imprensa controlada pelo DIP.
+                </div>
+</div>
+<div class="relative flex-shrink-0 group">
+<img alt="Map mobile" class="w-48 h-auto border-2 border-white shadow-md grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr1G9fIFGHAzD0Nut_C91dO1o6tfazBGbK96AvjE-LkytVOUk19AuFA-6XL01_zZb6lAJmY6Lw7U6LTndLv0y2r80_9pVxOduMXdXpXvD1ByUGUGuDm0IoTQMJC-AiouzM93Xs3pmZSDLUoHvXxqJBQOmIpxQ62VQlWAK4JRt1onqwhaQIrC8YLBA96agGW-X4eEZ3GgeVxYI-qgpxjxw8OHWeHTrs7OfBRLxu-7Ouh171zmm-AUZiq3GvdOsrSR47Dz1MTY3T3rqb"/>
+<div class="absolute bottom-2 left-2 right-2 bg-black/70 text-white text-[9px] p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    Geopolítica da Revolução de 30.
+                </div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-0 left-0 w-full pointer-events-none z-50 flex justify-between items-end">
+<a class="pointer-events-auto group relative w-24 h-24 md:w-32 md:h-32 flex items-end justify-start" href="#">
+<div class="absolute bottom-0 left-0 w-0 h-0 border-b-[80px] border-r-[80px] md:border-b-[100px] md:border-r-[100px] border-b-zine-black border-r-transparent"></div>
+<div class="absolute bottom-0 left-0 w-0 h-0 border-b-[76px] border-r-[76px] md:border-b-[94px] md:border-r-[94px] border-b-white border-r-transparent group-hover:border-b-zine-yellow transition-colors"></div>
+<div class="absolute bottom-2 left-2 md:bottom-3 md:left-3 text-zine-black z-10 flex flex-col items-start">
+<span class="material-symbols-outlined text-2xl md:text-3xl font-bold group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="font-ui text-[8px] md:text-[10px] uppercase mt-1">VOL. 03</span>
+</div>
+</a>
+<a class="pointer-events-auto group relative w-24 h-24 md:w-32 md:h-32 flex items-end justify-end" href="#">
+<div class="absolute bottom-0 right-0 w-0 h-0 border-b-[80px] border-l-[80px] md:border-b-[100px] md:border-l-[100px] border-b-zine-black border-l-transparent"></div>
+<div class="absolute bottom-0 right-0 w-0 h-0 border-b-[76px] border-l-[76px] md:border-b-[94px] md:border-l-[94px] border-b-zine-cyan border-l-transparent group-hover:border-b-zine-magenta transition-colors"></div>
+<div class="absolute bottom-2 right-2 md:bottom-3 md:right-3 text-white z-10 flex flex-col items-end">
+<span class="material-symbols-outlined text-2xl md:text-3xl font-bold group-hover:translate-x-1 transition-transform">arrow_forward</span>
+<span class="font-ui text-[8px] md:text-[10px] uppercase mt-1">VOL. 05</span>
+</div>
+</a>
+</div>
+</main>
+<footer class="bg-zine-black text-white py-8 text-center relative z-10 border-t-4 border-zine-yellow">
+<p class="font-typewriter text-xs opacity-60">Zine Histórico ENEM © 2024</p>
+<p class="font-comic text-lg text-zine-yellow mt-1 tracking-wide">Estude com atitude.</p>
+</footer>
+<div class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4" id="exportModal">
+<div class="absolute inset-0 bg-zine-black/80 backdrop-blur-sm cursor-pointer" onclick="document.getElementById('exportModal').classList.add('hidden')"></div>
+<div class="relative w-full max-w-sm transform rotate-1 modal-enter active:modal-enter-active">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-8 bg-zinc-200/90 shadow-sm z-20 border border-white/50 backdrop-blur-sm rotate-1"></div>
+<div class="bg-zine-paper bg-crumpled-paper p-6 border-4 border-zine-black shadow-[8px_8px_0_#FFF200] relative">
+<button class="absolute -top-3 -right-3 bg-zine-magenta text-white w-8 h-8 flex items-center justify-center border-2 border-black hover:scale-110 transition-transform shadow-hard-sm z-30" onclick="document.getElementById('exportModal').classList.add('hidden')">
+<span class="material-symbols-outlined text-xl font-bold">close</span>
+</button>
+<h3 class="font-comic text-3xl text-center mb-6 text-zine-black tracking-wide uppercase">Keep it Safe!</h3>
+<div class="space-y-4">
+<button class="w-full group relative bg-white border-2 border-black p-4 flex items-center gap-4 hover:bg-zine-cyan hover:text-white transition-all shadow-hard hover:shadow-hard-hover hover:-translate-y-1">
+<div class="bg-zinc-100 border border-black p-2 rounded-full group-hover:bg-white group-hover:text-zine-cyan transition-colors">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+</div>
+<div class="text-left">
+<span class="font-ui text-xs uppercase block">Download PDF</span>
+<span class="font-typewriter text-[10px] opacity-70">Printable A4 format</span>
+</div>
+</button>
+<button class="w-full group relative bg-white border-2 border-black p-4 flex items-center gap-4 hover:bg-zine-magenta hover:text-white transition-all shadow-hard hover:shadow-hard-hover hover:-translate-y-1">
+<div class="bg-zinc-100 border border-black p-2 rounded-full group-hover:bg-white group-hover:text-zine-magenta transition-colors">
+<span class="material-symbols-outlined">collections_bookmark</span>
+</div>
+<div class="text-left">
+<span class="font-ui text-xs uppercase block">Save to Collection</span>
+<span class="font-typewriter text-[10px] opacity-70">Add to your digital binder</span>
+</div>
+</button>
+</div>
+<div class="mt-6 text-center">
+<p class="font-marker text-xs text-zinc-500 rotate-1">"A mind map a day keeps the failing grade away."</p>
+</div>
+<div class="absolute -bottom-2 -left-2 w-12 h-12 border-l-4 border-b-4 border-black"></div>
+<div class="absolute -top-2 -right-2 w-12 h-12 border-r-4 border-t-4 border-black pointer-events-none"></div>
+</div>
+</div>
+</div>
+</body></html>

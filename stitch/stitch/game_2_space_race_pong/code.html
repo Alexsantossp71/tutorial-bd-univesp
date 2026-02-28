@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Space Race Pong | ENEM History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d41111",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .arcade-grid {
+            background-image: radial-gradient(circle, #392828 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .scanline {
+            background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/30 px-6 lg:px-20 py-4 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-4 text-slate-100">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">rocket_launch</span>
+</div>
+<div>
+<h2 class="text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] uppercase">ENEM History: Space Race</h2>
+<p class="text-[10px] text-primary font-bold tracking-widest uppercase">Educational Arcade v1.0</p>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors flex items-center gap-2 uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined text-sm">menu_book</span> Manual
+                        </a>
+<a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors flex items-center gap-2 uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined text-sm">leaderboard</span> Ranks
+                        </a>
+<a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors flex items-center gap-2 uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined text-sm">logout</span> Exit
+                        </a>
+</nav>
+<button class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-slate-100 text-sm font-bold uppercase tracking-widest hover:bg-primary/80 transition-all border-b-4 border-red-900 active:border-b-0 active:translate-y-1">
+<span>Pause Game</span>
+</button>
+<div class="bg-primary/20 p-0.5 rounded-full border border-primary/50">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9" data-alt="Pixel art avatar of a cosmonaut" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDoFO4xgBWt9wWlaX9Do9Z3sv6PnoCJIKmKydd_9UODUqSV21sQQJX5OnNsKTCBYDUUgqRZzI1MZKD397umyZR2LidZb_qaB0ZzDDMbCPt9UKCpBlJdKIfSnidUK_Se8W9T2W6LwtSXk9fzpMUan5PN9dKyVo5KfFFzADFS4z1V-apaZpAf00dvGEnJAXhF1cmuCFambixw-xA_kX2x0SrPxFB5NVdS3-InA6D6tydHBAstyVRdF_ou2E80YG83kd7xozp8iNI-FKnj");'></div>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-4 lg:px-10 py-6 gap-6">
+<div class="flex items-center gap-2 text-slate-500 text-sm font-bold uppercase tracking-tighter">
+<span class="hover:text-primary cursor-pointer">Archive</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-100">Operation: Pong</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+<div class="lg:col-span-1 flex flex-col gap-4">
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-5 flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-end">
+<h3 class="text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em]">Tension Level (DEFCON)</h3>
+<p class="text-primary text-2xl font-black italic">65%</p>
+</div>
+<div class="h-4 bg-background-dark border border-primary/30 rounded-full p-0.5 overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 65%;"></div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary animate-pulse"></span>
+<p class="text-slate-300 text-xs font-medium uppercase tracking-widest">Stage: Brinkmanship</p>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-5 border border-primary/20 bg-background-dark/40 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-4xl">public</span>
+</div>
+<p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">USA Propaganda Score</p>
+<div class="flex items-baseline gap-2">
+<p class="text-slate-100 text-4xl font-black font-mono">12</p>
+<span class="text-emerald-500 text-xs font-bold">+4% influence</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-5 border border-primary/20 bg-background-dark/40 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-4xl">star</span>
+</div>
+<p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">USSR Propaganda Score</p>
+<div class="flex items-baseline gap-2">
+<p class="text-slate-100 text-4xl font-black font-mono">09</p>
+<span class="text-primary text-xs font-bold">+2% influence</span>
+</div>
+</div>
+</div>
+<div class="bg-slate-900/50 rounded-xl p-4 border border-slate-800">
+<h4 class="text-slate-400 text-[10px] font-bold uppercase mb-3">Historical Context</h4>
+<p class="text-slate-300 text-xs leading-relaxed italic">
+                                "The Space Race was a 20th-century competition between two Cold War rivals for supremacy in spaceflight capability."
+                            </p>
+<button class="mt-4 text-primary text-[10px] font-bold uppercase border-b border-primary hover:text-slate-100 transition-colors">Study Flashcards</button>
+</div>
+</div>
+<div class="lg:col-span-3">
+<div class="relative w-full aspect-video bg-black rounded-xl border-4 border-primary/40 overflow-hidden arcade-grid flex items-center justify-center">
+<div class="absolute inset-0 scanline"></div>
+<div class="absolute left-1/2 top-0 bottom-0 w-2 border-l-4 border-dashed border-slate-700/50 -translate-x-1/2 flex items-center justify-center">
+<span class="bg-background-dark text-slate-700 px-2 py-1 text-[10px] font-bold rotate-90 uppercase whitespace-nowrap">The Berlin Wall</span>
+</div>
+<div class="absolute left-12 top-1/2 -translate-y-1/2 w-6 h-24 bg-blue-900 border-2 border-slate-100 flex flex-col justify-around py-2 px-1">
+<div class="h-1 bg-white/30"></div>
+<div class="h-1 bg-white/30"></div>
+<div class="h-1 bg-white/30"></div>
+<div class="text-[8px] text-white font-bold transform -rotate-90">USA</div>
+</div>
+<div class="absolute right-12 top-1/3 -translate-y-1/2 w-6 h-24 bg-primary border-2 border-slate-100 flex flex-col items-center justify-center p-1">
+<span class="material-symbols-outlined text-slate-100 text-xs">star</span>
+<div class="text-[8px] text-white font-bold transform rotate-90 mt-2">USSR</div>
+</div>
+<div class="absolute top-[45%] left-[40%] size-8 bg-slate-300 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.4)]">
+<div class="absolute -top-4 -right-4 size-1 bg-slate-400"></div>
+<div class="absolute -bottom-4 -left-4 size-1 bg-slate-400"></div>
+<div class="absolute -top-4 -left-4 size-1 bg-slate-400"></div>
+<div class="absolute -bottom-4 -right-4 size-1 bg-slate-400"></div>
+<span class="material-symbols-outlined text-slate-900 text-sm">settings_input_antenna</span>
+</div>
+<div class="absolute bottom-8 right-8 flex flex-col items-end opacity-40">
+<p class="text-slate-500 text-[10px] font-mono tracking-widest uppercase">Input: Keyboard [W/S] [UP/DOWN]</p>
+<p class="text-slate-500 text-[10px] font-mono tracking-widest uppercase">Target: Lunar Orbit</p>
+</div>
+<div class="absolute top-4 left-4 p-2 bg-black/60 border border-primary/20 backdrop-blur-sm rounded">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-emerald-500"></div>
+<span class="text-[10px] font-bold text-slate-300 uppercase">System Active</span>
+</div>
+</div>
+</div>
+<div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+<button class="bg-background-dark border border-primary/30 p-3 rounded-lg flex flex-col items-center gap-1 hover:bg-primary/10 transition-colors group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">rocket</span>
+<span class="text-[10px] font-bold uppercase text-slate-500 group-hover:text-slate-200">Boost Speed</span>
+</button>
+<button class="bg-background-dark border border-primary/30 p-3 rounded-lg flex flex-col items-center gap-1 hover:bg-primary/10 transition-colors group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">shield</span>
+<span class="text-[10px] font-bold uppercase text-slate-500 group-hover:text-slate-200">Defense Wall</span>
+</button>
+<button class="bg-background-dark border border-primary/30 p-3 rounded-lg flex flex-col items-center gap-1 hover:bg-primary/10 transition-colors group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">radio</span>
+<span class="text-[10px] font-bold uppercase text-slate-500 group-hover:text-slate-200">Jam Signals</span>
+</button>
+<button class="bg-background-dark border border-primary/30 p-3 rounded-lg flex flex-col items-center gap-1 hover:bg-primary/10 transition-colors group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">psychology</span>
+<span class="text-[10px] font-bold uppercase text-slate-500 group-hover:text-slate-200">Spy Mode</span>
+</button>
+</div>
+</div>
+</div>
+<div class="border-t border-primary/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 pb-10">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded bg-background-dark border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">history_edu</span>
+</div>
+<div>
+<p class="text-slate-200 text-xs font-bold uppercase leading-none">Lesson Tracker</p>
+<p class="text-slate-500 text-[10px] uppercase">Cold War Era: 75% Complete</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<p class="text-slate-500 text-[10px] uppercase font-bold tracking-widest italic">Simulation strictly for educational purposes</p>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

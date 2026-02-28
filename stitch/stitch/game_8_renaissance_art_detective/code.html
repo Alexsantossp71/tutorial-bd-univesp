@@ -1,0 +1,222 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .pixel-border {
+            box-shadow: 0 0 0 2px #101622, 0 0 0 4px #1152d4;
+        }
+        .retro-scanline {
+            background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 py-4 sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight uppercase italic">Renaissance Art Detective</h2>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-widest">Case #08 • ENEM Prep Edition</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-bold uppercase hover:text-primary transition-colors" href="#">Classroom</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-bold uppercase hover:text-primary transition-colors" href="#">Leaderboard</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-bold uppercase hover:text-primary transition-colors" href="#">Artifacts</a>
+</nav>
+<div class="h-8 w-[1px] bg-slate-200 dark:border-slate-800 hidden md:block"></div>
+<button class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide hover:opacity-90 transition-all shadow-lg shadow-primary/20">
+<span class="truncate uppercase italic">Exit Game</span>
+</button>
+<div class="bg-primary/20 p-1 rounded-full border border-primary/30">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="Student profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDjqPRFuMQt_eIF4xzQKVbypm047uwzElAoL_KVBsJ1dgXGeOBvXDlqQ5f-jrxPQU3TaBjLJ11dvHtR8bxAVq4VDZD1xeDqgLvMMoWYz9wjhYm5N3T3GmkQbH0FSeX6CqPKz5hebAk8ocufBHykwWDSn_8i5d3IwLcsJ1WcSs6AJ7cHGKpQ6dcj-ndwgR19f4nSO2gjaujQSSINbFVzF9nyRVXfKMoML3nxLPPF2asStKJ1dm3fj3umii12TOZVEwTvP27mHf1pnwGL");'></div>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col lg:flex-row gap-6 p-6 max-w-[1600px] mx-auto w-full">
+<!-- Sidebar Toolkit -->
+<aside class="w-full lg:w-72 flex flex-col gap-4">
+<div class="bg-slate-100 dark:bg-slate-900/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="flex flex-col mb-6">
+<h1 class="text-primary text-xs font-black uppercase tracking-tighter italic">Detective Toolkit</h1>
+<p class="text-slate-900 dark:text-white text-xl font-bold leading-none mt-1">Master Apprentice</p>
+</div>
+<div class="flex flex-col gap-3">
+<button class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-white shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-lg">target</span>
+<p class="text-sm font-bold uppercase italic">Current Task</p>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-lg">book</span>
+<p class="text-sm font-bold uppercase italic">Context</p>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-lg">search</span>
+<p class="text-sm font-bold uppercase italic">Clues (3 left)</p>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-lg">inventory_2</span>
+<p class="text-sm font-bold uppercase italic">Evidence Log</p>
+</button>
+</div>
+<div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-black uppercase text-slate-500 tracking-widest">Patronage Level</span>
+<span class="text-xs font-bold text-primary">850 Gold</span>
+</div>
+<div class="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 75%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-slate-200 dark:bg-slate-800/50">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">timer</span>
+<span class="text-xl font-black text-slate-900 dark:text-white tabular-nums">04:20</span>
+</div>
+</div>
+</div>
+<div class="p-4 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/30">
+<p class="text-[10px] font-black uppercase text-slate-500 mb-2">Instructions</p>
+<p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400">Identify 5 anachronisms (modern items) hidden in Raphael's "The School of Athens" to restore historical balance.</p>
+</div>
+</aside>
+<!-- Main Game Area -->
+<section class="flex-1 flex flex-col gap-4">
+<!-- Game Canvas Container -->
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-900 border-4 border-slate-200 dark:border-slate-800 shadow-2xl group cursor-crosshair">
+<!-- Background Art -->
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Famous Renaissance painting 'School of Athens' by Raphael" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPUlq1kehkvaHnwLQgwG6m6INIK31_mNEXzUQuvUBSNOStMj1ie-5yH7O4DIHUUDS-z56Cll-Gp8jB6bjC1NfIQZlX27fAJvu1PahVwbelVhwYCFTYPhmxCCqwn2vK9anbuNSStYCVwb1JS-VE1Yi6_14YMl6QQvuWBDOGu9z_JZTji4iH7NhZi1crgZJ2cIL9c-3tP8tj6NgjoOL8QD6Ac9r3D3NN53jj8W7gnOJD8OD0oVtk-sdtVYz32FW669dtW42e8JuD8P3r");'></div>
+<!-- Retro Overlays -->
+<div class="absolute inset-0 retro-scanline opacity-10"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/60 via-transparent to-transparent"></div>
+<!-- Target Reticle (Simulated) -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 pointer-events-none flex items-center justify-center">
+<div class="absolute inset-0 border-2 border-primary/50 rounded-full animate-pulse"></div>
+<span class="material-symbols-outlined text-primary text-4xl">add</span>
+</div>
+<!-- Found Item Markers (Simulated) -->
+<div class="absolute top-[20%] left-[35%] size-12 border-4 border-emerald-500 rounded-full flex items-center justify-center bg-emerald-500/20 backdrop-blur-sm">
+<span class="material-symbols-outlined text-emerald-500 font-black">check</span>
+</div>
+<!-- HUD Overlays -->
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-3 py-1 bg-background-dark/80 backdrop-blur-md rounded text-[10px] font-black uppercase text-white border border-primary/50 tracking-widest italic">Live Session</span>
+<span class="px-3 py-1 bg-background-dark/80 backdrop-blur-md rounded text-[10px] font-black uppercase text-white border border-slate-700 tracking-widest italic">Anachronisms Found: 1/5</span>
+</div>
+<div class="absolute bottom-6 right-6 flex items-center gap-4">
+<div class="flex flex-col items-end">
+<span class="text-[10px] font-black uppercase text-emerald-400 tracking-widest">Bonus Active</span>
+<span class="text-white text-lg font-bold">+50 Gold Per Find</span>
+</div>
+<div class="size-12 bg-primary rounded-full flex items-center justify-center text-white shadow-xl animate-bounce">
+<span class="material-symbols-outlined">zoom_in</span>
+</div>
+</div>
+</div>
+<!-- Context Footer -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center p-4 bg-white dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800 gap-4">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-primary text-[10px] font-black uppercase italic tracking-widest">Current Scene</span>
+<div class="h-[1px] w-8 bg-primary/30"></div>
+</div>
+<h3 class="text-slate-900 dark:text-white text-2xl font-black uppercase italic leading-none">The School of Athens</h3>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-tight mt-1">Raphael, 1509–1511 • Apostolic Palace, Vatican City</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-background-dark bg-slate-300" data-alt="User avatar small"></div>
+<div class="size-8 rounded-full border-2 border-background-dark bg-slate-400" data-alt="User avatar small"></div>
+<div class="size-8 rounded-full border-2 border-background-dark bg-slate-500" data-alt="User avatar small"></div>
+<div class="size-8 rounded-full border-2 border-background-dark bg-primary flex items-center justify-center text-[10px] font-bold text-white italic">+12</div>
+</div>
+<p class="text-[10px] font-black uppercase text-slate-500 tracking-tighter">Students Exploring Studio</p>
+</div>
+</div>
+</section>
+<!-- Right Panel: Evidence Log -->
+<aside class="hidden xl:flex w-72 flex-col gap-4">
+<div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden flex-1">
+<div class="p-4 bg-primary/10 border-b border-slate-800">
+<h4 class="text-white text-xs font-black uppercase tracking-widest italic flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">history_edu</span>
+                        Evidence Log
+                    </h4>
+</div>
+<div class="p-4 flex flex-col gap-4">
+<!-- Found Item -->
+<div class="flex gap-3 p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+<div class="size-10 rounded bg-slate-800 flex-shrink-0" data-alt="Close up of found smartphone anachronism" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAD9duFIvjAiTpDW8s07uy67djbd2kjckTeag-7P1tNAm9ogsCgkXvsWnR5U6rFBiNm7_Z80mljEzZjJGc6hgIGXWplI3A20cdjhkm8AUbgV59sGZmvnqBW5xvMLFJ4iIsLypH6VuolAQ6qGrFotYVAS2epIeBHyU8QDSkJBZJEeeNj3jd6FBnJBZo32tApcANYaoitwBuQ3rssuYtsFKrgsQO17SH0OZhfF0ns4AqYpsn909CJYcopppDZxduhjWmo8iLUx81JVm19');"></div>
+<div>
+<p class="text-xs font-bold text-emerald-400 italic">SMARTPHONE FOUND</p>
+<p class="text-[10px] text-slate-500 leading-tight">Located in the hands of Pythagoras. Inconsistent with 16th Century technology.</p>
+</div>
+</div>
+<!-- Missing Items -->
+<div class="flex gap-3 p-2 rounded-lg bg-slate-800/30 border border-slate-700 border-dashed">
+<div class="size-10 rounded bg-slate-800 flex-shrink-0 flex items-center justify-center opacity-40">
+<span class="material-symbols-outlined text-slate-500">question_mark</span>
+</div>
+<div class="opacity-40">
+<p class="text-xs font-bold text-slate-400">UNKNOWN ARTIFACT</p>
+<p class="text-[10px] text-slate-600">Scan the scene to identify more anachronisms...</p>
+</div>
+</div>
+<div class="flex gap-3 p-2 rounded-lg bg-slate-800/30 border border-slate-700 border-dashed">
+<div class="size-10 rounded bg-slate-800 flex-shrink-0 flex items-center justify-center opacity-40">
+<span class="material-symbols-outlined text-slate-500">question_mark</span>
+</div>
+<div class="opacity-40">
+<p class="text-xs font-bold text-slate-400">UNKNOWN ARTIFACT</p>
+<p class="text-[10px] text-slate-600">Scan the scene to identify more anachronisms...</p>
+</div>
+</div>
+</div>
+<!-- Bottom Action -->
+<div class="mt-auto p-4 border-t border-slate-800">
+<button class="w-full py-2 bg-slate-800 hover:bg-slate-700 rounded text-[10px] font-black uppercase text-slate-400 tracking-widest transition-colors">
+                        View Historical Dossier
+                    </button>
+</div>
+</div>
+<!-- Mini Map / Quick Nav -->
+<div class="h-32 rounded-xl bg-slate-900 border border-slate-800 relative overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all" data-alt="Mini map of the studio location" data-location="Vatican City" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA_NrzuxWfWHUd0f2KHxY7zQqi9WouArZ1nHcFqEY4tXHsaqSOAOz3ItySmZeweHv7F74fa3L2p8-3kcDA85JM61oqHEGvqHhgH2q7Xij-y7Y2UcL-QyIl7XD89yILn5OCZYm_2XWhVJxjpCPrkx_vOhM5kc6BIj_Uq7RwWUvksYMo_DQ3drQ4sqBnxIHfdAfkAoAU0JkdvpoN-du25CQLo6QuDyGEoZmrXImip2M07ppODfGK8TKjtpcM1r1Sa_9dQu8jsB-jeZtk-');"></div>
+<div class="absolute inset-0 bg-primary/20"></div>
+<div class="absolute bottom-2 left-2 bg-background-dark/80 backdrop-blur-md px-2 py-1 rounded">
+<span class="text-[8px] font-black uppercase text-white italic">Location: Vatican City</span>
+</div>
+</div>
+</aside>
+</main>
+</div>
+
+```</body></html>

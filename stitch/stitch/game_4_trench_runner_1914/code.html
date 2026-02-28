@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Game 4: Trench Runner 1914</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#93d411",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#1c2210",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+        }
+        .pixel-border {
+            box-shadow: 0 0 0 2px #1c2210, 0 0 0 4px #93d411;
+        }
+        .scanline {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/20 px-6 py-3 bg-background-dark/95 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">terrain</span>
+</div>
+<h2 class="text-slate-100 text-xl font-bold leading-tight tracking-tight uppercase italic">Trench Runner 1914</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-slate-100 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-100 text-sm font-medium hover:text-primary transition-colors" href="#">Leaderboard</a>
+<a class="text-slate-100 text-sm font-medium hover:text-primary transition-colors" href="#">Glossary</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-6 bg-primary text-background-dark text-sm font-bold tracking-wider hover:opacity-90 active:scale-95 transition-all">
+                        EXIT GAME
+                    </button>
+<div class="bg-primary/20 p-0.5 rounded-full border border-primary/40">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9" data-alt="Stylized pixel art portrait of a soldier" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSjIL3UjfPex42pe91E0gYmFqSyIzSnrCbfMfPUYx4Tryn2plhoYfpP6xIoqvha_Qu62PnLcCwsIPf3EbIHPQrHJsIgWSfBCoGZs73NLndvopZRcYCEVJLgK10atwekcUjkHWgQftoi5GtS31qR9F2g8CsG2QL4ov52HP9BG1L14nGXWlrOkS2b1pH9qBinihA1Q0oFbLqNuXK5Et4zIs8yiyrZJhlO2BAAK1BuI5wGWHVymSZLfFN0-OwDmgD-6Jkfu75vFv-cRQj");'></div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-1 p-4 md:p-6 gap-6 h-[calc(100vh-64px)] overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex flex-col justify-between bg-primary/5 border border-primary/10 rounded-xl p-4">
+<div class="flex flex-col gap-6">
+<div class="flex gap-3 items-center border-b border-primary/20 pb-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-12 border-2 border-primary" data-alt="Avatar of Private Miller" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBIpJFWBvb82DgvEZHv0CkhIpnhrROxn-AdVJcI_-7cOJbbZ1UFL7WVHR91Sh8AJaE28iC3HgcA-RKXTpIJdm4WuMMYXzM2TbZkzQqxiwv5ocmZgxf2HmeNZSiF2c1-yeJV3Ljmguf-IWpzn2iPxVXTBE3z-rf2cyJ2VV8o3pn6ci4hQACG4b9Q8NgsAJKf2S4l0sfgi3K1q1GO6Q46gkNb7mT44nYm6Zx-fXGVhFYjDQXW5HDUbDDBM5E3kLan47dX1faEwVYCvl2f");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-100 text-base font-bold leading-none">Private Miller</h1>
+<p class="text-primary text-xs font-medium mt-1 uppercase">1st Infantry Div.</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-background-dark font-bold" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="text-sm">Battlefield Map</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-100 hover:bg-primary/20 transition-all font-medium" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm">Intel Dossier</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-100 hover:bg-primary/20 transition-all font-medium" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span class="text-sm">Letters (4/12)</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-100 hover:bg-primary/20 transition-all font-medium" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm">Equipment</span>
+</a>
+</nav>
+</div>
+<div class="space-y-6">
+<!-- Progress Timeline -->
+<div class="flex flex-col gap-1 border-t border-primary/10 pt-4">
+<p class="text-[10px] text-primary font-bold uppercase tracking-widest mb-2 text-center">War Timeline</p>
+<div class="grid grid-cols-[32px_1fr] gap-x-3 items-start relative">
+<!-- Line -->
+<div class="absolute left-[15px] top-4 bottom-4 w-px bg-primary/20"></div>
+<div class="flex flex-col items-center z-10">
+<span class="material-symbols-outlined text-primary bg-background-dark text-lg">radio_button_checked</span>
+</div>
+<div class="pb-4">
+<p class="text-slate-100 text-xs font-bold leading-none">1914: Outbreak</p>
+<p class="text-primary text-[10px] uppercase font-bold mt-1">Current Sector</p>
+</div>
+<div class="flex flex-col items-center z-10">
+<span class="material-symbols-outlined text-slate-500 bg-background-dark text-lg">lock</span>
+</div>
+<div class="pb-4">
+<p class="text-slate-500 text-xs font-medium leading-none">1915: Stalemate</p>
+</div>
+<div class="flex flex-col items-center z-10">
+<span class="material-symbols-outlined text-slate-500 bg-background-dark text-lg">lock</span>
+</div>
+<div class="pb-4">
+<p class="text-slate-500 text-xs font-medium leading-none">1916: Verdun</p>
+</div>
+</div>
+</div>
+<!-- Filter HUD -->
+<div class="flex flex-col gap-2 p-3 bg-red-900/20 border border-red-500/30 rounded-lg">
+<div class="flex justify-between items-center">
+<p class="text-red-400 text-[10px] font-black uppercase tracking-tighter">Filter Stamina</p>
+<p class="text-red-400 text-xs font-bold">24%</p>
+</div>
+<div class="h-2 w-full bg-background-dark rounded-full overflow-hidden border border-red-900/50">
+<div class="h-full bg-red-500 w-[24%]" style="box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);"></div>
+</div>
+<p class="text-red-500 text-[9px] italic animate-pulse">CRITICAL: REPLACE FILTER SOON!</p>
+</div>
+</div>
+</aside>
+<!-- Gameplay Area -->
+<section class="flex-1 flex flex-col gap-4">
+<!-- Game Canvas Placeholder -->
+<div class="flex-1 bg-black rounded-xl relative overflow-hidden pixel-border group">
+<!-- Retro Scanlines Overlay -->
+<div class="absolute inset-0 scanline z-20"></div>
+<!-- Background Environment (Parallax placeholder) -->
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1547492147-3f30559f9392?auto=format&amp;fit=crop&amp;q=80&amp;w=1200')] bg-cover bg-bottom opacity-40 mix-blend-luminosity" data-alt="Dark gritty World War I trench landscape at night"></div>
+<!-- Gameplay Mock -->
+<div class="absolute inset-0 flex items-center justify-center z-10">
+<!-- Play Button / Start State -->
+<div class="text-center group-hover:scale-105 transition-transform cursor-pointer">
+<div class="size-20 rounded-full bg-primary flex items-center justify-center mx-auto mb-4 border-4 border-background-dark shadow-[0_0_20px_rgba(147,212,17,0.5)]">
+<span class="material-symbols-outlined text-background-dark text-5xl translate-x-1">play_arrow</span>
+</div>
+<h3 class="text-primary text-3xl font-black italic tracking-widest uppercase">Start Mission</h3>
+<p class="text-slate-100/60 text-sm mt-2 font-medium">MISSION 1: THE MESSAGE THROUGH NO MAN'S LAND</p>
+</div>
+<!-- HUD Elements -->
+<div class="absolute top-6 left-6 flex gap-6">
+<div class="flex flex-col">
+<span class="text-[10px] text-primary/70 font-bold uppercase italic">Distance</span>
+<span class="text-2xl text-slate-100 font-bold tracking-tight">412<span class="text-xs text-slate-400 font-normal">m</span></span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-primary/70 font-bold uppercase italic">Letters</span>
+<span class="text-2xl text-slate-100 font-bold tracking-tight">03<span class="text-xs text-slate-400 font-normal">/12</span></span>
+</div>
+</div>
+<div class="absolute top-6 right-6">
+<div class="flex items-center gap-2 px-3 py-1 bg-background-dark/80 border border-primary/30 rounded text-primary">
+<span class="material-symbols-outlined text-lg">timer</span>
+<span class="text-lg font-bold">01:42</span>
+</div>
+</div>
+</div>
+<!-- Bottom Gritty Bar -->
+<div class="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-black to-transparent z-10 flex items-end p-6">
+<div class="flex gap-2">
+<div class="size-8 rounded bg-background-dark border border-primary/20 flex items-center justify-center text-primary text-xs font-bold">W</div>
+<div class="size-8 rounded bg-background-dark border border-primary/20 flex items-center justify-center text-primary text-xs font-bold">A</div>
+<div class="size-8 rounded bg-background-dark border border-primary/20 flex items-center justify-center text-primary text-xs font-bold">S</div>
+<div class="size-8 rounded bg-background-dark border border-primary/20 flex items-center justify-center text-primary text-xs font-bold">D</div>
+</div>
+<div class="ml-4 text-[10px] text-slate-500 font-medium uppercase tracking-widest self-center">Use keys to navigate the trench</div>
+</div>
+</div>
+<!-- Footer Quick Stats -->
+<div class="grid grid-cols-4 gap-4 h-28">
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-4 flex flex-col justify-between">
+<span class="text-[10px] font-bold text-primary/60 uppercase">High Score</span>
+<div class="flex items-end justify-between">
+<span class="text-2xl font-bold text-slate-100 italic">2,840</span>
+<span class="material-symbols-outlined text-primary">military_tech</span>
+</div>
+</div>
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-4 flex flex-col justify-between">
+<span class="text-[10px] font-bold text-primary/60 uppercase">Rank</span>
+<div class="flex items-end justify-between">
+<span class="text-2xl font-bold text-slate-100 italic">Corporal</span>
+<span class="material-symbols-outlined text-primary">stars</span>
+</div>
+</div>
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-4 flex flex-col justify-between col-span-2">
+<span class="text-[10px] font-bold text-primary/60 uppercase">Active Objective</span>
+<div class="flex items-center justify-between">
+<p class="text-slate-100 text-sm font-medium leading-tight">Deliver the armistice petition across the Marne sector before dawn.</p>
+<span class="material-symbols-outlined text-primary text-3xl">task_alt</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

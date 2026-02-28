@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zine Histórico - The Kiosk</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Bangers&amp;family=Permanent+Marker&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "pop-cyan": "#00AEEF",
+                        "pop-magenta": "#EC008C",
+                        "pop-yellow": "#FFF200",
+                        "pop-black": "#1A1A1A",
+                        "pop-paper": "#F4F1EA",
+                        "pop-grey": "#D1D3D4",
+                    },
+                    fontFamily: {
+                        "comic": ['"Bangers"', 'cursive'],
+                        "marker": ['"Permanent Marker"', 'cursive'],
+                        "mono": ['"Space Mono"', 'monospace'],
+                        "ui": ['"Archivo Black"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        "hard": "4px 4px 0px #1A1A1A",
+                        "hard-hover": "6px 6px 0px #EC008C",
+                        "hard-sm": "2px 2px 0px #1A1A1A",
+                    },
+                    backgroundImage: {
+                        'halftone': "radial-gradient(#D1D3D4 1px, transparent 1px)",
+                        'wood': "url('https://www.transparenttextures.com/patterns/wood-pattern.png')",
+                    },
+                    backgroundSize: {
+                        'halftone': '8px 8px',
+                    }
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            height: 12px;
+            width: 12px;
+            background: #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00AEEF;
+            border: 2px solid #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFF200;
+        }.rotate-hover:hover {
+            transform: rotate(-2deg) scale(1.02);
+        }
+        .texture-paper {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+        }.bg-stripes {
+            background-image: repeating-linear-gradient(45deg, #1A1A1A 0, #1A1A1A 2px, transparent 0, transparent 50%);
+            background-size: 10px 10px;
+            opacity: 0.1;
+        }.shelf-divider {
+            position: absolute;
+            bottom: -20px;
+            left: -50px;
+            right: -50px;
+            height: 16px;
+            background-color: #cbbfa8;
+            border-top: 4px solid #b5a88f;
+            border-bottom: 4px solid #1A1A1A;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="bg-pop-paper text-pop-black font-mono overflow-hidden h-screen flex flex-col texture-paper">
+<header class="flex-none border-b-4 border-pop-black bg-white relative z-20 shadow-hard">
+<div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-pop-cyan border-2 border-pop-black flex items-center justify-center shadow-hard-sm">
+<span class="material-symbols-outlined text-pop-black">auto_stories</span>
+</div>
+<h1 class="font-comic text-4xl tracking-wider text-pop-black leading-none mt-1">
+                ZINE HISTÓRICO
+            </h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 bg-pop-black text-pop-yellow px-3 py-1 -skew-x-12 border-2 border-transparent">
+<span class="material-symbols-outlined animate-pulse" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-ui text-lg not-italic skew-x-12">450 XP</span>
+</div>
+<button class="group flex items-center gap-3 cursor-pointer">
+<div class="text-right hidden sm:block">
+<p class="font-marker text-sm leading-none">Historiador Punk</p>
+<p class="font-ui text-xs text-pop-grey">NÍVEL 5</p>
+</div>
+<div class="w-12 h-12 rounded-full border-4 border-pop-black overflow-hidden bg-pop-yellow relative shadow-hard-sm group-hover:shadow-hard-hover transition-all duration-200">
+<img alt="Avatar do usuário com estilo punk" class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4xi90IAZoy4PumwzEFxcuC4OOKNCtwlCAIkQrTOqlocD2kwXq8kfi4f2bb_CgvHX82t1yDl1CeF0wDCun-K89OuMSU72zrRi0chGzxV7voEw0CG_RR4H-HpwGIKTmVyAEIBg3NqgG-kpp5Sm6yy2w9aVMVobrq1OzuV8AnQStT3FUE9jTxJ_CeSifCNmpSjpX32IR6ndkeAb_MUFUI0TFHQUXUtDAVW-j8NnhIleCVQw2SLZhvUgZQRbMGiF1gE8lw3Mc8W8fVifj"/>
+</div>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center relative overflow-hidden bg-[#e8e1d5]">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRp09N15Vi1eTesV3NkCJdTAagg_tRtXltmpC4c8wRrsLqZaeNxgPnk29Cn62avErgC1_rBb3gsztOAxvBWiZFlIBsAuEH6Sn7PFBWA1zSGaMDQHgY40UGjqZbDtmRsanXwPiYlEbhUz4caUZh2lgR9wMXxhygufG8_iGg1ioYCf7UChIRoYlytF4Hw8UYa2ACNM2V7RifVxGhHi9DtdeSDXVhZMW0CJG-_OVKLLXrjiPLONKyzN4RwfS1dRNZvBsGNBsfx30k-pyZ');"></div>
+<div class="w-full h-full overflow-x-auto overflow-y-hidden flex items-start px-12 md:px-12 snap-x snap-mandatory py-10">
+<div class="flex-none flex flex-col mr-16 snap-start">
+<div class="mb-4">
+<span class="bg-pop-cyan text-pop-black font-comic text-2xl border-2 border-pop-black px-3 py-1 shadow-hard-sm -rotate-2 inline-block">MÓDULO 1</span>
+<h3 class="font-ui text-xl mt-1 ml-2">RAÍZES DO MUNDO OCIDENTAL</h3>
+</div>
+<div class="flex gap-8 items-end relative pb-8">
+<article class="flex-none group/card relative w-[280px] h-[400px] bg-white border-4 border-pop-black shadow-hard hover:shadow-hard-hover transition-all duration-300 rotate-hover cursor-pointer z-10">
+<div class="absolute -top-3 -left-3 bg-pop-yellow border-2 border-pop-black px-2 py-1 z-10 transform -rotate-6 shadow-hard-sm">
+<span class="font-ui text-xs">VOL. 1</span>
+</div>
+<div class="absolute top-4 right-4 z-20 transform rotate-12 opacity-80 mix-blend-multiply">
+<div class="border-4 border-pop-magenta text-pop-magenta font-marker text-xl px-2 py-1 rounded-sm uppercase tracking-widest">
+                            LIDO
+                        </div>
+</div>
+<div class="h-3/5 w-full bg-pop-cyan relative overflow-hidden border-b-4 border-pop-black">
+<div class="absolute inset-0 bg-halftone opacity-20"></div>
+<img alt="Colagem de arte clássica com elementos pop art" class="w-full h-full object-cover grayscale contrast-125 group-hover/card:grayscale-0 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9iZMnXc8u2z6awe21e5HeCrnXgMEdM4GyDu7ZU_wh3ycBYbxiHDA3QZKB7pi7nKgDpUfBoBWeiSS5WvccxJKfWmUFOD19dUDYVJuTQPQ3ezI8KXgbwqMdrEL1O7hisHKgSvyTNvYZrfEfrb5Z7S5qL5mmvCot65cjzixOsPBOpyvZ108ZVTj_FhLhJNM6vul6eTdbP0CJ1QqQ7tY-dm26s07jO5oMRoufzK4robbLWYT609kAwevH19x4xc0SD6mvIoTRxaXR3BjO"/>
+<div class="absolute inset-0 bg-gradient-to-t from-pop-cyan/50 to-transparent mix-blend-multiply"></div>
+</div>
+<div class="h-2/5 p-4 flex flex-col justify-between bg-white group-hover/card:bg-pop-yellow transition-colors duration-300">
+<div>
+<h2 class="font-comic text-4xl leading-none mb-2 text-pop-black drop-shadow-sm">O MAR DE BARRO</h2>
+<p class="font-mono text-xs leading-tight font-bold">Grécia: Da filosofia à democracia.</p>
+</div>
+<div class="flex justify-between items-center border-t-2 border-pop-black pt-2 mt-2">
+<span class="font-ui text-xs">100% COMPLETO</span>
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</div>
+</div>
+</article>
+<article class="flex-none group/card relative w-[280px] h-[400px] bg-pop-grey border-4 border-pop-black shadow-hard opacity-70 scale-95 origin-bottom-left hover:scale-100 transition-transform">
+<div class="absolute -top-3 -left-3 bg-pop-grey border-2 border-pop-black px-2 py-1 z-10 shadow-hard-sm">
+<span class="font-ui text-xs text-pop-black/50">VOL. 2</span>
+</div>
+<div class="h-full flex items-center justify-center bg-stripes">
+<span class="font-comic text-3xl text-pop-black opacity-40 text-center px-4">ROMA: A LOB A</span>
+</div>
+</article>
+<div class="shelf-divider"></div>
+</div>
+</div>
+<div class="flex-none flex flex-col mr-16 snap-start">
+<div class="mb-4">
+<span class="bg-pop-magenta text-white font-comic text-2xl border-2 border-pop-black px-3 py-1 shadow-hard-sm rotate-1 inline-block">MÓDULO 2</span>
+<h3 class="font-ui text-xl mt-1 ml-2">ENCONTRO DE MUNDOS</h3>
+</div>
+<div class="flex gap-8 items-end relative pb-8">
+<article class="flex-none group/card relative w-[280px] h-[400px] bg-white border-4 border-pop-black shadow-hard hover:shadow-hard-hover transition-all duration-300 rotate-hover cursor-pointer z-10 scale-105">
+<div class="absolute -top-4 -left-4 bg-pop-magenta text-white border-2 border-pop-black px-3 py-1 z-10 transform -rotate-3 shadow-hard-sm">
+<span class="font-ui text-sm">VOL. 8</span>
+</div>
+<div class="absolute -top-6 -right-6 z-20 transform rotate-12">
+<div class="bg-pop-yellow text-pop-black border-2 border-pop-black rounded-full h-16 w-16 flex items-center justify-center shadow-hard-sm text-center font-ui text-[10px] leading-tight p-1 animate-bounce">
+                            AGORA<br/>LENDO
+                        </div>
+</div>
+<div class="h-3/5 w-full bg-pop-black relative overflow-hidden border-b-4 border-pop-black">
+<img alt="Retrato histórico estilizado com cores vibrantes" class="w-full h-full object-cover sepia contrast-125 group-hover/card:sepia-0 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDORA2LiJIRt8sg3QunLTfTs36RblzYDeV6rUqalymxOl8vjoXkUTqODpvens7vSAnaVoC2qWFxvlNQM2TCcE4G3CWlA81y-oGP_dIHvaUCGAyZNz1MgUMLYpaOzSFOYyAvlEWhl161ekIGzsOWjayE5E11VAtCcjRl6it2dkAwXZ5n_1HJY8gECgFbqqumuOIsfFXrBHLuJF6Em_d3kHXd7IDze0HtEqQryD7rBUVnt7Iy83fwCt6erCYFqzNKzpnNjBI5q8L5yBYi"/>
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/shattered-island.png')] opacity-30 mix-blend-overlay"></div>
+</div>
+<div class="h-2/5 p-4 flex flex-col justify-between bg-white group-hover/card:bg-pop-cyan transition-colors duration-300">
+<div>
+<h2 class="font-comic text-4xl leading-none mb-2 text-pop-black drop-shadow-sm">O PAI DOS POBRES</h2>
+<p class="font-mono text-xs leading-tight font-bold">Era Vargas: Ditador ou herói?</p>
+</div>
+<div class="w-full bg-pop-black h-3 mt-3 border-2 border-pop-black relative">
+<div class="bg-pop-magenta h-full w-1/3"></div>
+</div>
+</div>
+</article>
+<div class="shelf-divider"></div>
+</div>
+</div>
+<div class="flex-none flex flex-col mr-16 snap-start">
+<div class="mb-4">
+<span class="bg-pop-yellow text-pop-black font-comic text-2xl border-2 border-pop-black px-3 py-1 shadow-hard-sm -rotate-1 inline-block">MÓDULO 3</span>
+<h3 class="font-ui text-xl mt-1 ml-2">TEMPESTADES DE AÇO</h3>
+</div>
+<div class="flex gap-8 items-end relative pb-8">
+<article class="flex-none group/card relative w-[280px] h-[400px] bg-white border-4 border-pop-black shadow-hard hover:shadow-hard-hover transition-all duration-300 rotate-hover cursor-pointer z-10">
+<div class="absolute -top-3 -left-3 bg-white border-2 border-pop-black px-2 py-1 z-10 transform rotate-3 shadow-hard-sm">
+<span class="font-ui text-xs">VOL. 12</span>
+</div>
+<div class="absolute top-3 right-0 z-20 bg-pop-magenta text-white font-ui text-xs px-2 py-1 border-y-2 border-l-2 border-pop-black shadow-hard-sm">
+                        LANÇAMENTO
+                    </div>
+<div class="h-3/5 w-full bg-pop-yellow relative overflow-hidden border-b-4 border-pop-black">
+<img alt="Ilustração de fábrica antiga com cores vibrantes" class="w-full h-full object-cover contrast-125 saturate-50 group-hover/card:saturate-150 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1ZQwVSpko3REId3qrdLhodrjnnXbZKH35-IaJBfOCDxG9tLhNfKgNsyKNd2OZ3qRBSAY71oKotyjtpxODVNDhfqdvT84TBn62839yO1ChxO4juU2crS3rVSoktxpblO77rSs43aEYQj_tcjJ2SvHleD-BdgttBzyMGqXeuy3b2_v22_SPam1D_yTH55TCcviik7z9WHv--YiN1Ca4rGy95jS7PgI7ZXUj7-RI7UhTdCmG1vbsZaGyXBDSgrC-NFFFXSKsSJUeHiY9"/>
+</div>
+<div class="h-2/5 p-4 flex flex-col justify-between bg-white group-hover/card:bg-pop-magenta group-hover/card:text-white transition-colors duration-300">
+<div>
+<h2 class="font-comic text-4xl leading-none mb-2 drop-shadow-sm">O MONSTRO DE FERRO</h2>
+<p class="font-mono text-xs leading-tight font-bold opacity-80">Revolução Industrial.</p>
+</div>
+<div class="flex justify-end items-center mt-2">
+<button class="bg-pop-black text-white px-4 py-1 font-ui text-xs hover:bg-white hover:text-black border-2 border-transparent hover:border-black transition-colors">
+                                INICIAR
+                            </button>
+</div>
+</div>
+</article>
+<div class="shelf-divider"></div>
+</div>
+</div>
+<div class="flex-none flex flex-col mr-16 snap-start">
+<div class="mb-4">
+<span class="bg-pop-black text-white font-comic text-2xl border-2 border-pop-black px-3 py-1 shadow-hard-sm rotate-2 inline-block">MÓDULO 4</span>
+<h3 class="font-ui text-xl mt-1 ml-2">SÉCULO DAS LOUCURAS</h3>
+</div>
+<div class="flex gap-8 items-end relative pb-8">
+<article class="flex-none group/card relative w-[280px] h-[400px] bg-pop-grey border-4 border-pop-black shadow-hard cursor-not-allowed z-10">
+<div class="absolute -top-3 -left-3 bg-pop-grey border-2 border-pop-black px-2 py-1 z-10 shadow-hard-sm">
+<span class="font-ui text-xs text-pop-black/50">VOL. 20</span>
+</div>
+<div class="absolute inset-0 z-20 bg-black/10 flex flex-col items-center justify-center backdrop-grayscale">
+<div class="bg-pop-black p-4 rounded-full border-4 border-white shadow-hard">
+<span class="material-symbols-outlined text-white text-4xl">lock</span>
+</div>
+<p class="font-ui text-pop-black bg-white px-2 mt-4 border-2 border-pop-black -rotate-2">BLOQUEADO</p>
+</div>
+<div class="h-3/5 w-full bg-pop-grey relative overflow-hidden border-b-4 border-pop-black opacity-50">
+<img alt="Imagem antiga de guerra com efeito de meio-tom" class="w-full h-full object-cover grayscale blur-[1px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6FcTl-fZ2RCgokGs8q_uGYxMzO-kjx4Oo4ZOl42rosUiQL0Sp89VDsl0dAV72OmNDiLhXp6ggdZEKl9Pqrfq4b2FvZtJd8GmVVCc_98KvLarV9pUSnUxVm-GDjGUsglyMq8NhHuLZzVgU5TSk2ab9deBuApEQA2C2a6qMeOZcc8LJE_i_uldou1CHST3L4Bh3SSHcNqS8JG2bLU42ITbGHOa_hTXTX45WPybJyi6JRqNRQKSd2Nc3t8e483PVpjM6IkzSuUNjDYGs"/>
+<div class="absolute inset-0 bg-halftone opacity-40"></div>
+</div>
+<div class="h-2/5 p-4 flex flex-col justify-between bg-pop-grey relative overflow-hidden">
+<div class="bg-stripes absolute inset-0"></div> 
+<div class="relative z-10 opacity-50">
+<h2 class="font-comic text-4xl leading-none mb-2 text-pop-black">O MURO DE VERGONHA</h2>
+<p class="font-mono text-xs leading-tight font-bold">Guerra Fria: O mundo dividido.</p>
+</div>
+<div class="relative z-10 mt-2">
+<span class="font-mono text-xs text-pop-black font-bold bg-white/50 px-1">Necessário Nível 6</span>
+</div>
+</div>
+</article>
+<div class="shelf-divider"></div>
+</div>
+</div>
+<div class="w-12 flex-none"></div>
+</div>
+</main>
+<nav class="flex-none bg-white border-t-4 border-pop-black shadow-[0_-4px_0_rgba(0,0,0,0.1)] z-30">
+<div class="max-w-[1200px] mx-auto flex justify-between px-4 overflow-x-auto gap-4">
+<button class="flex flex-col items-center justify-center py-3 px-4 min-w-[80px] hover:bg-pop-paper group active:bg-pop-cyan/20 transition-colors border-t-4 border-transparent hover:border-pop-magenta -mt-[4px]">
+<span class="material-symbols-outlined text-3xl text-pop-black mb-1 group-hover:scale-110 transition-transform">sports_esports</span>
+<span class="font-ui text-xs md:text-sm text-pop-black whitespace-nowrap">ARCADE</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3 px-4 min-w-[80px] hover:bg-pop-paper group active:bg-pop-cyan/20 transition-colors border-t-4 border-transparent hover:border-pop-magenta -mt-[4px]">
+<span class="material-symbols-outlined text-3xl text-pop-black mb-1 group-hover:rotate-12 transition-transform">menu_book</span>
+<span class="font-ui text-xs md:text-sm text-pop-black whitespace-nowrap">DICIONÁRIO</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3 px-8 min-w-[100px] bg-pop-paper group border-x-4 border-pop-black -mt-[4px] relative pb-4">
+<div class="absolute top-0 left-0 w-full h-1 bg-pop-cyan"></div>
+<span class="material-symbols-outlined text-4xl text-pop-cyan mb-1 drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="font-ui text-xs md:text-sm text-pop-black whitespace-nowrap">BANCA</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3 px-4 min-w-[80px] hover:bg-pop-paper group active:bg-pop-cyan/20 transition-colors border-t-4 border-transparent hover:border-pop-magenta -mt-[4px]">
+<span class="material-symbols-outlined text-3xl text-pop-black mb-1 group-hover:-rotate-12 transition-transform">quiz</span>
+<span class="font-ui text-xs md:text-sm text-pop-black whitespace-nowrap">QUESTÕES</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3 px-4 min-w-[80px] hover:bg-pop-paper group active:bg-pop-cyan/20 transition-colors border-t-4 border-transparent hover:border-pop-magenta -mt-[4px]">
+<span class="material-symbols-outlined text-3xl text-pop-black mb-1 group-hover:scale-110 transition-transform">sticky_note_2</span>
+<span class="font-ui text-xs md:text-sm text-pop-black whitespace-nowrap">ÁLBUM</span>
+</button>
+<button class="hidden md:flex flex-col items-center justify-center py-3 px-4 min-w-[80px] hover:bg-pop-paper group active:bg-pop-cyan/20 transition-colors border-t-4 border-transparent hover:border-pop-magenta -mt-[4px]">
+<span class="material-symbols-outlined text-3xl text-pop-black mb-1 group-hover:rotate-90 transition-transform">settings</span>
+<span class="font-ui text-xs md:text-sm text-pop-black whitespace-nowrap">CONFIG</span>
+</button>
+</div>
+</nav>
+
+</body></html>
