@@ -1,5 +1,6 @@
 # Excluir pastas de desenvolvimento/backup
-scripts/
+scripts/*
+!scripts/verify_site.py
 skills/
 sources/
 .agent/
